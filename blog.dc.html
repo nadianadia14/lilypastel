@@ -16,20 +16,21 @@ a{color:#b5622f;text-decoration:none}
 a:hover{color:#8a4a24}
 [data-lp-theme="dark"]{filter:invert(1) hue-rotate(180deg)}
 [data-lp-theme="dark"] img,[data-lp-theme="dark"] video,[data-lp-theme="dark"] iframe{filter:invert(1) hue-rotate(180deg)}
+@media (max-width:640px){#site-header-inner{padding:12px 16px}#site-logo-img{height:40px !important;width:40px !important}#site-logo-text span{font-size:14px !important}#site-logo-sub{display:none !important}#site-header-controls{gap:6px !important}}
 </style>
 </helmet>
 <div style="background:#f6f1ea;min-height:100vh" data-lp-theme="{{ themeAttr }}">
 
 
 <header style="position:sticky;top:0;z-index:50;background:#f6f1eaee;backdrop-filter:blur(6px);border-bottom:1px solid rgba(36,31,26,.1)">
-  <div style="max-width:1320px;margin:0 auto;padding:16px 40px;display:flex;align-items:center;justify-content:space-between">
+  <div id="site-header-inner" style="max-width:1320px;margin:0 auto;padding:16px 40px;display:flex;align-items:center;justify-content:space-between">
     <a href="index.dc.html" style="display:flex;align-items:center;gap:10px">
-      <img src="assets/logo-lily-pastel.jpeg" alt="Lily Pastel" style="height:58px;width:58px;object-fit:cover">
-      <div style="display:flex;align-items:baseline;line-height:1.05">
+      <img id="site-logo-img" src="assets/logo-lily-pastel.jpeg" alt="Lily Pastel" style="height:58px;width:58px;object-fit:cover">
+      <div id="site-logo-text" style="display:flex;align-items:baseline;line-height:1.05">
         <span style="font-family:'Playfair Display',serif;font-size:19px;letter-spacing:2px;color:#241f1a;margin-right:0.3em">LILY</span>
         <div style="display:flex;flex-direction:column">
           <span style="font-family:'Playfair Display',serif;font-size:19px;letter-spacing:2px;color:#241f1a">PASTEL</span>
-          <div style="display:flex;justify-content:space-between;width:100%;font-size:8.5px;letter-spacing:3.5px;color:rgba(36,31,26,.55)"><span>STUDIO</span><span>ART</span></div>
+          <div id="site-logo-sub" style="display:flex;justify-content:space-between;width:100%;font-size:8.5px;letter-spacing:3.5px;color:rgba(36,31,26,.55)"><span>STUDIO</span><span>ART</span></div>
         </div>
       </div>
     </a>
@@ -42,8 +43,7 @@ a:hover{color:#8a4a24}
       <a href="blog.dc.html" style="color:#b5622f;display:inline-block;transition:transform .25s ease,opacity .25s ease" style-hover="transform:scale(1.1);opacity:.6">{{ t.navBlog }}</a>
       <a href="contact.dc.html" style="color:#241f1a;display:inline-block;transition:transform .25s ease,opacity .25s ease" style-hover="transform:scale(1.1);opacity:.6">{{ t.navContact }}</a>
     </nav>
-    <div style="display:flex;align-items:center;gap:14px">
-      <div style="display:{{ navDisplay }};align-items:center;gap:8px">
+    <div id="site-header-controls" style="display:flex;align-items:center;gap:14px">
       <div style="display:flex;align-items:center;gap:6px;border:1px solid rgba(36,31,26,.25);border-radius:20px;padding:5px 8px 5px 6px">
         <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#241f1a" stroke-width="1.8"><circle cx="12" cy="12" r="10"></circle><path d="M2 12h20M12 2a15 15 0 010 20a15 15 0 010-20"></path></svg>
         <select onChange="{{ onLangChange }}" value="{{ lang }}" style="width:26px;background:none;border:none;color:#241f1a;font-size:10.5px;padding:0;cursor:pointer;appearance:none;-webkit-appearance:none;text-align:center">
@@ -51,12 +51,11 @@ a:hover{color:#8a4a24}
           <option value="en">EN</option>
           <option value="es">ES</option>
         </select>
-        </div>
+      </div>
       <button onClick="{{ toggleDark }}" aria-label="Toggle dark mode" style="display:flex;background:none;border:1px solid rgba(36,31,26,.25);border-radius:50%;width:26px;height:26px;color:#241f1a;cursor:pointer;align-items:center;justify-content:center;padding:0;transition:border-color .2s ease" style-hover="border-color:#241f1a">
         <sc-if value="{{ dark }}" hint-placeholder-val="{{ false }}"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"></circle><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"></path></svg></sc-if>
         <sc-if value="{{ notDark }}" hint-placeholder-val="{{ true }}"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path></svg></sc-if>
       </button>
-    </div>
       <button onClick="{{ openBooking }}" style="display:{{ navDisplay }};background:#7c8560;color:#fffdf8;border:none;padding:11px 20px;font-size:12px;letter-spacing:1.5px;cursor:pointer;transition:background .2s" style-hover="background:#b9c19a"="background:#6b7452;transform:scale(1.06);opacity:.9">{{ t.bookBtn }}</button>
 
       <button onClick="{{ toggleMenu }}" aria-label="Menu" style="display:{{ burgerDisplay }};flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:8px;transition:opacity .3s ease" style-hover="opacity:.55">
@@ -76,18 +75,6 @@ a:hover{color:#8a4a24}
       <a href="blog.dc.html">{{ t.navBlog }}</a>
       <a href="faq.dc.html">{{ t.navFaq }}</a>
       <a href="contact.dc.html">{{ t.navContact }}</a>
-      <div style="display:flex;align-items:center;gap:6px;border:1px solid rgba(36,31,26,.25);border-radius:20px;padding:8px 10px 8px 8px">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#241f1a" stroke-width="1.8"><circle cx="12" cy="12" r="10"></circle><path d="M2 12h20M12 2a15 15 0 010 20a15 15 0 010-20"></path></svg>
-        <select onChange="{{ onLangChange }}" value="{{ lang }}" style="width:28px;background:none;border:none;color:#241f1a;font-size:12px;padding:0;cursor:pointer;appearance:none;-webkit-appearance:none;text-align:center">
-          <option value="fr">FR</option>
-          <option value="en">EN</option>
-          <option value="es">ES</option>
-        </select>
-        <button onClick="{{ toggleDark }}" aria-label="Toggle dark mode" style="display:flex;background:none;border:1px solid rgba(36,31,26,.25);border-radius:50%;width:30px;height:30px;color:#241f1a;cursor:pointer;align-items:center;justify-content:center;padding:0">
-        <sc-if value="{{ dark }}" hint-placeholder-val="{{ false }}"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"></circle><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"></path></svg></sc-if>
-        <sc-if value="{{ notDark }}" hint-placeholder-val="{{ true }}"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path></svg></sc-if>
-      </button>
-    </div>
       <button onClick="{{ openBooking }}" style="background:#7c8560;color:#fffdf8;border:none;padding:13px;font-size:12px;letter-spacing:1.5px;cursor:pointer;transition:background .3s ease,opacity .3s ease" style-hover="background:#b9c19a;opacity:.88">{{ t.bookBtn }}</button>
     </div>
   </sc-if>
@@ -174,7 +161,7 @@ const TRANSLATIONS = {
     bookTitle: 'Book a Consultation', bookDesc: "Tell us about your space, we'll follow up to schedule a call.",
     formName: 'Full name', formEmail: 'Email', formPhone: 'Phone (optional)', formMsg: 'Tell us about your space or project', formSend: 'SEND REQUEST',
     blLabel: 'JOURNAL', blTitle: 'Notes from the Studio', blDesc: 'Stories on process, materials and the spaces our work has found a home in.',
-    footerRights: '© 2020 Lily Pastel Art Studio. All rights reserved.', footerLegal: 'Legal',
+    footerRights: '© 2020 Lily Pastel Studio Art. All rights reserved.', footerLegal: 'Legal',
     cardTags: ['PROCESS · AUG 2026','DESIGN TIPS · JUL 2026','PRINTING · JUN 2026','COMMISSIONS · MAY 2026','CARE GUIDE · APR 2026','PALETTE · MAR 2026'],
     cardTitles: ['Why We Still Apply Gold Leaf by Hand','How to Choose Art for a Living Room','Canvas, Paper or Acrylic, Which Should You Choose?','Inside a Commission: From Moodboard to Wall','Caring for a Textured Painting','Deep Green & Gold: An Emerging Favorite'],
     cardExcerpts: ['Inside the slow, layered process that gives each painting its texture and light.','Three rules of scale, palette and placement we use with every client.','A quick guide to matching print surface to your room and lighting.',"A West Hollywood client's living room, from first sketch to final install.",'Simple habits to keep gold leaf and impasto looking their best for years.','Why this rich, moody palette keeps showing up in client requests this year.'],
@@ -186,7 +173,7 @@ const TRANSLATIONS = {
     bookTitle: 'Réserver une consultation', bookDesc: 'Parlez-nous de votre espace, nous vous recontacterons pour planifier un appel.',
     formName: 'Nom complet', formEmail: 'Email', formPhone: 'Téléphone (optionnel)', formMsg: 'Parlez-nous de votre espace ou projet', formSend: 'ENVOYER LA DEMANDE',
     blLabel: 'JOURNAL', blTitle: "Notes de l'atelier", blDesc: 'Histoires sur notre processus, nos matériaux et les espaces où nos œuvres ont trouvé leur place.',
-    footerRights: '© 2020 Lily Pastel Art Studio. Tous droits réservés.', footerLegal: 'Mentions légales',
+    footerRights: '© 2020 Lily Pastel Studio Art. Tous droits réservés.', footerLegal: 'Mentions légales',
     cardTags: ['PROCESS · AOÛT 2026','CONSEILS DÉCO · JUIL 2026','IMPRESSION · JUIN 2026','COMMANDES · MAI 2026','GUIDE D\u2019ENTRETIEN · AVR 2026','PALETTE · MARS 2026'],
     cardTitles: ["Pourquoi nous appliquons encore la feuille d\u2019or à la main",'Comment choisir une œuvre pour un salon','Toile, papier ou acrylique : lequel choisir ?','Dans les coulisses d\u2019une commande : du moodboard au mur','Entretenir une peinture texturée','Vert profond et or : une tendance montante'],
     cardExcerpts: ["Plongée dans le processus lent et minutieux qui donne à chaque peinture sa texture et sa lumière.",'Trois règles d\u2019échelle, de palette et de placement que nous utilisons avec chaque client.','Un guide rapide pour associer la surface d\u2019impression à votre pièce et à sa lumière.','Le salon d\u2019une cliente de West Hollywood, de la première esquisse à l\u2019installation finale.','Des gestes simples pour que la feuille d\u2019or et l\u2019empâtement restent beaux pendant des années.','Pourquoi cette palette riche et intense revient sans cesse dans les demandes de nos clients cette année.'],
@@ -198,7 +185,7 @@ const TRANSLATIONS = {
     bookTitle: 'Reservar una consulta', bookDesc: 'Cuéntanos sobre tu espacio, te contactaremos para agendar una llamada.',
     formName: 'Nombre completo', formEmail: 'Email', formPhone: 'Teléfono (opcional)', formMsg: 'Cuéntanos sobre tu espacio o proyecto', formSend: 'ENVIAR SOLICITUD',
     blLabel: 'DIARIO', blTitle: 'Notas del estudio', blDesc: 'Historias sobre nuestro proceso, materiales y los espacios donde nuestras obras han encontrado su lugar.',
-    footerRights: '© 2020 Lily Pastel Art Studio. Todos los derechos reservados.', footerLegal: 'Legal',
+    footerRights: '© 2020 Lily Pastel Studio Art. Todos los derechos reservados.', footerLegal: 'Legal',
     cardTags: ['PROCESO · AGO 2026','CONSEJOS DE DISEÑO · JUL 2026','IMPRESIÓN · JUN 2026','ENCARGOS · MAY 2026','GUÍA DE CUIDADO · ABR 2026','PALETA · MAR 2026'],
     cardTitles: ['Por qué seguimos aplicando pan de oro a mano','Cómo elegir arte para una sala de estar','Lienzo, papel o acrílico, ¿cuál elegir?','Dentro de un encargo: del moodboard a la pared','Cuidado de una pintura texturizada','Verde profundo y oro: una tendencia emergente'],
     cardExcerpts: ['Un vistazo al proceso lento y en capas que le da a cada pintura su textura y luz.','Tres reglas de escala, paleta y ubicación que usamos con cada cliente.','Una guía rápida para combinar la superficie de impresión con tu habitación y su luz.','La sala de estar de una clienta de West Hollywood, desde el primer boceto hasta la instalación final.','Hábitos simples para que el pan de oro y el empaste luzcan bien durante años.','Por qué esta paleta rica e intensa sigue apareciendo en las solicitudes de los clientes este año.'],

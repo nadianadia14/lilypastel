@@ -16,20 +16,21 @@ a{color:#b5622f;text-decoration:none}
 a:hover{color:#8a4a24}
 [data-lp-theme="dark"]{filter:invert(1) hue-rotate(180deg)}
 [data-lp-theme="dark"] img,[data-lp-theme="dark"] video,[data-lp-theme="dark"] iframe{filter:invert(1) hue-rotate(180deg)}
+@media (max-width:640px){#site-header-inner{padding:12px 16px}#site-logo-img{height:40px !important;width:40px !important}#site-logo-text span{font-size:14px !important}#site-logo-sub{display:none !important}#site-header-controls{gap:6px !important}}
 </style>
 </helmet>
 <div style="background:#f6f1ea;min-height:100vh" data-lp-theme="{{ themeAttr }}">
 
 
 <header style="position:sticky;top:0;z-index:50;background:rgba(246,241,234,.85);backdrop-filter:blur(10px);border-bottom:1px solid rgba(255,253,248,.12)">
-  <div style="max-width:1320px;margin:0 auto;padding:16px 40px;display:flex;align-items:center;justify-content:space-between">
+  <div id="site-header-inner" style="max-width:1320px;margin:0 auto;padding:16px 40px;display:flex;align-items:center;justify-content:space-between">
     <a href="index.dc.html" style="display:flex;align-items:center;gap:10px">
-      <img src="assets/logo-lily-pastel.jpeg" alt="Lily Pastel" style="height:58px;width:58px;object-fit:cover">
-      <div style="display:flex;align-items:baseline;line-height:1.05">
+      <img id="site-logo-img" src="assets/logo-lily-pastel.jpeg" alt="Lily Pastel" style="height:58px;width:58px;object-fit:cover">
+      <div id="site-logo-text" style="display:flex;align-items:baseline;line-height:1.05">
         <span style="font-family:'Playfair Display',serif;font-size:19px;letter-spacing:2px;color:#241f1a;margin-right:0.3em">LILY</span>
         <div style="display:flex;flex-direction:column">
           <span style="font-family:'Playfair Display',serif;font-size:19px;letter-spacing:2px;color:#241f1a">PASTEL</span>
-          <div style="display:flex;justify-content:space-between;width:100%;font-size:8.5px;letter-spacing:3.5px;color:rgba(36,31,26,.55)"><span>STUDIO</span><span>ART</span></div>
+          <div id="site-logo-sub" style="display:flex;justify-content:space-between;width:100%;font-size:8.5px;letter-spacing:3.5px;color:rgba(36,31,26,.55)"><span>STUDIO</span><span>ART</span></div>
         </div>
       </div>
     </a>
@@ -42,15 +43,15 @@ a:hover{color:#8a4a24}
       <a href="blog.dc.html" style="color:#241f1a;display:inline-block;transition:transform .25s ease,opacity .25s ease" style-hover="transform:scale(1.1);opacity:.6">{{ t.navBlog }}</a>
       <a href="contact.dc.html" style="color:#241f1a;display:inline-block;transition:transform .25s ease,opacity .25s ease" style-hover="transform:scale(1.1);opacity:.6">{{ t.navContact }}</a>
     </nav>
-    <div style="display:flex;align-items:center;gap:14px">
-      <div style="display:{{ navDisplay }};align-items:center;gap:4px;border:1px solid rgba(36,31,26,.25);border-radius:20px;padding:5px 8px 5px 6px">
+    <div id="site-header-controls" style="display:flex;align-items:center;gap:14px">
+      <div style="display:flex;align-items:center;gap:6px;border:1px solid rgba(36,31,26,.25);border-radius:20px;padding:5px 8px 5px 6px">
         <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#241f1a" stroke-width="1.8"><circle cx="12" cy="12" r="10"></circle><path d="M2 12h20M12 2a15 15 0 010 20a15 15 0 010-20"></path></svg>
         <select onChange="{{ onLangChange }}" value="{{ lang }}" style="width:26px;background:none;border:none;color:#241f1a;font-size:10.5px;letter-spacing:.5px;padding:0;cursor:pointer;appearance:none;-webkit-appearance:none;text-align:center">
           <option value="fr">FR</option>
           <option value="en">EN</option>
           <option value="es">ES</option>
         </select>
-        </div>
+      </div>
       <button onClick="{{ toggleDark }}" aria-label="Toggle dark mode" style="display:flex;background:none;border:1px solid rgba(36,31,26,.25);border-radius:50%;width:26px;height:26px;color:#241f1a;cursor:pointer;align-items:center;justify-content:center;padding:0;transition:border-color .2s ease" style-hover="border-color:#241f1a">
         <sc-if value="{{ dark }}" hint-placeholder-val="{{ false }}"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"></circle><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"></path></svg></sc-if>
         <sc-if value="{{ notDark }}" hint-placeholder-val="{{ true }}"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path></svg></sc-if>
@@ -75,18 +76,6 @@ a:hover{color:#8a4a24}
       <a href="blog.dc.html">{{ t.navBlog }}</a>
       <a href="faq.dc.html">{{ t.navFaq }}</a>
       <a href="contact.dc.html">{{ t.navContact }}</a>
-      <div style="display:flex;align-items:center;gap:6px;border:1px solid rgba(36,31,26,.25);border-radius:20px;padding:8px 10px 8px 8px">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#241f1a" stroke-width="1.8"><circle cx="12" cy="12" r="10"></circle><path d="M2 12h20M12 2a15 15 0 010 20a15 15 0 010-20"></path></svg>
-        <select onChange="{{ onLangChange }}" value="{{ lang }}" style="width:28px;background:none;border:none;color:#241f1a;font-size:12px;padding:0;cursor:pointer;appearance:none;-webkit-appearance:none;text-align:center">
-          <option value="fr">FR</option>
-          <option value="en">EN</option>
-          <option value="es">ES</option>
-        </select>
-        <button onClick="{{ toggleDark }}" aria-label="Toggle dark mode" style="display:flex;background:none;border:1px solid rgba(36,31,26,.25);border-radius:50%;width:30px;height:30px;color:#241f1a;cursor:pointer;align-items:center;justify-content:center;padding:0">
-        <sc-if value="{{ dark }}" hint-placeholder-val="{{ false }}"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"></circle><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"></path></svg></sc-if>
-        <sc-if value="{{ notDark }}" hint-placeholder-val="{{ true }}"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path></svg></sc-if>
-      </button>
-    </div>
       <button onClick="{{ openBooking }}" style="background:#7c8560;color:#241f1a;border:none;padding:13px;font-size:12px;letter-spacing:1.5px;cursor:pointer;transition:background .3s ease,opacity .3s ease" style-hover="background:#b9c19a;opacity:.88">{{ t.bookBtn }}</button>
     </div>
   </sc-if>
@@ -306,7 +295,7 @@ const TRANSLATIONS = {
     chooseLabel: 'CHOOSE A PAINTING', chooseTitle: 'Every piece is available to print',
     printedLabel: 'SEE IT PRINTED', printedTitle: 'Printed on canvas, paper, acrylic and more...',
     notSureTitle: 'Not sure which option is right?', notSureDesc: "Book a free consultation and we'll help you choose the piece, size and surface.",
-    footerRights: '© 2020 Lily Pastel Art Studio. All rights reserved.', footerLegal: 'Legal',
+    footerRights: '© 2020 Lily Pastel Studio Art. All rights reserved.', footerLegal: 'Legal',
     thanksTitle: 'Thank you!', thanksDesc: "We'll be in touch within one business day to confirm your consultation.",
     bookTitle: 'Book a Consultation', bookDesc: "Tell us about your space, we'll follow up to schedule a call.",
     formName: 'Full name', formEmail: 'Email', formPhone: 'Phone (optional)', formMsg: 'Commission or printing, tell us more', formSend: 'SEND REQUEST',
@@ -317,7 +306,7 @@ const TRANSLATIONS = {
     chooseLabel: 'CHOISIR UNE PEINTURE', chooseTitle: 'Chaque œuvre peut être imprimée',
     printedLabel: 'À VOIR IMPRIMÉ', printedTitle: 'Imprimé sur toile, papier, plexiglas et plus...',
     notSureTitle: 'Vous hésitez encore ?', notSureDesc: 'Réservez une consultation gratuite et nous vous aiderons à choisir la pièce, la taille et la surface.',
-    footerRights: '© 2020 Lily Pastel Art Studio. Tous droits réservés.', footerLegal: 'Mentions légales',
+    footerRights: '© 2020 Lily Pastel Studio Art. Tous droits réservés.', footerLegal: 'Mentions légales',
     thanksTitle: 'Merci !', thanksDesc: 'Nous vous contacterons sous un jour ouvré pour confirmer votre consultation.',
     bookTitle: 'Réserver une consultation', bookDesc: 'Parlez-nous de votre espace, nous vous recontacterons pour planifier un appel.',
     formName: 'Nom complet', formEmail: 'Email', formPhone: 'Téléphone (optionnel)', formMsg: 'Commande ou impression, dites-nous en plus', formSend: 'ENVOYER LA DEMANDE',
@@ -328,7 +317,7 @@ const TRANSLATIONS = {
     chooseLabel: 'ELIGE UNA PINTURA', chooseTitle: 'Cada obra se puede imprimir',
     printedLabel: 'VERLO IMPRESO', printedTitle: 'Impreso en lienzo, papel, acrílico y más...',
     notSureTitle: '¿No sabes qué opción elegir?', notSureDesc: 'Reserva una consulta gratuita y te ayudaremos a elegir la obra, el tamaño y la superficie.',
-    footerRights: '© 2020 Lily Pastel Art Studio. Todos los derechos reservados.', footerLegal: 'Legal',
+    footerRights: '© 2020 Lily Pastel Studio Art. Todos los derechos reservados.', footerLegal: 'Legal',
     thanksTitle: '¡Gracias!', thanksDesc: 'Nos pondremos en contacto en un día hábil para confirmar tu consulta.',
     bookTitle: 'Reservar una consulta', bookDesc: 'Cuéntanos sobre tu espacio, te contactaremos para agendar una llamada.',
     formName: 'Nombre completo', formEmail: 'Email', formPhone: 'Teléfono (opcional)', formMsg: 'Encargo o impresión, cuéntanos más', formSend: 'ENVIAR SOLICITUD',

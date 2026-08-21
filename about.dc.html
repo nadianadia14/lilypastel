@@ -16,20 +16,21 @@ a{color:#7c8560;text-decoration:none}
 a:hover{color:#5f6a49}
 [data-lp-theme="dark"]{filter:invert(1) hue-rotate(180deg)}
 [data-lp-theme="dark"] img,[data-lp-theme="dark"] video,[data-lp-theme="dark"] iframe{filter:invert(1) hue-rotate(180deg)}
+@media (max-width:640px){#site-header-inner{padding:12px 16px}#site-logo-img{height:40px !important;width:40px !important}#site-logo-text span{font-size:14px !important}#site-logo-sub{display:none !important}#site-header-controls{gap:6px !important}#about-hero-grid{grid-template-columns:1fr !important;text-align:center}#about-hero-text{text-align:center}}
 </style>
 </helmet>
 <div style="background:#f6f1ea;min-height:100vh" data-lp-theme="{{ themeAttr }}">
 
 
 <header style="position:sticky;top:0;z-index:50;background:#f6f1eaee;backdrop-filter:blur(6px);border-bottom:1px solid rgba(36,31,26,.1)">
-  <div style="max-width:1320px;margin:0 auto;padding:16px 40px;display:flex;align-items:center;justify-content:space-between">
+  <div id="site-header-inner" style="max-width:1320px;margin:0 auto;padding:16px 40px;display:flex;align-items:center;justify-content:space-between">
     <a href="index.dc.html" style="display:flex;align-items:center;gap:10px">
-      <img src="assets/logo-lily-pastel.jpeg" alt="Lily Pastel" style="height:58px;width:58px;object-fit:cover">
-      <div style="display:flex;align-items:baseline;line-height:1.05">
+      <img id="site-logo-img" src="assets/logo-lily-pastel.jpeg" alt="Lily Pastel" style="height:58px;width:58px;object-fit:cover">
+      <div id="site-logo-text" style="display:flex;align-items:baseline;line-height:1.05">
         <span style="font-family:'Playfair Display',serif;font-size:19px;letter-spacing:2px;color:#241f1a;margin-right:0.3em">LILY</span>
         <div style="display:flex;flex-direction:column">
           <span style="font-family:'Playfair Display',serif;font-size:19px;letter-spacing:2px;color:#241f1a">PASTEL</span>
-          <div style="display:flex;justify-content:space-between;width:100%;font-size:8.5px;letter-spacing:3.5px;color:rgba(36,31,26,.55)"><span>STUDIO</span><span>ART</span></div>
+          <div id="site-logo-sub" style="display:flex;justify-content:space-between;width:100%;font-size:8.5px;letter-spacing:3.5px;color:rgba(36,31,26,.55)"><span>STUDIO</span><span>ART</span></div>
         </div>
       </div>
     </a>
@@ -42,8 +43,7 @@ a:hover{color:#5f6a49}
       <a href="blog.dc.html" style="color:#241f1a;display:inline-block;transition:transform .25s ease,opacity .25s ease" style-hover="transform:scale(1.1);opacity:.6">{{ t.navBlog }}</a>
       <a href="contact.dc.html" style="color:#241f1a;display:inline-block;transition:transform .25s ease,opacity .25s ease" style-hover="transform:scale(1.1);opacity:.6">{{ t.navContact }}</a>
     </nav>
-    <div style="display:flex;align-items:center;gap:14px">
-      <div style="display:{{ navDisplay }};align-items:center;gap:8px">
+    <div id="site-header-controls" style="display:flex;align-items:center;gap:14px">
       <div style="display:flex;align-items:center;gap:6px;border:1px solid rgba(36,31,26,.25);border-radius:20px;padding:5px 8px 5px 6px">
         <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#241f1a" stroke-width="1.8"><circle cx="12" cy="12" r="10"></circle><path d="M2 12h20M12 2a15 15 0 010 20a15 15 0 010-20"></path></svg>
         <select onChange="{{ onLangChange }}" value="{{ lang }}" style="width:26px;background:none;border:none;color:#241f1a;font-size:10.5px;padding:0;cursor:pointer;appearance:none;-webkit-appearance:none;text-align:center">
@@ -51,12 +51,11 @@ a:hover{color:#5f6a49}
           <option value="en">EN</option>
           <option value="es">ES</option>
         </select>
-        </div>
+      </div>
       <button onClick="{{ toggleDark }}" aria-label="Toggle dark mode" style="display:flex;background:none;border:1px solid rgba(36,31,26,.25);border-radius:50%;width:26px;height:26px;color:#241f1a;cursor:pointer;align-items:center;justify-content:center;padding:0;transition:border-color .2s ease" style-hover="border-color:#241f1a">
         <sc-if value="{{ dark }}" hint-placeholder-val="{{ false }}"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"></circle><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"></path></svg></sc-if>
         <sc-if value="{{ notDark }}" hint-placeholder-val="{{ true }}"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path></svg></sc-if>
       </button>
-    </div>
       <button onClick="{{ openBooking }}" style="display:{{ navDisplay }};background:#7c8560;color:#fffdf8;border:none;padding:11px 20px;font-size:12px;letter-spacing:1.5px;cursor:pointer;transition:background .2s" style-hover="background:#b9c19a"="background:#6b7452;transform:scale(1.06);opacity:.9">{{ t.bookBtn }}</button>
 
       <button onClick="{{ toggleMenu }}" aria-label="Menu" style="display:{{ burgerDisplay }};flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:8px;transition:opacity .3s ease" style-hover="opacity:.55">
@@ -76,28 +75,16 @@ a:hover{color:#5f6a49}
       <a href="blog.dc.html">{{ t.navBlog }}</a>
       <a href="faq.dc.html">{{ t.navFaq }}</a>
       <a href="contact.dc.html">{{ t.navContact }}</a>
-      <div style="display:flex;align-items:center;gap:6px;border:1px solid rgba(36,31,26,.25);border-radius:20px;padding:8px 10px 8px 8px">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#241f1a" stroke-width="1.8"><circle cx="12" cy="12" r="10"></circle><path d="M2 12h20M12 2a15 15 0 010 20a15 15 0 010-20"></path></svg>
-        <select onChange="{{ onLangChange }}" value="{{ lang }}" style="width:28px;background:none;border:none;color:#241f1a;font-size:12px;padding:0;cursor:pointer;appearance:none;-webkit-appearance:none;text-align:center">
-          <option value="fr">FR</option>
-          <option value="en">EN</option>
-          <option value="es">ES</option>
-        </select>
-        <button onClick="{{ toggleDark }}" aria-label="Toggle dark mode" style="display:flex;background:none;border:1px solid rgba(36,31,26,.25);border-radius:50%;width:30px;height:30px;color:#241f1a;cursor:pointer;align-items:center;justify-content:center;padding:0">
-        <sc-if value="{{ dark }}" hint-placeholder-val="{{ false }}"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"></circle><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"></path></svg></sc-if>
-        <sc-if value="{{ notDark }}" hint-placeholder-val="{{ true }}"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path></svg></sc-if>
-      </button>
-    </div>
       <button onClick="{{ openBooking }}" style="background:#7c8560;color:#fffdf8;border:none;padding:13px;font-size:12px;letter-spacing:1.5px;cursor:pointer;transition:background .3s ease,opacity .3s ease" style-hover="background:#b9c19a;opacity:.88">{{ t.bookBtn }}</button>
     </div>
   </sc-if>
 </header>
 
-<section style="max-width:1320px;margin:0 auto;padding:70px 40px 50px;display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:60px;align-items:center">
+<section id="about-hero-grid" style="max-width:1320px;margin:0 auto;padding:70px 40px 50px;display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:60px;align-items:center">
   <div style="width:100%;max-width:420px;margin:0 auto;aspect-ratio:4/5;overflow:hidden;border:1px solid rgba(36,31,26,.12)">
     <img src="assets/atelier-peinture-lily.png" alt="Lily painting in her studio" style="width:100%;height:100%;object-fit:cover;object-position:50% 30%">
   </div>
-  <div>
+  <div id="about-hero-text" style="max-width:420px;margin:0 auto">
     <div style="font-size:12px;letter-spacing:3px;color:#7c8560;margin-bottom:14px">{{ t.abLabel }}</div>
     <h1 style="font-family:'Playfair Display',serif;font-weight:500;font-size:clamp(28px,6vw,40px);margin:0 0 20px">{{ t.abMeetTitle }}</h1>
     <p style="font-size:16px;line-height:1.8;color:rgba(36,31,26,.7);margin:0 0 16px;text-align:justify">{{ t.abIntro }}</p>
@@ -196,7 +183,7 @@ const TRANSLATIONS = {
     bookTitle: 'Book a Consultation', bookDesc: "Tell us about your space, we'll follow up to schedule a call.",
     formName: 'Full name', formEmail: 'Email', formPhone: 'Phone (optional)', formMsg: 'Tell us about your space or project', formSend: 'SEND REQUEST',
     abLabel: 'THE ARTIST', abMeetTitle: 'Meet Lily',
-    abIntro: "I'm the artist behind Lily Pastel Design Art Studio. My work is inspired by nature, light, texture and the beauty of imperfection, abstract paintings built to carry emotion and soul into the spaces where we live.",
+    abIntro: "I'm the artist behind Lily Pastel Design Studio Art. My work is inspired by nature, light, texture and the beauty of imperfection, abstract paintings built to carry emotion and soul into the spaces where we live.",
     abTextureTitle: 'A studio built on texture',
     abP1: 'Every piece begins with raw plaster, acrylic and gold leaf, layered by hand until the surface holds real depth, the kind you feel before you see.',
     abP2: 'Ten years ago I left a career in interior design to paint full-time. Today the studio works with collectors, designers and businesses across Los Angeles who want a piece made specifically for their walls.',
@@ -208,7 +195,7 @@ const TRANSLATIONS = {
     step3Title: 'Studio Work', step3Desc: 'Each layer is hand-applied over several weeks in our L.A. studio.',
     step4Title: 'Delivery', step4Desc: 'Framed, packed and insured, delivered locally or shipped worldwide.',
     abCtaTitle: "Let's talk about your space",
-    footerRights: '© 2020 Lily Pastel Art Studio. All rights reserved.', footerLegal: 'Legal',
+    footerRights: '© 2020 Lily Pastel Studio Art. All rights reserved.', footerLegal: 'Legal',
   },
   fr: {
     navHome: 'ACCUEIL', navShop: 'BOUTIQUE', navCollections: 'COLLECTIONS', navCommissions: 'COMMANDES', navAbout: 'À PROPOS', navBlog: 'BLOG', navFaq: 'FAQ', navContact: 'CONTACT',
@@ -217,7 +204,7 @@ const TRANSLATIONS = {
     bookTitle: 'Réserver une consultation', bookDesc: 'Parlez-nous de votre espace, nous vous recontacterons pour planifier un appel.',
     formName: 'Nom complet', formEmail: 'Email', formPhone: 'Téléphone (optionnel)', formMsg: 'Parlez-nous de votre espace ou projet', formSend: 'ENVOYER LA DEMANDE',
     abLabel: "L'ARTISTE", abMeetTitle: 'Rencontrez Lily',
-    abIntro: "Je suis l'artiste derrière Lily Pastel Design Art Studio. Mon travail s'inspire de la nature, de la lumière, de la texture et de la beauté de l'imperfection, des peintures abstraites conçues pour porter émotion et âme dans les espaces où nous vivons.",
+    abIntro: "Je suis l'artiste derrière Lily Pastel Design Studio Art. Mon travail s'inspire de la nature, de la lumière, de la texture et de la beauté de l'imperfection, des peintures abstraites conçues pour porter émotion et âme dans les espaces où nous vivons.",
     abTextureTitle: 'Un studio construit sur la texture',
     abP1: "Chaque œuvre commence par du plâtre brut, de l'acrylique et de la feuille d'or, superposés à la main jusqu'à ce que la surface ait une vraie profondeur, celle qu'on ressent avant de la voir.",
     abP2: "Il y a dix ans, j'ai quitté une carrière en design d'intérieur pour peindre à temps plein. Aujourd'hui, le studio travaille avec des collectionneurs, designers et entreprises de Los Angeles qui veulent une œuvre conçue spécifiquement pour leurs murs.",
@@ -229,7 +216,7 @@ const TRANSLATIONS = {
     step3Title: 'Travail en atelier', step3Desc: 'Chaque couche est appliquée à la main pendant plusieurs semaines dans notre studio de L.A.',
     step4Title: 'Livraison', step4Desc: 'Encadrée, emballée et assurée, livrée localement ou expédiée dans le monde entier.',
     abCtaTitle: 'Parlons de votre espace',
-    footerRights: '© 2020 Lily Pastel Art Studio. Tous droits réservés.', footerLegal: 'Mentions légales',
+    footerRights: '© 2020 Lily Pastel Studio Art. Tous droits réservés.', footerLegal: 'Mentions légales',
   },
   es: {
     navHome: 'INICIO', navShop: 'TIENDA', navCollections: 'COLECCIONES', navCommissions: 'ENCARGOS', navAbout: 'SOBRE MÍ', navBlog: 'BLOG', navFaq: 'FAQ', navContact: 'CONTACTO',
@@ -238,7 +225,7 @@ const TRANSLATIONS = {
     bookTitle: 'Reservar una consulta', bookDesc: 'Cuéntanos sobre tu espacio, te contactaremos para agendar una llamada.',
     formName: 'Nombre completo', formEmail: 'Email', formPhone: 'Teléfono (opcional)', formMsg: 'Cuéntanos sobre tu espacio o proyecto', formSend: 'ENVIAR SOLICITUD',
     abLabel: 'LA ARTISTA', abMeetTitle: 'Conoce a Lily',
-    abIntro: 'Soy la artista detrás de Lily Pastel Design Art Studio. Mi trabajo se inspira en la naturaleza, la luz, la textura y la belleza de la imperfección, pinturas abstractas creadas para llevar emoción y alma a los espacios donde vivimos.',
+    abIntro: 'Soy la artista detrás de Lily Pastel Design Studio Art. Mi trabajo se inspira en la naturaleza, la luz, la textura y la belleza de la imperfección, pinturas abstractas creadas para llevar emoción y alma a los espacios donde vivimos.',
     abTextureTitle: 'Un estudio construido sobre la textura',
     abP1: 'Cada obra comienza con yeso crudo, acrílico y pan de oro, superpuestos a mano hasta que la superficie tiene una profundidad real, la que se siente antes de verse.',
     abP2: 'Hace diez años dejé una carrera en diseño de interiores para pintar a tiempo completo. Hoy el estudio trabaja con coleccionistas, diseñadores y empresas de Los Ángeles que quieren una obra hecha específicamente para sus paredes.',
@@ -250,7 +237,7 @@ const TRANSLATIONS = {
     step3Title: 'Trabajo en estudio', step3Desc: 'Cada capa se aplica a mano durante varias semanas en nuestro estudio de L.A.',
     step4Title: 'Entrega', step4Desc: 'Enmarcada, empacada y asegurada, entregada localmente o enviada a todo el mundo.',
     abCtaTitle: 'Hablemos de tu espacio',
-    footerRights: '© 2020 Lily Pastel Art Studio. Todos los derechos reservados.', footerLegal: 'Legal',
+    footerRights: '© 2020 Lily Pastel Studio Art. Todos los derechos reservados.', footerLegal: 'Legal',
   },
 };
 
