@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet data-dc-atomics>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,500&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#f6f1ea;font-family:'Jost',sans-serif;color:#241f1a;overflow-x:hidden}
+a{color:#b5622f;text-decoration:none}
+a:hover{color:#8a4a24}
+@media (max-width:860px){#contact-section{grid-template-columns:1fr !important;grid-template-areas:"heading" "form" "info" !important;justify-items:center;text-align:center}#contact-section iframe{max-width:420px}#contact-section form{width:100%}}
+[data-lp-theme="dark"]{filter:invert(1) hue-rotate(180deg)}
+[data-lp-theme="dark"] img,[data-lp-theme="dark"] video,[data-lp-theme="dark"] iframe{filter:invert(1) hue-rotate(180deg)}
+</style>
+</helmet>
+<div style="background:#f6f1ea;min-height:100vh" data-lp-theme="{{ themeAttr }}">
+
+
+<header style="position:sticky;top:0;z-index:50;background:#f6f1eaee;backdrop-filter:blur(6px);border-bottom:1px solid rgba(36,31,26,.1)">
+  <div style="max-width:1320px;margin:0 auto;padding:16px 40px;display:flex;align-items:center;justify-content:space-between">
+    <a href="index.dc.html" style="display:flex;align-items:center;gap:10px">
+      <img src="assets/logo-lily-pastel.jpeg" alt="Lily Pastel" style="height:58px;width:58px;object-fit:cover">
+      <div style="display:flex;align-items:baseline;line-height:1.05">
+        <span style="font-family:'Playfair Display',serif;font-size:19px;letter-spacing:2px;color:#241f1a;margin-right:0.3em">LILY</span>
+        <div style="display:flex;flex-direction:column">
+          <span style="font-family:'Playfair Display',serif;font-size:19px;letter-spacing:2px;color:#241f1a">PASTEL</span>
+          <div style="display:flex;justify-content:space-between;width:100%;font-size:8.5px;letter-spacing:3.5px;color:rgba(36,31,26,.55)"><span>STUDIO</span><span>ART</span></div>
+        </div>
+      </div>
+    </a>
+    <nav style="display:{{ navDisplay }};align-items:center;gap:28px;font-size:13px;letter-spacing:1px">
+      <a href="index.dc.html" style="color:#241f1a;display:inline-block;transition:transform .25s ease,opacity .25s ease" style-hover="transform:scale(1.1);opacity:.6">{{ t.navHome }}</a>
+      <a href="shop.dc.html" style="color:#241f1a;display:inline-block;transition:transform .25s ease,opacity .25s ease" style-hover="transform:scale(1.1);opacity:.6">{{ t.navShop }}</a>
+      <a href="portfolio.dc.html" style="color:#241f1a;display:inline-block;transition:transform .25s ease,opacity .25s ease" style-hover="transform:scale(1.1);opacity:.6">{{ t.navCollections }}</a>
+      <a href="commissions.dc.html" style="color:#241f1a;display:inline-block;transition:transform .25s ease,opacity .25s ease" style-hover="transform:scale(1.1);opacity:.6">{{ t.navCommissions }}</a>
+      <a href="about.dc.html" style="color:#241f1a;display:inline-block;transition:transform .25s ease,opacity .25s ease" style-hover="transform:scale(1.1);opacity:.6">{{ t.navAbout }}</a>
+      <a href="blog.dc.html" style="color:#241f1a;display:inline-block;transition:transform .25s ease,opacity .25s ease" style-hover="transform:scale(1.1);opacity:.6">{{ t.navBlog }}</a>
+      <a href="contact.dc.html" style="color:#b5622f;display:inline-block;transition:transform .25s ease,opacity .25s ease" style-hover="transform:scale(1.1);opacity:.6">{{ t.navContact }}</a>
+    </nav>
+    <div style="display:flex;align-items:center;gap:14px">
+      <div style="display:{{ navDisplay }};align-items:center;gap:8px">
+      <div style="display:flex;align-items:center;gap:6px;border:1px solid rgba(36,31,26,.25);border-radius:20px;padding:5px 8px 5px 6px">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#241f1a" stroke-width="1.8"><circle cx="12" cy="12" r="10"></circle><path d="M2 12h20M12 2a15 15 0 010 20a15 15 0 010-20"></path></svg>
+        <select onChange="{{ onLangChange }}" value="{{ lang }}" style="width:26px;background:none;border:none;color:#241f1a;font-size:10.5px;padding:0;cursor:pointer;appearance:none;-webkit-appearance:none;text-align:center">
+          <option value="fr">FR</option>
+          <option value="en">EN</option>
+          <option value="es">ES</option>
+        </select>
+        </div>
+      <button onClick="{{ toggleDark }}" aria-label="Toggle dark mode" style="display:flex;background:none;border:1px solid rgba(36,31,26,.25);border-radius:50%;width:26px;height:26px;color:#241f1a;cursor:pointer;align-items:center;justify-content:center;padding:0;transition:border-color .2s ease" style-hover="border-color:#241f1a">
+        <sc-if value="{{ dark }}" hint-placeholder-val="{{ false }}"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"></circle><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"></path></svg></sc-if>
+        <sc-if value="{{ notDark }}" hint-placeholder-val="{{ true }}"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path></svg></sc-if>
+      </button>
+    </div>
+      <button onClick="{{ openBooking }}" style="display:{{ navDisplay }};background:#7c8560;color:#fffdf8;border:none;padding:11px 20px;font-size:12px;letter-spacing:1.5px;cursor:pointer;transition:background .2s" style-hover="background:#b9c19a"="background:#6b7452;transform:scale(1.06);opacity:.9">{{ t.bookBtn }}</button>
+      <button onClick="{{ toggleMenu }}" aria-label="Menu" style="display:{{ burgerDisplay }};flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:8px;transition:opacity .3s ease" style-hover="opacity:.55">
+        <span style="width:24px;height:2px;background:#241f1a"></span>
+        <span style="width:24px;height:2px;background:#241f1a"></span>
+        <span style="width:24px;height:2px;background:#241f1a"></span>
+      </button>
+    </div>
+  </div>
+  <sc-if value="{{ isMenuOpen }}" hint-placeholder-val="{{ false }}">
+    <div style="display:flex;flex-direction:column;padding:10px 40px 26px;gap:18px;font-size:14px;letter-spacing:1px;border-top:1px solid rgba(36,31,26,.1)">
+      <a href="index.dc.html">{{ t.navHome }}</a>
+      <a href="shop.dc.html">{{ t.navShop }}</a>
+      <a href="portfolio.dc.html">{{ t.navCollections }}</a>
+      <a href="commissions.dc.html">{{ t.navCommissions }}</a>
+      <a href="about.dc.html">{{ t.navAbout }}</a>
+      <a href="blog.dc.html">{{ t.navBlog }}</a>
+      <a href="faq.dc.html">{{ t.navFaq }}</a>
+      <a href="contact.dc.html">{{ t.navContact }}</a>
+      <div style="display:flex;align-items:center;gap:6px;border:1px solid rgba(36,31,26,.25);border-radius:20px;padding:8px 10px 8px 8px;margin-top:6px;width:fit-content">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#241f1a" stroke-width="1.8"><circle cx="12" cy="12" r="10"></circle><path d="M2 12h20M12 2a15 15 0 010 20a15 15 0 010-20"></path></svg>
+        <select onChange="{{ onLangChange }}" value="{{ lang }}" style="width:28px;background:none;border:none;color:#241f1a;font-size:12px;padding:0;cursor:pointer;appearance:none;-webkit-appearance:none;text-align:center">
+          <option value="fr">FR</option>
+          <option value="en">EN</option>
+          <option value="es">ES</option>
+        </select>
+        <button onClick="{{ toggleDark }}" aria-label="Toggle dark mode" style="display:flex;background:none;border:1px solid rgba(36,31,26,.25);border-radius:50%;width:30px;height:30px;color:#241f1a;cursor:pointer;align-items:center;justify-content:center;padding:0">
+        <sc-if value="{{ dark }}" hint-placeholder-val="{{ false }}"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"></circle><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"></path></svg></sc-if>
+        <sc-if value="{{ notDark }}" hint-placeholder-val="{{ true }}"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path></svg></sc-if>
+      </button>
+    </div>
+    </div>
+  </sc-if>
+</header>
+
+<section id="contact-section" style="max-width:1200px;margin:0 auto;padding:70px 40px 90px;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);grid-template-areas:'heading form' 'info form';gap:64px">
+  <div style="grid-area:heading;min-width:0">
+    <div style="font-size:12px;letter-spacing:3px;color:#b5622f;margin-bottom:14px">{{ t.navContact }}</div>
+    <h1 style="font-family:'Playfair Display',serif;font-weight:500;font-size:clamp(26px,6vw,34px);margin:0 0 20px">{{ t.ctTitle }}</h1>
+    <p style="font-size:14.5px;line-height:1.8;color:rgba(36,31,26,.68);margin:0 0 36px">{{ t.ctDesc }}</p>
+  </div>
+
+  <div style="grid-area:info;min-width:0">
+    <div style="display:flex;flex-direction:column;gap:22px;margin-bottom:36px">
+      <div>
+        <div style="font-size:11px;letter-spacing:1.5px;color:rgba(36,31,26,.5);margin-bottom:4px">{{ t.ctStudio }}</div>
+        <div style="font-size:14.5px">1420 Abbot Kinney Blvd, Venice, Los Angeles, CA 90291</div>
+      </div>
+      <div>
+        <div style="font-size:11px;letter-spacing:1.5px;color:rgba(36,31,26,.5);margin-bottom:4px">{{ t.ctEmail }}</div>
+        <div style="display:flex;align-items:center;gap:10px">
+          <a href="mailto:lilypasteldesign@gmail.com" style="font-size:14.5px">lilypasteldesign@gmail.com</a>
+          <button onClick="{{ copyEmail }}" aria-label="Copy email" style="background:none;border:none;padding:2px;cursor:pointer;color:#b5622f;display:flex;transition:opacity .2s" style-hover="opacity:.6">
+            <sc-if value="{{ emailCopied }}" hint-placeholder-val="{{ false }}">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            </sc-if>
+            <sc-if value="{{ emailNotCopied }}" hint-placeholder-val="{{ true }}">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="9" y="9" width="12" height="12" rx="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+            </sc-if>
+          </button>
+        </div>
+      </div>
+      <div>
+        <div style="font-size:11px;letter-spacing:1.5px;color:rgba(36,31,26,.5);margin-bottom:4px">{{ t.ctPhone }}</div>
+        <div style="display:flex;align-items:center;gap:10px">
+          <a href="tel:+16468126339" style="font-size:14.5px">+1 (646) 812-6339</a>
+          <button onClick="{{ copyPhone }}" aria-label="Copy phone" style="background:none;border:none;padding:2px;cursor:pointer;color:#b5622f;display:flex;transition:opacity .2s" style-hover="opacity:.6">
+            <sc-if value="{{ phoneCopied }}" hint-placeholder-val="{{ false }}">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            </sc-if>
+            <sc-if value="{{ phoneNotCopied }}" hint-placeholder-val="{{ true }}">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="9" y="9" width="12" height="12" rx="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+            </sc-if>
+          </button>
+        </div>
+      </div>
+      <div>
+        <div style="font-size:11px;letter-spacing:1.5px;color:rgba(36,31,26,.5);margin-bottom:4px">{{ t.ctHours }}</div>
+        <div style="font-size:14.5px">{{ t.ctHoursVal }}</div>
+      </div>
+    </div>
+
+    <iframe src="https://www.google.com/maps?q=1420+Abbot+Kinney+Blvd,+Venice,+CA+90291&output=embed" style="width:100%;aspect-ratio:16/9;border:0" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Lily Pastel Studio location, Venice, Los Angeles"></iframe>
+  </div>
+
+  <div style="grid-area:form;background:#fffdf8;border:1px solid rgba(36,31,26,.1);padding:40px;max-width:480px;width:100%;margin:0 auto;min-width:0;box-sizing:border-box">
+    <sc-if value="{{ bookingSent }}" hint-placeholder-val="{{ false }}">
+      <div style="text-align:center;padding:60px 0">
+        <div style="font-family:'Playfair Display',serif;font-size:24px;margin-bottom:12px">{{ t.thanksTitle }}</div>
+        <p style="font-size:14px;color:rgba(36,31,26,.7)">{{ t.ctThanksDesc }}</p>
+      </div>
+    </sc-if>
+    <sc-if value="{{ notBookingSent }}" hint-placeholder-val="{{ true }}">
+      <div style="font-family:'Playfair Display',serif;font-size:22px;margin-bottom:22px">{{ t.ctSendMsg }}</div>
+      <form onSubmit="{{ submitContact }}" style="display:flex;flex-direction:column;gap:16px">
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:16px">
+          <input name="name" required="" type="text" placeholder="{{ t.formName }}" style="border:1px solid rgba(36,31,26,.2);padding:13px;font-size:13.5px;font-family:'Jost',sans-serif">
+          <input name="email" required="" type="email" placeholder="{{ t.formEmail }}" style="border:1px solid rgba(36,31,26,.2);padding:13px;font-size:13.5px;font-family:'Jost',sans-serif">
+        </div>
+        <input name="phone" type="tel" placeholder="{{ t.formPhone }}" style="border:1px solid rgba(36,31,26,.2);padding:13px;font-size:13.5px;font-family:'Jost',sans-serif">
+        <select name="subject" style="border:1px solid rgba(36,31,26,.2);padding:13px;font-size:13.5px;font-family:'Jost',sans-serif;color:#241f1a;background:#fffdf8">
+          <option>{{ t.subj1 }}</option>
+          <option>{{ t.subj2 }}</option>
+          <option>{{ t.subj3 }}</option>
+          <option>{{ t.subj4 }}</option>
+          <option>{{ t.subj5 }}</option>
+        </select>
+        <textarea name="message" placeholder="{{ t.formMsg }}" rows="5" style="border:1px solid rgba(36,31,26,.2);padding:13px;font-size:13.5px;font-family:'Jost',sans-serif;resize:vertical"></textarea>
+        <button type="submit" style="background:#241f1a;color:#fffdf8;border:none;padding:15px;font-size:13px;letter-spacing:1.5px;cursor:pointer;margin-top:4px;transition:background .3s ease,opacity .3s ease" style-hover="background:#7c8560;opacity:.9">{{ t.ctSendBtn }}</button>
+        <p style="font-size:11.5px;color:rgba(36,31,26,.5);text-align:center;margin:6px 0 0">{{ t.ctPreferCall }} <a href="#" onClick="{{ openBooking }}" style="text-decoration:underline">{{ t.ctBookLink }}</a></p>
+      </form>
+    </sc-if>
+  </div>
+</section>
+
+<footer style="background:#f6f1eaee;backdrop-filter:blur(6px);color:rgba(36,31,26,.75);padding:0 40px 26px">
+  <div style="max-width:1320px;margin:0 auto;display:flex;justify-content:space-between;flex-wrap:wrap;gap:14px;font-size:11.5px;border-top:1px solid rgba(36,31,26,.15);padding-top:24px">
+    <span>{{ t.footerRights }}</span>
+    <div style="display:flex;gap:20px">
+      <a href="faq.dc.html" style="color:rgba(36,31,26,.75)">{{ t.navFaq }}</a>
+      <a href="legal.dc.html" style="color:rgba(36,31,26,.75)">{{ t.footerLegal }}</a>
+    </div>
+  </div>
+</footer>
+
+<sc-if value="{{ isBookingOpen }}" hint-placeholder-val="{{ false }}">
+  <div style="position:fixed;inset:0;background:rgba(36,31,26,.6);display:flex;align-items:center;justify-content:center;z-index:100;padding:20px" onClick="{{ closeBooking }}">
+    <div style="background:#fffdf8;max-width:440px;width:100%;padding:40px;position:relative" onClick="{{ stopClick }}">
+      <button onClick="{{ closeBooking }}" style="position:absolute;top:14px;right:16px;background:none;border:none;font-size:20px;cursor:pointer;color:#241f1a;transition:color .3s ease,opacity .3s ease" style-hover="color:#b5622f;opacity:.7">×</button>
+      <div style="font-family:'Playfair Display',serif;font-size:22px;margin-bottom:6px">{{ t.bookTitle }}</div>
+      <p style="font-size:13px;color:rgba(36,31,26,.6);margin:0 0 22px">{{ t.ctPickTime }}</p>
+      <form onSubmit="{{ submitBooking }}" style="display:flex;flex-direction:column;gap:12px">
+        <input required="" type="text" placeholder="{{ t.formName }}" style="border:1px solid rgba(36,31,26,.2);padding:12px;font-size:13px;font-family:'Jost',sans-serif">
+        <input required="" type="email" placeholder="{{ t.formEmail }}" style="border:1px solid rgba(36,31,26,.2);padding:12px;font-size:13px;font-family:'Jost',sans-serif">
+        <input required="" type="tel" placeholder="{{ t.ctPhonePlain }}" style="border:1px solid rgba(36,31,26,.2);padding:12px;font-size:13px;font-family:'Jost',sans-serif">
+        <button type="submit" style="background:#7c8560;color:#fffdf8;border:none;padding:14px;font-size:13px;letter-spacing:1.5px;cursor:pointer;margin-top:6px;transition:background .3s ease,opacity .3s ease" style-hover="background:#b9c19a;opacity:.88">{{ t.ctRequestCall }}</button>
+      </form>
+    </div>
+  </div>
+</sc-if>
+
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+const TRANSLATIONS = {
+  en: {
+    navHome: 'HOME', navShop: 'SHOP', navCollections: 'COLLECTIONS', navCommissions: 'COMMISSIONS', navAbout: 'ABOUT', navBlog: 'BLOG', navFaq: 'FAQ', navContact: 'CONTACT',
+    bookBtn: 'BOOK A CONSULTATION',
+    thanksTitle: 'Thank you!', bookTitle: 'Book a Consultation',
+    ctTitle: "Let's talk about your space", ctDesc: "Whether you're after an original painting, a print, or a full custom commission, tell us a little about your project and we'll follow up within one business day.",
+    ctStudio: 'STUDIO', ctEmail: 'EMAIL', ctPhone: 'PHONE', ctHours: 'STUDIO HOURS', ctHoursVal: 'By appointment · Tue–Sat, 10am–5pm PT',
+    ctThanksDesc: "Your message is in. We'll be in touch within one business day.",
+    ctSendMsg: 'Send a message', formName: 'Full name', formEmail: 'Email', formPhone: 'Phone (optional)', formMsg: 'Tell us about your space or project',
+    subj1: "I'm interested in an original painting", subj2: "I'm interested in a print (canvas / paper / acrylic)", subj3: "I'd like to commission a custom piece", subj4: 'Trade / interior design partnership', subj5: 'Something else',
+    ctSendBtn: 'SEND MESSAGE', ctPreferCall: 'Prefer a call?', ctBookLink: 'Book a consultation instead.',
+    ctPickTime: "Pick a time and we'll call you to talk through your project.", ctPhonePlain: 'Phone', ctRequestCall: 'REQUEST A CALL',
+    footerRights: '© 2020 Lily Pastel Art Studio. All rights reserved.', footerLegal: 'Legal',
+  },
+  fr: {
+    navHome: 'ACCUEIL', navShop: 'BOUTIQUE', navCollections: 'COLLECTIONS', navCommissions: 'COMMANDES', navAbout: 'À PROPOS', navBlog: 'BLOG', navFaq: 'FAQ', navContact: 'CONTACT',
+    bookBtn: 'RÉSERVER UNE CONSULTATION',
+    thanksTitle: 'Merci !', bookTitle: 'Réserver une consultation',
+    ctTitle: 'Parlons de votre espace', ctDesc: "Que vous souhaitiez une peinture originale, une impression ou une commande entièrement personnalisée, parlez-nous de votre projet et nous vous répondrons sous un jour ouvré.",
+    ctStudio: 'STUDIO', ctEmail: 'EMAIL', ctPhone: 'TÉLÉPHONE', ctHours: 'HORAIRES', ctHoursVal: 'Sur rendez-vous · Mar-Sam, 10h-17h PT',
+    ctThanksDesc: 'Votre message est envoyé. Nous vous répondrons sous un jour ouvré.',
+    ctSendMsg: 'Envoyer un message', formName: 'Nom complet', formEmail: 'Email', formPhone: 'Téléphone (optionnel)', formMsg: 'Parlez-nous de votre espace ou projet',
+    subj1: 'Je m\u2019intéresse à une peinture originale', subj2: 'Je m\u2019intéresse à une impression (toile / papier / acrylique)', subj3: 'Je souhaite commander une œuvre personnalisée', subj4: 'Partenariat commerce / design d\u2019intérieur', subj5: 'Autre',
+    ctSendBtn: 'ENVOYER LE MESSAGE', ctPreferCall: 'Vous préférez un appel ?', ctBookLink: 'Réservez une consultation.',
+    ctPickTime: 'Choisissez un horaire et nous vous appellerons pour discuter de votre projet.', ctPhonePlain: 'Téléphone', ctRequestCall: 'DEMANDER UN APPEL',
+    footerRights: '© 2020 Lily Pastel Art Studio. Tous droits réservés.', footerLegal: 'Mentions légales',
+  },
+  es: {
+    navHome: 'INICIO', navShop: 'TIENDA', navCollections: 'COLECCIONES', navCommissions: 'ENCARGOS', navAbout: 'SOBRE MÍ', navBlog: 'BLOG', navFaq: 'FAQ', navContact: 'CONTACTO',
+    bookBtn: 'RESERVAR CONSULTA',
+    thanksTitle: '¡Gracias!', bookTitle: 'Reservar una consulta',
+    ctTitle: 'Hablemos de tu espacio', ctDesc: 'Ya sea que busques una pintura original, una impresión o un encargo personalizado, cuéntanos sobre tu proyecto y te responderemos en un día hábil.',
+    ctStudio: 'ESTUDIO', ctEmail: 'EMAIL', ctPhone: 'TELÉFONO', ctHours: 'HORARIO', ctHoursVal: 'Con cita previa · Mar-Sáb, 10am-5pm PT',
+    ctThanksDesc: 'Tu mensaje ha sido enviado. Te responderemos en un día hábil.',
+    ctSendMsg: 'Enviar un mensaje', formName: 'Nombre completo', formEmail: 'Email', formPhone: 'Teléfono (opcional)', formMsg: 'Cuéntanos sobre tu espacio o proyecto',
+    subj1: 'Me interesa una pintura original', subj2: 'Me interesa una impresión (lienzo / papel / acrílico)', subj3: 'Quiero encargar una obra personalizada', subj4: 'Colaboración comercial / diseño de interiores', subj5: 'Otro',
+    ctSendBtn: 'ENVIAR MENSAJE', ctPreferCall: '¿Prefieres una llamada?', ctBookLink: 'Reserva una consulta.',
+    ctPickTime: 'Elige un horario y te llamaremos para hablar de tu proyecto.', ctPhonePlain: 'Teléfono', ctRequestCall: 'SOLICITAR LLAMADA',
+    footerRights: '© 2020 Lily Pastel Art Studio. Todos los derechos reservados.', footerLegal: 'Legal',
+  },
+};
+
+class Component extends DCLogic {
+  state = { isMenuOpen: false, isBookingOpen: false, isDesktop: true, bookingSent: false, emailCopied: false, phoneCopied: false, dark: false, lang: 'fr' };
+  copyEmail = () => {
+    navigator.clipboard.writeText('lilypasteldesign@gmail.com');
+    this.setState({ emailCopied: true });
+    setTimeout(() => this.setState({ emailCopied: false }), 1800);
+  };
+  copyPhone = () => {
+    navigator.clipboard.writeText('+1 (646) 812-6339');
+    this.setState({ phoneCopied: true });
+    setTimeout(() => this.setState({ phoneCopied: false }), 1800);
+  };
+  componentDidMount() {
+    this.mq = window.matchMedia('(min-width:1200px)');
+    this.setState({ isDesktop: this.mq.matches });
+    if (localStorage.getItem('lp-theme') === 'dark') this.setState({ dark: true });
+    const savedLang = localStorage.getItem('lp-lang');
+    if (savedLang && TRANSLATIONS[savedLang]) this.setState({ lang: savedLang });
+    this.onMq = e => this.setState({ isDesktop: e.matches, isMenuOpen: false });
+    this.mq.addEventListener('change', this.onMq);
+  }
+  componentWillUnmount() {
+    if (this.mq) this.mq.removeEventListener('change', this.onMq);
+  }
+  toggleMenu = () => this.setState(s => ({ isMenuOpen: !s.isMenuOpen }));
+  toggleDark = () => this.setState(s => { const v = !s.dark; localStorage.setItem('lp-theme', v ? 'dark' : 'light'); return { dark: v }; });
+  onLangChange = e => { const v = e.target.value; localStorage.setItem('lp-lang', v); this.setState({ lang: v }); };
+  openBooking = e => { if (e && e.preventDefault) e.preventDefault(); this.setState({ isBookingOpen: true, isMenuOpen: false }); };
+  closeBooking = () => this.setState({ isBookingOpen: false });
+  stopClick = e => e.stopPropagation();
+  submitBooking = e => { e.preventDefault(); this.setState({ bookingSent: true, isBookingOpen: false }); };
+  submitContact = e => {
+    e.preventDefault();
+    const f = e.target;
+    const name = f.name.value, email = f.email.value, phone = f.phone.value, subject = f.subject.value, message = f.message.value;
+    const body = `Name: ${name}\nEmail: ${email}\nPhone: ${phone || 'N/A'}\n\n${message}`;
+    window.location.href = `mailto:lilypasteldesign@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    this.setState({ bookingSent: true });
+  };
+  renderVals() {
+    return {
+      t: TRANSLATIONS[this.state.lang],
+      lang: this.state.lang,
+      onLangChange: this.onLangChange,
+      dark: this.state.dark,
+      notDark: !this.state.dark,
+      toggleDark: this.toggleDark,
+      themeAttr: this.state.dark ? 'dark' : 'light',
+      isMenuOpen: this.state.isMenuOpen,
+      isBookingOpen: this.state.isBookingOpen,
+      bookingSent: this.state.bookingSent,
+      notBookingSent: !this.state.bookingSent,
+      toggleMenu: this.toggleMenu,
+      openBooking: this.openBooking,
+      closeBooking: this.closeBooking,
+      stopClick: this.stopClick,
+      submitBooking: this.submitBooking,
+      submitContact: this.submitContact,
+      copyEmail: this.copyEmail,
+      copyPhone: this.copyPhone,
+      emailCopied: this.state.emailCopied,
+      phoneCopied: this.state.phoneCopied,
+      emailNotCopied: !this.state.emailCopied,
+      phoneNotCopied: !this.state.phoneCopied,
+      navDisplay: this.state.isDesktop ? 'flex' : 'none',
+      burgerDisplay: this.state.isDesktop ? 'none' : 'flex',
+    };
+  }
+}
+</script>
+</body>
+</html>

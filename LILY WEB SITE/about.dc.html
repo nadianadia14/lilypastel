@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet data-dc-atomics>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,500&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#f6f1ea;font-family:'Jost',sans-serif;color:#241f1a}
+a{color:#7c8560;text-decoration:none}
+a:hover{color:#5f6a49}
+[data-lp-theme="dark"]{filter:invert(1) hue-rotate(180deg)}
+[data-lp-theme="dark"] img,[data-lp-theme="dark"] video,[data-lp-theme="dark"] iframe{filter:invert(1) hue-rotate(180deg)}
+</style>
+</helmet>
+<div style="background:#f6f1ea;min-height:100vh" data-lp-theme="{{ themeAttr }}">
+
+
+<header style="position:sticky;top:0;z-index:50;background:#f6f1eaee;backdrop-filter:blur(6px);border-bottom:1px solid rgba(36,31,26,.1)">
+  <div style="max-width:1320px;margin:0 auto;padding:16px 40px;display:flex;align-items:center;justify-content:space-between">
+    <a href="index.dc.html" style="display:flex;align-items:center;gap:10px">
+      <img src="assets/logo-lily-pastel.jpeg" alt="Lily Pastel" style="height:58px;width:58px;object-fit:cover">
+      <div style="display:flex;align-items:baseline;line-height:1.05">
+        <span style="font-family:'Playfair Display',serif;font-size:19px;letter-spacing:2px;color:#241f1a;margin-right:0.3em">LILY</span>
+        <div style="display:flex;flex-direction:column">
+          <span style="font-family:'Playfair Display',serif;font-size:19px;letter-spacing:2px;color:#241f1a">PASTEL</span>
+          <div style="display:flex;justify-content:space-between;width:100%;font-size:8.5px;letter-spacing:3.5px;color:rgba(36,31,26,.55)"><span>STUDIO</span><span>ART</span></div>
+        </div>
+      </div>
+    </a>
+    <nav style="display:{{ navDisplay }};align-items:center;gap:28px;font-size:13px;letter-spacing:1px">
+      <a href="index.dc.html" style="color:#241f1a;display:inline-block;transition:transform .25s ease,opacity .25s ease" style-hover="transform:scale(1.1);opacity:.6">{{ t.navHome }}</a>
+      <a href="shop.dc.html" style="color:#241f1a;display:inline-block;transition:transform .25s ease,opacity .25s ease" style-hover="transform:scale(1.1);opacity:.6">{{ t.navShop }}</a>
+      <a href="portfolio.dc.html" style="color:#241f1a;display:inline-block;transition:transform .25s ease,opacity .25s ease" style-hover="transform:scale(1.1);opacity:.6">{{ t.navCollections }}</a>
+      <a href="commissions.dc.html" style="color:#241f1a;display:inline-block;transition:transform .25s ease,opacity .25s ease" style-hover="transform:scale(1.1);opacity:.6">{{ t.navCommissions }}</a>
+      <a href="about.dc.html" style="color:#7c8560;display:inline-block;transition:transform .25s ease,opacity .25s ease" style-hover="transform:scale(1.1);opacity:.6">{{ t.navAbout }}</a>
+      <a href="blog.dc.html" style="color:#241f1a;display:inline-block;transition:transform .25s ease,opacity .25s ease" style-hover="transform:scale(1.1);opacity:.6">{{ t.navBlog }}</a>
+      <a href="contact.dc.html" style="color:#241f1a;display:inline-block;transition:transform .25s ease,opacity .25s ease" style-hover="transform:scale(1.1);opacity:.6">{{ t.navContact }}</a>
+    </nav>
+    <div style="display:flex;align-items:center;gap:14px">
+      <div style="display:{{ navDisplay }};align-items:center;gap:8px">
+      <div style="display:flex;align-items:center;gap:6px;border:1px solid rgba(36,31,26,.25);border-radius:20px;padding:5px 8px 5px 6px">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#241f1a" stroke-width="1.8"><circle cx="12" cy="12" r="10"></circle><path d="M2 12h20M12 2a15 15 0 010 20a15 15 0 010-20"></path></svg>
+        <select onChange="{{ onLangChange }}" value="{{ lang }}" style="width:26px;background:none;border:none;color:#241f1a;font-size:10.5px;padding:0;cursor:pointer;appearance:none;-webkit-appearance:none;text-align:center">
+          <option value="fr">FR</option>
+          <option value="en">EN</option>
+          <option value="es">ES</option>
+        </select>
+        </div>
+      <button onClick="{{ toggleDark }}" aria-label="Toggle dark mode" style="display:flex;background:none;border:1px solid rgba(36,31,26,.25);border-radius:50%;width:26px;height:26px;color:#241f1a;cursor:pointer;align-items:center;justify-content:center;padding:0;transition:border-color .2s ease" style-hover="border-color:#241f1a">
+        <sc-if value="{{ dark }}" hint-placeholder-val="{{ false }}"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"></circle><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"></path></svg></sc-if>
+        <sc-if value="{{ notDark }}" hint-placeholder-val="{{ true }}"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path></svg></sc-if>
+      </button>
+    </div>
+      <button onClick="{{ openBooking }}" style="display:{{ navDisplay }};background:#7c8560;color:#fffdf8;border:none;padding:11px 20px;font-size:12px;letter-spacing:1.5px;cursor:pointer;transition:background .2s" style-hover="background:#b9c19a"="background:#6b7452;transform:scale(1.06);opacity:.9">{{ t.bookBtn }}</button>
+
+      <button onClick="{{ toggleMenu }}" aria-label="Menu" style="display:{{ burgerDisplay }};flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:8px;transition:opacity .3s ease" style-hover="opacity:.55">
+        <span style="width:24px;height:2px;background:#241f1a"></span>
+        <span style="width:24px;height:2px;background:#241f1a"></span>
+        <span style="width:24px;height:2px;background:#241f1a"></span>
+      </button>
+    </div>
+  </div>
+  <sc-if value="{{ isMenuOpen }}" hint-placeholder-val="{{ false }}">
+    <div style="display:flex;flex-direction:column;padding:10px 40px 26px;gap:18px;font-size:14px;letter-spacing:1px;border-top:1px solid rgba(36,31,26,.1)">
+      <a href="index.dc.html">{{ t.navHome }}</a>
+      <a href="shop.dc.html">{{ t.navShop }}</a>
+      <a href="portfolio.dc.html">{{ t.navCollections }}</a>
+      <a href="commissions.dc.html">{{ t.navCommissions }}</a>
+      <a href="about.dc.html">{{ t.navAbout }}</a>
+      <a href="blog.dc.html">{{ t.navBlog }}</a>
+      <a href="faq.dc.html">{{ t.navFaq }}</a>
+      <a href="contact.dc.html">{{ t.navContact }}</a>
+      <div style="display:flex;align-items:center;gap:6px;border:1px solid rgba(36,31,26,.25);border-radius:20px;padding:8px 10px 8px 8px">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#241f1a" stroke-width="1.8"><circle cx="12" cy="12" r="10"></circle><path d="M2 12h20M12 2a15 15 0 010 20a15 15 0 010-20"></path></svg>
+        <select onChange="{{ onLangChange }}" value="{{ lang }}" style="width:28px;background:none;border:none;color:#241f1a;font-size:12px;padding:0;cursor:pointer;appearance:none;-webkit-appearance:none;text-align:center">
+          <option value="fr">FR</option>
+          <option value="en">EN</option>
+          <option value="es">ES</option>
+        </select>
+        <button onClick="{{ toggleDark }}" aria-label="Toggle dark mode" style="display:flex;background:none;border:1px solid rgba(36,31,26,.25);border-radius:50%;width:30px;height:30px;color:#241f1a;cursor:pointer;align-items:center;justify-content:center;padding:0">
+        <sc-if value="{{ dark }}" hint-placeholder-val="{{ false }}"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"></circle><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"></path></svg></sc-if>
+        <sc-if value="{{ notDark }}" hint-placeholder-val="{{ true }}"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path></svg></sc-if>
+      </button>
+    </div>
+      <button onClick="{{ openBooking }}" style="background:#7c8560;color:#fffdf8;border:none;padding:13px;font-size:12px;letter-spacing:1.5px;cursor:pointer;transition:background .3s ease,opacity .3s ease" style-hover="background:#b9c19a;opacity:.88">{{ t.bookBtn }}</button>
+    </div>
+  </sc-if>
+</header>
+
+<section style="max-width:1320px;margin:0 auto;padding:70px 40px 50px;display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:60px;align-items:center">
+  <div style="width:100%;max-width:420px;margin:0 auto;aspect-ratio:4/5;overflow:hidden;border:1px solid rgba(36,31,26,.12)">
+    <img src="assets/atelier-peinture-lily.png" alt="Lily painting in her studio" style="width:100%;height:100%;object-fit:cover;object-position:50% 30%">
+  </div>
+  <div>
+    <div style="font-size:12px;letter-spacing:3px;color:#7c8560;margin-bottom:14px">{{ t.abLabel }}</div>
+    <h1 style="font-family:'Playfair Display',serif;font-weight:500;font-size:clamp(28px,6vw,40px);margin:0 0 20px">{{ t.abMeetTitle }}</h1>
+    <p style="font-size:16px;line-height:1.8;color:rgba(36,31,26,.7);margin:0 0 16px;text-align:justify">{{ t.abIntro }}</p>
+    <h2 style="font-family:'Playfair Display',serif;font-weight:500;font-size:26px;margin:0 0 18px">{{ t.abTextureTitle }}</h2>
+    <p style="font-size:15px;line-height:1.8;color:rgba(36,31,26,.7);margin:0 0 16px;text-align:justify">{{ t.abP1 }}</p>
+    <p style="font-size:15px;line-height:1.8;color:rgba(36,31,26,.7);margin:0 0 16px;text-align:justify">{{ t.abP2 }}</p>
+    <p style="font-size:15px;line-height:1.8;color:rgba(36,31,26,.7);margin:0;text-align:justify">{{ t.abP3 }}</p>
+  </div>
+</section>
+
+<section style="background:#8a8f66;padding:60px 40px">
+  <p style="max-width:760px;margin:0 auto;text-align:center;font-family:'Playfair Display',serif;font-style:italic;font-size:24px;color:#fffdf8;line-height:1.5">{{ t.abQuote }}<span style="display:block;font-size:13px;font-style:normal;letter-spacing:2px;margin-top:14px">— LILY —</span></p>
+</section>
+
+<section style="max-width:1320px;margin:0 auto;padding:80px 40px">
+  <div style="text-align:center;margin-bottom:44px">
+    <div style="font-size:12px;letter-spacing:3px;color:#7c8560;margin-bottom:10px">{{ t.abHowLabel }}</div>
+    <h2 style="font-family:'Playfair Display',serif;font-weight:500;font-size:30px;margin:0">{{ t.abHowTitle }}</h2>
+  </div>
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:24px">
+    <div style="text-align:center;padding:0 12px">
+      <div style="font-family:'Playfair Display',serif;font-size:30px;color:#7c8560;margin-bottom:10px">01</div>
+      <div style="font-size:14px;letter-spacing:.5px;margin-bottom:8px">{{ t.step1Title }}</div>
+      <p style="font-size:13px;color:rgba(36,31,26,.62);line-height:1.6">{{ t.step1Desc }}</p>
+    </div>
+    <div style="text-align:center;padding:0 12px">
+      <div style="font-family:'Playfair Display',serif;font-size:30px;color:#7c8560;margin-bottom:10px">02</div>
+      <div style="font-size:14px;letter-spacing:.5px;margin-bottom:8px">{{ t.step2Title }}</div>
+      <p style="font-size:13px;color:rgba(36,31,26,.62);line-height:1.6">{{ t.step2Desc }}</p>
+    </div>
+    <div style="text-align:center;padding:0 12px">
+      <div style="font-family:'Playfair Display',serif;font-size:30px;color:#7c8560;margin-bottom:10px">03</div>
+      <div style="font-size:14px;letter-spacing:.5px;margin-bottom:8px">{{ t.step3Title }}</div>
+      <p style="font-size:13px;color:rgba(36,31,26,.62);line-height:1.6">{{ t.step3Desc }}</p>
+    </div>
+    <div style="text-align:center;padding:0 12px">
+      <div style="font-family:'Playfair Display',serif;font-size:30px;color:#7c8560;margin-bottom:10px">04</div>
+      <div style="font-size:14px;letter-spacing:.5px;margin-bottom:8px">{{ t.step4Title }}</div>
+      <p style="font-size:13px;color:rgba(36,31,26,.62);line-height:1.6">{{ t.step4Desc }}</p>
+    </div>
+  </div>
+</section>
+
+<section style="background:#7c8560;padding:60px 40px">
+  <div style="max-width:800px;margin:0 auto;text-align:center">
+    <h2 style="font-family:'Playfair Display',serif;font-weight:500;font-size:26px;color:#fffdf8;margin:0 0 16px">{{ t.abCtaTitle }}</h2>
+    <button onClick="{{ openBooking }}" style="background:#fffdf8;color:#241f1a;border:none;padding:16px 34px;font-size:13px;letter-spacing:1.5px;cursor:pointer;transition:background .3s ease,opacity .3s ease" style-hover="background:#241f1a;color:#fffdf8;opacity:1">{{ t.bookBtn }}</button>
+  </div>
+</section>
+
+<footer style="background:#f6f1eaee;backdrop-filter:blur(6px);color:rgba(36,31,26,.75);padding:40px 40px 26px">
+  <div style="max-width:1320px;margin:0 auto;display:flex;justify-content:space-between;flex-wrap:wrap;gap:14px;font-size:11.5px;border-top:1px solid rgba(36,31,26,.15);padding-top:24px">
+    <span>{{ t.footerRights }}</span>
+    <div style="display:flex;gap:20px">
+      <a href="faq.dc.html" style="color:rgba(36,31,26,.75)">{{ t.navFaq }}</a>
+      <a href="contact.dc.html" style="color:rgba(36,31,26,.75)">{{ t.navContact }}</a>
+      <a href="legal.dc.html" style="color:rgba(36,31,26,.75)">{{ t.footerLegal }}</a>
+    </div>
+  </div>
+</footer>
+
+<sc-if value="{{ isBookingOpen }}" hint-placeholder-val="{{ false }}">
+  <div style="position:fixed;inset:0;background:rgba(36,31,26,.6);display:flex;align-items:center;justify-content:center;z-index:100;padding:20px" onClick="{{ closeBooking }}">
+    <div style="background:#fffdf8;max-width:440px;width:100%;padding:40px;position:relative" onClick="{{ stopClick }}">
+      <button onClick="{{ closeBooking }}" style="position:absolute;top:14px;right:16px;background:none;border:none;font-size:20px;cursor:pointer;color:#241f1a;transition:color .3s ease,opacity .3s ease" style-hover="color:#b5622f;opacity:.7">×</button>
+      <sc-if value="{{ bookingSent }}" hint-placeholder-val="{{ false }}">
+        <div style="text-align:center;padding:30px 0">
+          <div style="font-family:'Playfair Display',serif;font-size:22px;margin-bottom:10px">{{ t.thanksTitle }}</div>
+          <p style="font-size:14px;color:rgba(36,31,26,.7)">{{ t.thanksDesc }}</p>
+        </div>
+      </sc-if>
+      <sc-if value="{{ notBookingSent }}" hint-placeholder-val="{{ true }}">
+        <div style="font-family:'Playfair Display',serif;font-size:22px;margin-bottom:6px">{{ t.bookTitle }}</div>
+        <p style="font-size:13px;color:rgba(36,31,26,.6);margin:0 0 22px">{{ t.bookDesc }}</p>
+        <form onSubmit="{{ submitBooking }}" style="display:flex;flex-direction:column;gap:12px">
+          <input required="" type="text" placeholder="{{ t.formName }}" style="border:1px solid rgba(36,31,26,.2);padding:12px;font-size:13px;font-family:'Jost',sans-serif">
+          <input required="" type="email" placeholder="Email" style="border:1px solid rgba(36,31,26,.2);padding:12px;font-size:13px;font-family:'Jost',sans-serif">
+          <input type="tel" placeholder="{{ t.formPhone }}" style="border:1px solid rgba(36,31,26,.2);padding:12px;font-size:13px;font-family:'Jost',sans-serif">
+          <textarea placeholder="{{ t.formMsg }}" rows="3" style="border:1px solid rgba(36,31,26,.2);padding:12px;font-size:13px;font-family:'Jost',sans-serif;resize:vertical"></textarea>
+          <button type="submit" style="background:#7c8560;color:#fffdf8;border:none;padding:14px;font-size:13px;letter-spacing:1.5px;cursor:pointer;margin-top:6px;transition:background .3s ease,opacity .3s ease" style-hover="background:#b9c19a;opacity:.88">{{ t.formSend }}</button>
+        </form>
+      </sc-if>
+    </div>
+  </div>
+</sc-if>
+
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+const TRANSLATIONS = {
+  en: {
+    navHome: 'HOME', navShop: 'SHOP', navCollections: 'COLLECTIONS', navCommissions: 'COMMISSIONS', navAbout: 'ABOUT', navBlog: 'BLOG', navFaq: 'FAQ', navContact: 'CONTACT',
+    bookBtn: 'BOOK A CONSULTATION',
+    thanksTitle: 'Thank you!', thanksDesc: "We'll be in touch within one business day to confirm your consultation.",
+    bookTitle: 'Book a Consultation', bookDesc: "Tell us about your space, we'll follow up to schedule a call.",
+    formName: 'Full name', formEmail: 'Email', formPhone: 'Phone (optional)', formMsg: 'Tell us about your space or project', formSend: 'SEND REQUEST',
+    abLabel: 'THE ARTIST', abMeetTitle: 'Meet Lily',
+    abIntro: "I'm the artist behind Lily Pastel Design Art Studio. My work is inspired by nature, light, texture and the beauty of imperfection, abstract paintings built to carry emotion and soul into the spaces where we live.",
+    abTextureTitle: 'A studio built on texture',
+    abP1: 'Every piece begins with raw plaster, acrylic and gold leaf, layered by hand until the surface holds real depth, the kind you feel before you see.',
+    abP2: 'Ten years ago I left a career in interior design to paint full-time. Today the studio works with collectors, designers and businesses across Los Angeles who want a piece made specifically for their walls.',
+    abP3: 'Each painting is made with intention, layered with texture, and crafted to last.',
+    abQuote: '"Art is more than decoration. It is emotion, transformation, and a reflection of who we are."',
+    abHowLabel: 'HOW WE WORK', abHowTitle: 'From sketch to your wall',
+    step1Title: 'Consultation', step1Desc: 'We talk through your space, palette and the feeling you want on the wall.',
+    step2Title: 'Concept', step2Desc: 'A sketch and material palette are shared for approval before painting begins.',
+    step3Title: 'Studio Work', step3Desc: 'Each layer is hand-applied over several weeks in our L.A. studio.',
+    step4Title: 'Delivery', step4Desc: 'Framed, packed and insured, delivered locally or shipped worldwide.',
+    abCtaTitle: "Let's talk about your space",
+    footerRights: '© 2020 Lily Pastel Art Studio. All rights reserved.', footerLegal: 'Legal',
+  },
+  fr: {
+    navHome: 'ACCUEIL', navShop: 'BOUTIQUE', navCollections: 'COLLECTIONS', navCommissions: 'COMMANDES', navAbout: 'À PROPOS', navBlog: 'BLOG', navFaq: 'FAQ', navContact: 'CONTACT',
+    bookBtn: 'RÉSERVER UNE CONSULTATION',
+    thanksTitle: 'Merci !', thanksDesc: 'Nous vous contacterons sous un jour ouvré pour confirmer votre consultation.',
+    bookTitle: 'Réserver une consultation', bookDesc: 'Parlez-nous de votre espace, nous vous recontacterons pour planifier un appel.',
+    formName: 'Nom complet', formEmail: 'Email', formPhone: 'Téléphone (optionnel)', formMsg: 'Parlez-nous de votre espace ou projet', formSend: 'ENVOYER LA DEMANDE',
+    abLabel: "L'ARTISTE", abMeetTitle: 'Rencontrez Lily',
+    abIntro: "Je suis l'artiste derrière Lily Pastel Design Art Studio. Mon travail s'inspire de la nature, de la lumière, de la texture et de la beauté de l'imperfection, des peintures abstraites conçues pour porter émotion et âme dans les espaces où nous vivons.",
+    abTextureTitle: 'Un studio construit sur la texture',
+    abP1: "Chaque œuvre commence par du plâtre brut, de l'acrylique et de la feuille d'or, superposés à la main jusqu'à ce que la surface ait une vraie profondeur, celle qu'on ressent avant de la voir.",
+    abP2: "Il y a dix ans, j'ai quitté une carrière en design d'intérieur pour peindre à temps plein. Aujourd'hui, le studio travaille avec des collectionneurs, designers et entreprises de Los Angeles qui veulent une œuvre conçue spécifiquement pour leurs murs.",
+    abP3: 'Chaque peinture est réalisée avec intention, texturée en couches, et conçue pour durer.',
+    abQuote: '« L\u2019art est plus qu\u2019une décoration. C\u2019est de l\u2019émotion, de la transformation, et un reflet de qui nous sommes. »',
+    abHowLabel: 'NOTRE PROCESSUS', abHowTitle: "De l'esquisse à votre mur",
+    step1Title: 'Consultation', step1Desc: 'Nous discutons de votre espace, de la palette et de l\u2019ambiance souhaitée sur le mur.',
+    step2Title: 'Concept', step2Desc: 'Une esquisse et une palette de matériaux sont partagées pour approbation avant le début de la peinture.',
+    step3Title: 'Travail en atelier', step3Desc: 'Chaque couche est appliquée à la main pendant plusieurs semaines dans notre studio de L.A.',
+    step4Title: 'Livraison', step4Desc: 'Encadrée, emballée et assurée, livrée localement ou expédiée dans le monde entier.',
+    abCtaTitle: 'Parlons de votre espace',
+    footerRights: '© 2020 Lily Pastel Art Studio. Tous droits réservés.', footerLegal: 'Mentions légales',
+  },
+  es: {
+    navHome: 'INICIO', navShop: 'TIENDA', navCollections: 'COLECCIONES', navCommissions: 'ENCARGOS', navAbout: 'SOBRE MÍ', navBlog: 'BLOG', navFaq: 'FAQ', navContact: 'CONTACTO',
+    bookBtn: 'RESERVAR CONSULTA',
+    thanksTitle: '¡Gracias!', thanksDesc: 'Nos pondremos en contacto en un día hábil para confirmar tu consulta.',
+    bookTitle: 'Reservar una consulta', bookDesc: 'Cuéntanos sobre tu espacio, te contactaremos para agendar una llamada.',
+    formName: 'Nombre completo', formEmail: 'Email', formPhone: 'Teléfono (opcional)', formMsg: 'Cuéntanos sobre tu espacio o proyecto', formSend: 'ENVIAR SOLICITUD',
+    abLabel: 'LA ARTISTA', abMeetTitle: 'Conoce a Lily',
+    abIntro: 'Soy la artista detrás de Lily Pastel Design Art Studio. Mi trabajo se inspira en la naturaleza, la luz, la textura y la belleza de la imperfección, pinturas abstractas creadas para llevar emoción y alma a los espacios donde vivimos.',
+    abTextureTitle: 'Un estudio construido sobre la textura',
+    abP1: 'Cada obra comienza con yeso crudo, acrílico y pan de oro, superpuestos a mano hasta que la superficie tiene una profundidad real, la que se siente antes de verse.',
+    abP2: 'Hace diez años dejé una carrera en diseño de interiores para pintar a tiempo completo. Hoy el estudio trabaja con coleccionistas, diseñadores y empresas de Los Ángeles que quieren una obra hecha específicamente para sus paredes.',
+    abP3: 'Cada pintura está hecha con intención, texturizada en capas, y creada para durar.',
+    abQuote: '"El arte es más que decoración. Es emoción, transformación y un reflejo de quiénes somos."',
+    abHowLabel: 'CÓMO TRABAJAMOS', abHowTitle: 'Del boceto a tu pared',
+    step1Title: 'Consulta', step1Desc: 'Hablamos sobre tu espacio, la paleta y la sensación que quieres en la pared.',
+    step2Title: 'Concepto', step2Desc: 'Se comparte un boceto y una paleta de materiales para aprobación antes de comenzar a pintar.',
+    step3Title: 'Trabajo en estudio', step3Desc: 'Cada capa se aplica a mano durante varias semanas en nuestro estudio de L.A.',
+    step4Title: 'Entrega', step4Desc: 'Enmarcada, empacada y asegurada, entregada localmente o enviada a todo el mundo.',
+    abCtaTitle: 'Hablemos de tu espacio',
+    footerRights: '© 2020 Lily Pastel Art Studio. Todos los derechos reservados.', footerLegal: 'Legal',
+  },
+};
+
+class Component extends DCLogic {
+  state = { isMenuOpen: false, isBookingOpen: false, isDesktop: true, bookingSent: false, dark: false, lang: 'fr' };
+  componentDidMount() {
+    this.mq = window.matchMedia('(min-width:1200px)');
+    this.setState({ isDesktop: this.mq.matches });
+    if (localStorage.getItem('lp-theme') === 'dark') this.setState({ dark: true });
+    const savedLang = localStorage.getItem('lp-lang');
+    if (savedLang && TRANSLATIONS[savedLang]) this.setState({ lang: savedLang });
+    this.onMq = e => this.setState({ isDesktop: e.matches, isMenuOpen: false });
+    this.mq.addEventListener('change', this.onMq);
+  }
+  componentWillUnmount() {
+    if (this.mq) this.mq.removeEventListener('change', this.onMq);
+  }
+  toggleMenu = () => this.setState(s => ({ isMenuOpen: !s.isMenuOpen }));
+  toggleDark = () => this.setState(s => { const v = !s.dark; localStorage.setItem('lp-theme', v ? 'dark' : 'light'); return { dark: v }; });
+  onLangChange = e => { const v = e.target.value; localStorage.setItem('lp-lang', v); this.setState({ lang: v }); };
+  openBooking = () => this.setState({ isBookingOpen: true, isMenuOpen: false, bookingSent: false });
+  closeBooking = () => this.setState({ isBookingOpen: false });
+  stopClick = e => e.stopPropagation();
+  submitBooking = e => { e.preventDefault(); this.setState({ bookingSent: true }); };
+  renderVals() {
+    return {
+      t: TRANSLATIONS[this.state.lang],
+      lang: this.state.lang,
+      onLangChange: this.onLangChange,
+      dark: this.state.dark,
+      notDark: !this.state.dark,
+      toggleDark: this.toggleDark,
+      themeAttr: this.state.dark ? 'dark' : 'light',
+      isMenuOpen: this.state.isMenuOpen,
+      isBookingOpen: this.state.isBookingOpen,
+      bookingSent: this.state.bookingSent,
+      notBookingSent: !this.state.bookingSent,
+      toggleMenu: this.toggleMenu,
+      openBooking: this.openBooking,
+      closeBooking: this.closeBooking,
+      stopClick: this.stopClick,
+      submitBooking: this.submitBooking,
+      navDisplay: this.state.isDesktop ? 'flex' : 'none',
+      burgerDisplay: this.state.isDesktop ? 'none' : 'flex',
+    };
+  }
+}
+</script>
+</body>
+</html>
