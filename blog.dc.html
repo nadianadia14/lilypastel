@@ -243,6 +243,7 @@ class Component extends DCLogic {
   toggleMenu = () => this.setState(s => ({ isMenuOpen: !s.isMenuOpen }));
   toggleDark = () => this.setState(s => { const v = !s.dark; localStorage.setItem('lp-theme', v ? 'dark' : 'light'); return { dark: v }; });
   onLangChange = e => { const v = e.target.value; localStorage.setItem('lp-lang', v); this.setState({ lang: v }); };
+  scrollToTop = () => window.scrollTo({ top: 0, behavior: 'smooth' });
   openBooking = () => this.setState({ isBookingOpen: true, isMenuOpen: false, bookingSent: false });
   closeBooking = () => this.setState({ isBookingOpen: false });
   stopClick = e => e.stopPropagation();
@@ -251,6 +252,7 @@ class Component extends DCLogic {
     return {
       t: TRANSLATIONS[this.state.lang],
       lang: this.state.lang,
+      scrollToTop: this.scrollToTop,
       onLangChange: this.onLangChange,
       dark: this.state.dark,
       notDark: !this.state.dark,
