@@ -1,8 +1,31 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lily Pastel Studio Art | Original Paintings &amp; Fine-Art Prints in Los Angeles</title>
+<meta name="description" content="Lily Pastel Studio Art creates hand-textured original paintings and fine-art prints in Los Angeles. Shop originals or commission a custom piece for your space.">
+<link rel="icon" type="image/png" href="assets/logo-transparent.png">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ArtGallery",
+  "name": "Lily Pastel Studio Art",
+  "description": "Original abstract paintings and fine-art printing, hand-finished in Los Angeles.",
+  "image": "assets/logo-lily-pastel.jpeg",
+  "email": "lilypasteldesign@gmail.com",
+  "telephone": "+1-646-812-6339",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "1420 Abbot Kinney Blvd",
+    "addressLocality": "Venice, Los Angeles",
+    "addressRegion": "CA",
+    "postalCode": "90291",
+    "addressCountry": "US"
+  },
+  "sameAs": ["https://www.instagram.com/lilypasteldesign/"]
+}
+</script>
 <script src="./support.js"></script>
 </head>
 <body>
@@ -85,7 +108,7 @@ a:hover{color:#8a4a24}
 </header>
 
 <section style="position:relative;height:92vh;min-height:640px;max-height:920px;overflow:hidden">
-  <img id="hero-img" src="assets/lifestyle-06-goldwhisper-console.jpg" alt="Gold and pink abstract painting above a media console" style="width:100%;height:{{ heroImgHeight }};display:block;object-fit:cover;object-position:{{ heroObjectPosition }};transform:translateY({{ heroParallax }});will-change:transform">
+  <img id="hero-img" src="assets/lifestyle-06-goldwhisper-console.jpg" alt="Gold and pink abstract painting above a media console" style="width:100%;height:140%;display:block;object-fit:cover;object-position:50% 32%;transform:translateY({{ heroParallax }});will-change:transform">
   <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(36,31,26,.35) 0%,rgba(36,31,26,.15) 35%,rgba(36,31,26,.55) 100%)"></div>
   <div style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:0 24px;animation:fadeUp .7s ease both">
     <div style="position:relative;display:inline-block;margin:0 0 8px">
@@ -95,7 +118,7 @@ a:hover{color:#8a4a24}
       </svg>
     </div>
     <div style="font-size:14px;letter-spacing:5px;color:rgba(255,253,248,.85);margin-bottom:26px">{{ t.heroTag }}</div>
-    <a href="shop.dc.html" style="background:#d9c4a3;color:#241f1a;padding:16px 34px;font-size:12.5px;letter-spacing:1.5px;transition:transform .2s,background .3s ease,color .3s ease" style-hover="transform:scale(1.03);background:#7c8560;color:#fffdf8">{{ t.heroCta }}</a>
+    <a href="shop.dc.html" style="background:#c9b8d4;color:#241f1a;padding:16px 34px;font-size:12.5px;letter-spacing:1.5px;transition:transform .2s,background .3s ease,color .3s ease" style-hover="transform:scale(1.03);background:#7c8560;color:#fffdf8">{{ t.heroCta }}</a>
   </div>
 </section>
 
@@ -312,13 +335,9 @@ a:hover{color:#8a4a24}
     <span>Paris, New York, Los Angeles</span>
   </div>
 </footer>
-<button onClick="{{ scrollToTop }}" aria-label="Back to top" style="position:fixed;bottom:24px;right:24px;width:46px;height:46px;border-radius:50%;background:#241f1a;color:#fffdf8;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 14px rgba(36,31,26,.25);z-index:40;transition:transform .2s ease,background .2s ease" style-hover="transform:scale(1.08);background:#7c8560">
-  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="19" x2="12" y2="5"></line><polyline points="5 12 12 5 19 12"></polyline></svg>
-</button>
-
 
 <sc-if value="{{ isBookingOpen }}" hint-placeholder-val="{{ false }}">
-  <div style="position:fixed;inset:0;background:rgba(36,31,26,.6);display:flex;align-items:center;justify-content:center;z-index:100;padding:20px" onClick="{{ closeBooking }}">
+  <div role="dialog" aria-modal="true" aria-label="{{ t.bookTitle }}" style="position:fixed;inset:0;background:rgba(36,31,26,.6);display:flex;align-items:center;justify-content:center;z-index:100;padding:20px" onClick="{{ closeBooking }}">
     <div style="background:#fffdf8;max-width:440px;width:100%;padding:40px;position:relative" onClick="{{ stopClick }}">
       <button onClick="{{ closeBooking }}" style="position:absolute;top:14px;right:16px;background:none;border:none;font-size:20px;cursor:pointer;color:#241f1a;transition:color .3s ease,opacity .3s ease" style-hover="color:#b5622f;opacity:.7">×</button>
       <sc-if value="{{ bookingSent }}" hint-placeholder-val="{{ false }}">
@@ -437,7 +456,7 @@ const TRANSLATIONS = {
 };
 
 class Component extends DCLogic {
-  state = { isMenuOpen: false, isBookingOpen: false, isDesktop: true, bookingSent: false, scrollY: 0, spaceSlideIndex: 0, emailCopied: false, phoneCopied: false, dark: false, lang: 'fr' };
+  state = { isMenuOpen: false, isBookingOpen: false, isDesktop: true, bookingSent: false, scrollY: 0, spaceSlideIndex: 0, emailCopied: false, phoneCopied: false, dark: false, lang: 'en' };
   copyEmail = () => {
     navigator.clipboard.writeText('lilypasteldesign@gmail.com');
     this.setState({ emailCopied: true });
@@ -477,7 +496,6 @@ class Component extends DCLogic {
   toggleMenu = () => this.setState(s => ({ isMenuOpen: !s.isMenuOpen }));
   toggleDark = () => this.setState(s => { const v = !s.dark; localStorage.setItem('lp-theme', v ? 'dark' : 'light'); return { dark: v }; });
   onLangChange = e => { const v = e.target.value; localStorage.setItem('lp-lang', v); this.setState({ lang: v }); };
-  scrollToTop = () => window.scrollTo({ top: 0, behavior: 'smooth' });
   openBooking = () => this.setState({ isBookingOpen: true, isMenuOpen: false, bookingSent: false });
   closeBooking = () => this.setState({ isBookingOpen: false });
   stopClick = e => e.stopPropagation();
@@ -486,7 +504,6 @@ class Component extends DCLogic {
     return {
       t: TRANSLATIONS[this.state.lang],
       lang: this.state.lang,
-      scrollToTop: this.scrollToTop,
       onLangChange: this.onLangChange,
       dark: this.state.dark,
       notDark: !this.state.dark,
@@ -510,9 +527,7 @@ class Component extends DCLogic {
       navDisplay: this.state.isDesktop ? 'flex' : 'none',
       burgerDisplay: this.state.isDesktop ? 'none' : 'flex',
       showBestsellers: this.props.showBestsellers ?? true,
-      heroImgHeight: this.state.isDesktop ? '165%' : '190%',
-      heroObjectPosition: this.state.isDesktop ? '50% 32%' : '50% 22%',
-      heroParallax: '-' + Math.min(this.state.scrollY * (this.state.isDesktop ? 0.6 : 0.55), this.state.isDesktop ? 180 : 160) + 'px',
+      heroParallax: '-' + Math.min(this.state.scrollY * 0.35, 90) + 'px',
       spaceSlides: this.spaceSlidesData.map((s, i) => ({ ...s, opacity: i === this.state.spaceSlideIndex ? 1 : 0 })),
     };
   }
