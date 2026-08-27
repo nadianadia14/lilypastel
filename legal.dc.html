@@ -16,7 +16,7 @@ a{color:#b5622f;text-decoration:none}
 a:hover{color:#8a4a24}
 [data-lp-theme="dark"]{filter:invert(1) hue-rotate(180deg)}
 [data-lp-theme="dark"] img,[data-lp-theme="dark"] video,[data-lp-theme="dark"] iframe{filter:invert(1) hue-rotate(180deg)}
-@media (max-width:640px){#site-header-inner{padding:12px 16px}#site-logo-img{height:40px !important;width:40px !important}#site-logo-text span{font-size:14px !important}#site-logo-sub{display:none !important}#site-header-controls{gap:6px !important}}
+@media (max-width:640px){#site-header-inner{padding:12px 16px}#site-logo-img{height:40px !important;width:40px !important}#site-logo-text span{font-size:14px !important}#site-logo-sub{font-size:6.5px !important;letter-spacing:2px !important}#site-header-controls{gap:6px !important}}
 </style>
 </helmet>
 <div style="background:#f6f1ea;min-height:100vh" data-lp-theme="{{ themeAttr }}">
@@ -36,28 +36,29 @@ a:hover{color:#8a4a24}
     </a>
     <nav style="display:{{ navDisplay }};align-items:center;gap:28px;font-size:13px;letter-spacing:1px">
       <a href="index.dc.html" style="color:#241f1a;display:inline-block;transition:transform .25s ease,opacity .25s ease" style-hover="transform:scale(1.1);opacity:.6">{{ t.navHome }}</a>
-      <a href="shop.dc.html" style="color:#241f1a;display:inline-block;transition:transform .25s ease,opacity .25s ease" style-hover="transform:scale(1.1);opacity:.6">{{ t.navShop }}</a>
       <a href="portfolio.dc.html" style="color:#241f1a;display:inline-block;transition:transform .25s ease,opacity .25s ease" style-hover="transform:scale(1.1);opacity:.6">{{ t.navCollections }}</a>
+      <a href="shop.dc.html" style="color:#241f1a;display:inline-block;transition:transform .25s ease,opacity .25s ease" style-hover="transform:scale(1.1);opacity:.6">{{ t.navShop }}</a>
       <a href="commissions.dc.html" style="color:#241f1a;display:inline-block;transition:transform .25s ease,opacity .25s ease" style-hover="transform:scale(1.1);opacity:.6">{{ t.navCommissions }}</a>
+      <a href="experience.dc.html" style="color:#241f1a;display:inline-block;transition:transform .25s ease,opacity .25s ease" style-hover="transform:scale(1.1);opacity:.6">{{ t.navExperience }}</a>
       <a href="about.dc.html" style="color:#241f1a;display:inline-block;transition:transform .25s ease,opacity .25s ease" style-hover="transform:scale(1.1);opacity:.6">{{ t.navAbout }}</a>
       <a href="blog.dc.html" style="color:#241f1a;display:inline-block;transition:transform .25s ease,opacity .25s ease" style-hover="transform:scale(1.1);opacity:.6">{{ t.navBlog }}</a>
       <a href="contact.dc.html" style="color:#241f1a;display:inline-block;transition:transform .25s ease,opacity .25s ease" style-hover="transform:scale(1.1);opacity:.6">{{ t.navContact }}</a>
     </nav>
     <div id="site-header-controls" style="display:flex;align-items:center;gap:8px">
-      <div style="display:flex;align-items:center;gap:6px;border:1px solid rgba(36,31,26,.25);border-radius:20px;padding:5px 8px 5px 6px">
-        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#241f1a" stroke-width="1.8"><circle cx="12" cy="12" r="10"></circle><path d="M2 12h20M12 2a15 15 0 010 20a15 15 0 010-20"></path></svg>
-        <select onChange="{{ onLangChange }}" value="{{ lang }}" style="width:26px;background:none;border:none;color:#241f1a;font-size:10.5px;padding:0;cursor:pointer;appearance:none;-webkit-appearance:none;text-align:center">
+      <div style="position:relative;width:26px;height:26px;border:1px solid rgba(36,31,26,.25);border-radius:50%;display:flex;align-items:center;justify-content:center">
+        <select onChange="{{ onLangChange }}" value="{{ lang }}" style="position:absolute;inset:0;opacity:0;cursor:pointer;appearance:none;-webkit-appearance:none">
           <option value="fr">FR</option>
           <option value="en">EN</option>
           <option value="es">ES</option>
         </select>
-        </div>
-      <button onClick="{{ toggleDark }}" aria-label="Toggle dark mode" style="display:flex;background:none;border:1px solid rgba(36,31,26,.25);border-radius:50%;width:26px;height:26px;color:#241f1a;cursor:pointer;align-items:center;justify-content:center;padding:0;transition:border-color .2s ease" style-hover="border-color:#241f1a">
+        <span style="font-size:9px;letter-spacing:.3px;color:#241f1a;pointer-events:none">{{ langLabel }}</span>
+      </div>
+      <button onClick="{{ toggleDark }}" aria-label="Toggle dark mode" style="display:flex;background:none;border:1px solid rgba(36,31,26,.25);border-radius:50%;width:26px;height:26px;color:#241f1a;cursor:pointer;align-items:center;justify-content:center;padding:0;transition:border-color .2s ease,transform .2s ease,opacity .2s ease" style-hover="border-color:#241f1a;transform:scale(1.05);opacity:.85">
         <sc-if value="{{ dark }}" hint-placeholder-val="{{ false }}"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"></circle><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"></path></svg></sc-if>
         <sc-if value="{{ notDark }}" hint-placeholder-val="{{ true }}"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path></svg></sc-if>
       </button>
     </div>
-      <button onClick="{{ toggleMenu }}" aria-label="Menu" style="display:{{ burgerDisplay }};flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:8px;transition:opacity .3s ease" style-hover="opacity:.55">
+      <button onClick="{{ toggleMenu }}" aria-label="Menu" style="display:{{ burgerDisplay }};flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:8px;transition:opacity .3s ease,transform .2s ease" style-hover="opacity:.55;transform:scale(1.05)">
       <span style="width:24px;height:2px;background:#241f1a"></span>
       <span style="width:24px;height:2px;background:#241f1a"></span>
       <span style="width:24px;height:2px;background:#241f1a"></span>
@@ -66,9 +67,10 @@ a:hover{color:#8a4a24}
   <sc-if value="{{ isMenuOpen }}" hint-placeholder-val="{{ false }}">
     <div style="display:flex;flex-direction:column;padding:10px 40px 26px;gap:18px;font-size:14px;letter-spacing:1px;border-top:1px solid rgba(36,31,26,.1)">
       <a href="index.dc.html">{{ t.navHome }}</a>
-      <a href="shop.dc.html">{{ t.navShop }}</a>
       <a href="portfolio.dc.html">{{ t.navCollections }}</a>
+      <a href="shop.dc.html">{{ t.navShop }}</a>
       <a href="commissions.dc.html">{{ t.navCommissions }}</a>
+      <a href="experience.dc.html">{{ t.navExperience }}</a>
       <a href="about.dc.html">{{ t.navAbout }}</a>
       <a href="blog.dc.html">{{ t.navBlog }}</a>
       <a href="faq.dc.html">{{ t.navFaq }}</a>
@@ -116,7 +118,7 @@ a:hover{color:#8a4a24}
     </div>
   </div>
 </footer>
-<button onClick="{{ scrollToTop }}" aria-label="Back to top" style="position:fixed;bottom:24px;right:24px;width:46px;height:46px;border-radius:50%;background:#241f1a;color:#fffdf8;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 14px rgba(36,31,26,.25);z-index:40;transition:transform .2s ease,background .2s ease" style-hover="transform:scale(1.08);background:#7c8560">
+<button onClick="{{ scrollToTop }}" aria-label="Back to top" style="position:fixed;bottom:24px;right:24px;width:46px;height:46px;border-radius:50%;background:#241f1a;color:#fffdf8;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 14px rgba(36,31,26,.25);z-index:40;transition:transform .2s ease,background .2s ease,opacity .2s ease" style-hover="transform:scale(1.08);background:#7c8560;opacity:.85">
   <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="19" x2="12" y2="5"></line><polyline points="5 12 12 5 19 12"></polyline></svg>
 </button>
 
@@ -126,7 +128,7 @@ a:hover{color:#8a4a24}
 </x-dc>
 <script type="text/x-dc" data-dc-script>
 const TRANSLATIONS = {
-  en: { navHome: 'HOME', navShop: 'SHOP', navCollections: 'COLLECTIONS', navCommissions: 'COMMISSIONS', navAbout: 'ABOUT', navBlog: 'BLOG', navFaq: 'FAQ', navContact: 'CONTACT',
+  en: { navHome: 'HOME', navShop: 'SHOP', navCollections: 'COLLECTION', navCommissions: 'COMMISSIONS', navExperience: 'ART EXPERIENCE', navAbout: 'ABOUT', navBlog: 'BLOG', navFaq: 'FAQ', navContact: 'CONTACT',
     legalLabel: 'LEGAL', legalTitle: 'Legal Information',
     noticeTitle: 'Legal Notice',
     noticeP1: 'Lily Pastel Design Studio Art is a sole proprietorship operating from Venice, Los Angeles, California. For any legal inquiries, please contact lilypasteldesign@gmail.com.',
@@ -141,7 +143,7 @@ const TRANSLATIONS = {
     privacyP2: 'You may request that we delete your information at any time by emailing lilypasteldesign@gmail.com.',
     footerRights: '© 2020 Lily Pastel Studio Art. All rights reserved.',
   },
-  fr: { navHome: 'ACCUEIL', navShop: 'BOUTIQUE', navCollections: 'COLLECTIONS', navCommissions: 'COMMANDES', navAbout: 'À PROPOS', navBlog: 'BLOG', navFaq: 'FAQ', navContact: 'CONTACT',
+  fr: { navHome: 'ACCUEIL', navShop: 'BOUTIQUE', navCollections: 'COLLECTION', navCommissions: 'COMMANDES', navExperience: 'ART EXPERIENCE', navAbout: 'À PROPOS', navBlog: 'BLOG', navFaq: 'FAQ', navContact: 'CONTACT',
     legalLabel: 'MENTIONS LÉGALES', legalTitle: 'Informations légales',
     noticeTitle: 'Mentions légales',
     noticeP1: 'Lily Pastel Design Studio Art est une entreprise individuelle basée à Venice, Los Angeles, Californie. Pour toute question juridique, contactez lilypasteldesign@gmail.com.',
@@ -156,7 +158,7 @@ const TRANSLATIONS = {
     privacyP2: 'Vous pouvez demander la suppression de vos informations à tout moment en écrivant à lilypasteldesign@gmail.com.',
     footerRights: '© 2020 Lily Pastel Studio Art. Tous droits réservés.',
   },
-  es: { navHome: 'INICIO', navShop: 'TIENDA', navCollections: 'COLECCIONES', navCommissions: 'ENCARGOS', navAbout: 'SOBRE MÍ', navBlog: 'BLOG', navFaq: 'FAQ', navContact: 'CONTACTO',
+  es: { navHome: 'INICIO', navShop: 'TIENDA', navCollections: 'COLECCIÓN', navCommissions: 'ENCARGOS', navExperience: 'ART EXPERIENCE', navAbout: 'SOBRE MÍ', navBlog: 'BLOG', navFaq: 'FAQ', navContact: 'CONTACTO',
     legalLabel: 'LEGAL', legalTitle: 'Información legal',
     noticeTitle: 'Aviso legal',
     noticeP1: 'Lily Pastel Design Studio Art es una empresa individual con sede en Venice, Los Ángeles, California. Para consultas legales, contacte a lilypasteldesign@gmail.com.',
@@ -195,6 +197,7 @@ class Component extends DCLogic {
     return {
       t: TRANSLATIONS[this.state.lang],
       lang: this.state.lang,
+      langLabel: this.state.lang.toUpperCase(),
       scrollToTop: this.scrollToTop,
       onLangChange: this.onLangChange,
       dark: this.state.dark,
