@@ -21,7 +21,7 @@ a:hover{color:#8a4a24}
 @keyframes drawline{from{stroke-dashoffset:300}to{stroke-dashoffset:0}}
 [data-lp-theme="dark"]{filter:invert(1) hue-rotate(180deg)}
 [data-lp-theme="dark"] img,[data-lp-theme="dark"] video,[data-lp-theme="dark"] iframe{filter:invert(1) hue-rotate(180deg)}
-@media (max-width:640px){#site-header-inner{padding:12px 16px}#site-logo-img{height:40px !important;width:40px !important}#site-logo-text span{font-size:14px !important}#site-logo-sub{font-size:6.5px !important;letter-spacing:2px !important}#site-header-controls{gap:6px !important}}
+@media (max-width:640px){#site-header-inner{padding:12px 16px}#site-logo-img{height:40px !important;width:40px !important}#site-logo-link{gap:7px !important}#site-logo-text span{font-size:14px !important;letter-spacing:1.4px !important}#site-logo-sub{font-size:6px !important;letter-spacing:2.4px !important}#site-header-controls{gap:6px !important}#discover-grid{grid-template-columns:1fr !important}}
 </style>
 </helmet>
 <div style="background:#f6f1ea;min-height:100vh" data-lp-theme="{{ themeAttr }}">
@@ -29,13 +29,13 @@ a:hover{color:#8a4a24}
 
 <header style="position:sticky;top:0;z-index:50;background:#f6f1eaee;backdrop-filter:blur(6px);border-bottom:1px solid rgba(36,31,26,.1)">
   <div id="site-header-inner" style="max-width:1320px;margin:0 auto;padding:16px 40px;display:flex;align-items:center;justify-content:space-between">
-    <a href="index.dc.html" style="display:flex;align-items:center;gap:10px">
+    <a id="site-logo-link" href="index.dc.html" style="display:flex;align-items:center;gap:10px">
       <img id="site-logo-img" src="assets/logo-lily-pastel.jpeg" alt="Lily Pastel" style="height:58px;width:58px;object-fit:cover">
       <div id="site-logo-text" style="display:flex;align-items:baseline;line-height:1.05">
         <span style="font-family:'Playfair Display',serif;font-size:19px;letter-spacing:2px;color:#241f1a;margin-right:0.3em">LILY</span>
         <div style="display:flex;flex-direction:column">
           <span style="font-family:'Playfair Display',serif;font-size:19px;letter-spacing:2px;color:#241f1a">PASTEL</span>
-          <div id="site-logo-sub" style="display:flex;justify-content:space-between;width:100%;font-size:8.5px;letter-spacing:3.5px;color:rgba(36,31,26,.55)"><span>STUDIO</span><span>ART</span></div>
+          <div id="site-logo-sub" style="display:flex;gap:6px;width:100%;font-size:8.5px;letter-spacing:3.5px;color:rgba(36,31,26,.55)"><span>STUDIO</span><span>ART</span></div>
         </div>
       </div>
     </a>
@@ -108,7 +108,7 @@ a:hover{color:#8a4a24}
       <div style="font-size:12px;letter-spacing:3px;color:#b5622f;margin-bottom:10px">{{ t.collectionLabel }}</div>
       <h2 style="font-family:'Playfair Display',serif;font-weight:500;font-size:clamp(26px,6vw,34px);margin:0 0 22px">{{ t.collectionTitle }}</h2>
     </div>
-    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:24px;max-width:1180px;margin:0 auto">
+    <div id="discover-grid" style="display:grid;grid-template-columns:repeat(3,1fr);gap:24px;max-width:1180px;margin:0 auto">
       <a href="portfolio.dc.html" style="display:block;aspect-ratio:1;overflow:hidden;position:relative;border:1px solid rgba(36,31,26,.1)">
         <img src="assets/peace-by-piece-01.jpeg" alt="The Painting Collection" style="width:100%;height:100%;object-fit:cover;transition:transform .5s" style-hover="transform:scale(1.06);opacity:.85">
         <div style="position:absolute;bottom:0;left:0;right:0;padding:16px;background:linear-gradient(180deg,transparent,rgba(0,0,0,.55));color:#fff">
