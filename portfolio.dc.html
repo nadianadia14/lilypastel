@@ -359,8 +359,6 @@ a:hover{color:#8a4a24}
   </div>
 </sc-if>
 
-</div>
-
 </x-dc>
 <script type="text/x-dc" data-dc-script>
 const TRANSLATIONS = {
@@ -490,7 +488,7 @@ class Component extends DCLogic {
   toggleDark = () => this.setState(s => { const v = !s.dark; localStorage.setItem('lp-theme', v ? 'dark' : 'light'); return { dark: v }; });
   onLangChange = e => { const v = e.target.value; localStorage.setItem('lp-lang', v); this.setState({ lang: v }); };
   scrollToTop = () => window.scrollTo({ top: 0, behavior: 'smooth' });
-  openBooking = () => { window.scrollTo(0, 0); this.setState({ isBookingOpen: true, isMenuOpen: false, bookingSent: false }); };
+  openBooking = () => this.setState({ isBookingOpen: true, isMenuOpen: false, bookingSent: false });
   closeBooking = () => this.setState({ isBookingOpen: false });
   stopClick = e => e.stopPropagation();
   submitBooking = e => {

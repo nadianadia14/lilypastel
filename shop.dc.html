@@ -203,6 +203,9 @@ a:hover{color:#8a4a24}
       </sc-for>
     </div>
   </div>
+  <div style="text-align:center;margin-top:44px">
+    <button onClick="{{ openBooking }}" style="background:#7c8560;color:#fffdf8;border:none;padding:16px 34px;font-size:12.5px;letter-spacing:1.5px;cursor:pointer;transition:transform .2s,background .3s ease,opacity .2s ease" style-hover="transform:scale(1.03);background:#b9c19a;opacity:.9">{{ t.printCta }}</button>
+  </div>
 </section>
 
 <footer style="background:#f6f1eaee;backdrop-filter:blur(6px);color:rgba(36,31,26,.75);padding:40px 40px 26px">
@@ -310,7 +313,7 @@ const TRANSLATIONS = {
     shTopLabel: 'THE COLLECTION', shTitle: 'Shop the Collection', shDesc: 'Every original is one-of-one. Prefer a different size or budget? Any piece can be printed on canvas, fine-art paper or acrylic.',
     filterAll: 'ALL WORKS', filterOriginal: 'ORIGINAL PAINTINGS', filterPrinting: 'PRINTING WORKS', inquire: 'INQUIRE',
     shPrefer: 'Prefer this piece printed on canvas, fine-art paper or acrylic instead?', shSeeOptions: 'SEE PRINTING OPTIONS', shWhichPiece: 'Which piece are you interested in?',
-    printedLabel: 'SEE IT PRINTED', printedTitle: 'Printed on canvas, paper, acrylic and more...',
+    printedLabel: 'SEE IT PRINTED', printedTitle: 'Printed on canvas, paper, acrylic and more...', printCta: 'BOOK A CONSULTATION',
     footerRights: '© 2020 Lily Pastel Studio Art. All rights reserved.', footerLegal: 'Legal',
   },
   fr: {
@@ -322,7 +325,7 @@ const TRANSLATIONS = {
     shTopLabel: 'LA COLLECTION', shTitle: 'Découvrir la collection', shDesc: 'Chaque original est unique. Vous préférez une autre taille ou un autre budget ? Chaque œuvre peut être imprimée sur toile, papier d\u2019art ou acrylique.',
     filterAll: 'TOUTES LES ŒUVRES', filterOriginal: 'PEINTURES ORIGINALES', filterPrinting: 'IMPRESSIONS', inquire: 'DEMANDER',
     shPrefer: 'Vous préférez cette œuvre imprimée sur toile, papier d\u2019art ou acrylique ?', shSeeOptions: 'VOIR LES OPTIONS D\u2019IMPRESSION', shWhichPiece: 'Quelle œuvre vous intéresse ?',
-    printedLabel: 'À VOIR IMPRIMÉ', printedTitle: 'Imprimé sur toile, papier, plexiglas et plus...',
+    printedLabel: 'À VOIR IMPRIMÉ', printedTitle: 'Imprimé sur toile, papier, plexiglas et plus...', printCta: 'RÉSERVER UNE CONSULTATION',
     footerRights: '© 2020 Lily Pastel Studio Art. Tous droits réservés.', footerLegal: 'Mentions légales',
   },
   es: {
@@ -334,7 +337,7 @@ const TRANSLATIONS = {
     shTopLabel: 'LA COLECCIÓN', shTitle: 'Compra la colección', shDesc: 'Cada original es único. ¿Prefieres otro tamaño o presupuesto? Cualquier obra puede imprimirse en lienzo, papel de arte o acrílico.',
     filterAll: 'TODAS LAS OBRAS', filterOriginal: 'PINTURAS ORIGINALES', filterPrinting: 'IMPRESIONES', inquire: 'CONSULTAR',
     shPrefer: '¿Prefieres esta obra impresa en lienzo, papel de arte o acrílico?', shSeeOptions: 'VER OPCIONES DE IMPRESIÓN', shWhichPiece: '¿Qué obra te interesa?',
-    printedLabel: 'VERLO IMPRESO', printedTitle: 'Impreso en lienzo, papel, acrílico y más...',
+    printedLabel: 'VERLO IMPRESO', printedTitle: 'Impreso en lienzo, papel, acrílico y más...', printCta: 'RESERVAR UNA CONSULTA',
     footerRights: '© 2020 Lily Pastel Studio Art. Todos los derechos reservados.', footerLegal: 'Legal',
   },
 };
@@ -374,8 +377,8 @@ class Component extends DCLogic {
   toggleDark = () => this.setState(s => { const v = !s.dark; localStorage.setItem('lp-theme', v ? 'dark' : 'light'); return { dark: v }; });
   onLangChange = e => { const v = e.target.value; localStorage.setItem('lp-lang', v); this.setState({ lang: v }); };
   scrollToTop = () => window.scrollTo({ top: 0, behavior: 'smooth' });
-  openBooking = () => { window.scrollTo(0, 0); this.setState({ isBookingOpen: true, isMenuOpen: false, bookingSent: false, inquirePainting: '' }); };
-  openBookingFor = name => { window.scrollTo(0, 0); this.setState({ isBookingOpen: true, isMenuOpen: false, bookingSent: false, inquirePainting: name }); };
+  openBooking = () => this.setState({ isBookingOpen: true, isMenuOpen: false, bookingSent: false, inquirePainting: '' });
+  openBookingFor = name => this.setState({ isBookingOpen: true, isMenuOpen: false, bookingSent: false, inquirePainting: name });
   onPaintingChange = e => this.setState({ inquirePainting: e.target.value });
   fillEmailDomain = domain => {
     const el = document.getElementById('shop-booking-email');

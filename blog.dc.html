@@ -269,7 +269,7 @@ class Component extends DCLogic {
       "It's not a passing trend we're chasing lightly, we've started building it into our standard palette because the requests keep coming, and because, honestly, it's some of the most satisfying work we've made all year."
     ] },
   ];
-  openArticle = e => { window.scrollTo(0, 0); this.setState({ isArticleOpen: true, articleIndex: parseInt(e.currentTarget.dataset.i, 10) }); };
+  openArticle = e => this.setState({ isArticleOpen: true, articleIndex: parseInt(e.currentTarget.dataset.i, 10) });
   closeArticle = () => this.setState({ isArticleOpen: false });
   componentDidMount() {
     this.mq = window.matchMedia('(min-width:1200px)');
@@ -287,7 +287,7 @@ class Component extends DCLogic {
   toggleDark = () => this.setState(s => { const v = !s.dark; localStorage.setItem('lp-theme', v ? 'dark' : 'light'); return { dark: v }; });
   onLangChange = e => { const v = e.target.value; localStorage.setItem('lp-lang', v); this.setState({ lang: v }); };
   scrollToTop = () => window.scrollTo({ top: 0, behavior: 'smooth' });
-  openBooking = () => { window.scrollTo(0, 0); this.setState({ isBookingOpen: true, isMenuOpen: false, bookingSent: false }); };
+  openBooking = () => this.setState({ isBookingOpen: true, isMenuOpen: false, bookingSent: false });
   closeBooking = () => this.setState({ isBookingOpen: false });
   stopClick = e => e.stopPropagation();
   submitBooking = e => {
