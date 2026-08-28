@@ -41,8 +41,8 @@ a:hover{color:#8a4a24}
       <a href="shop.dc.html" style="color:#241f1a;display:inline-block;transition:transform .25s ease,opacity .25s ease" style-hover="transform:scale(1.1);opacity:.6">{{ t.navShop }}</a>
       <a href="commissions.dc.html" style="color:#241f1a;display:inline-block;transition:transform .25s ease,opacity .25s ease" style-hover="transform:scale(1.1);opacity:.6">{{ t.navCommissions }}</a>
       <a href="experience.dc.html" style="color:#b5622f;display:inline-block;transition:transform .25s ease,opacity .25s ease" style-hover="transform:scale(1.1);opacity:.6">{{ t.navExperience }}</a>
-      <a href="about.dc.html" style="color:#241f1a;display:inline-block;transition:transform .25s ease,opacity .25s ease" style-hover="transform:scale(1.1);opacity:.6">{{ t.navAbout }}</a>
       <a href="blog.dc.html" style="color:#241f1a;display:inline-block;transition:transform .25s ease,opacity .25s ease" style-hover="transform:scale(1.1);opacity:.6">{{ t.navBlog }}</a>
+      <a href="about.dc.html" style="color:#241f1a;display:inline-block;transition:transform .25s ease,opacity .25s ease" style-hover="transform:scale(1.1);opacity:.6">{{ t.navAbout }}</a>
       <a href="contact.dc.html" style="color:#241f1a;display:inline-block;transition:transform .25s ease,opacity .25s ease" style-hover="transform:scale(1.1);opacity:.6">{{ t.navContact }}</a>
     </nav>
     <div id="site-header-controls" style="display:flex;align-items:center;gap:14px">
@@ -73,8 +73,8 @@ a:hover{color:#8a4a24}
       <a href="shop.dc.html">{{ t.navShop }}</a>
       <a href="commissions.dc.html">{{ t.navCommissions }}</a>
       <a href="experience.dc.html">{{ t.navExperience }}</a>
-      <a href="about.dc.html">{{ t.navAbout }}</a>
       <a href="blog.dc.html">{{ t.navBlog }}</a>
+      <a href="about.dc.html">{{ t.navAbout }}</a>
       <a href="faq.dc.html">{{ t.navFaq }}</a>
       <a href="contact.dc.html">{{ t.navContact }}</a>
       <button onClick="{{ openBooking }}" style="background:#7c8560;color:#241f1a;border:none;padding:13px;font-size:12px;letter-spacing:1.5px;cursor:pointer;transition:background .3s ease,opacity .3s ease,transform .2s ease" style-hover="background:#b9c19a;opacity:.88;transform:scale(1.05)">{{ t.bookBtn }}</button>
@@ -87,7 +87,7 @@ a:hover{color:#8a4a24}
     <div style="font-size:12px;letter-spacing:4px;color:#b5622f;margin-bottom:18px">{{ t.heroLabel }}</div>
     <h1 style="font-family:'Playfair Display',serif;font-weight:500;font-size:clamp(30px,5vw,42px);color:#241f1a;margin:0 0 18px;line-height:1.2">{{ t.heroTitle }}</h1>
     <p style="font-size:15px;line-height:1.85;color:rgba(36,31,26,.68);margin:0 0 28px">{{ t.heroTagline }}</p>
-    <button onClick="{{ openBooking }}" style="display:inline-block;background:#b5622f;color:#fffdf8;border:none;padding:15px 32px;font-size:12.5px;letter-spacing:1.5px;cursor:pointer;transition:background .2s,transform .2s ease,opacity .2s ease" style-hover="background:#8a4a24;transform:scale(1.05);opacity:.85">{{ t.bookPrivateBtn }}</button>
+    <button onClick="{{ openPrivateBooking }}" style="display:inline-block;background:#b5622f;color:#fffdf8;border:none;padding:15px 32px;font-size:12.5px;letter-spacing:1.5px;cursor:pointer;transition:background .2s,transform .2s ease,opacity .2s ease" style-hover="background:#8a4a24;transform:scale(1.05);opacity:.85">{{ t.bookPrivateBtn }}</button>
   </div>
   <div style="max-width:900px;margin:0 auto;aspect-ratio:16/9;overflow:hidden">
     <img src="assets/art-experience-hero.jpeg" alt="Lily Pastel Art Experience, guests painting at sunset" style="width:100%;height:100%;object-fit:cover;object-position:50% 45%">
@@ -113,36 +113,30 @@ a:hover{color:#8a4a24}
     <div style="text-align:center;margin-bottom:44px">
       <div style="font-size:12px;letter-spacing:3px;color:#b5622f">{{ t.experienceLabel }}</div>
     </div>
-    <div id="experience-grid" style="display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(36,31,26,.12);border:1px solid rgba(36,31,26,.12)">
-      <div style="background:#fffdf8;padding:34px 26px;border-top:3px solid #b5622f">
-        <div style="font-size:11px;letter-spacing:1px;color:#b5622f;font-weight:600;margin-bottom:14px">01</div>
-        <div style="font-family:'Playfair Display',serif;font-size:14px;letter-spacing:2px;color:#b5622f;margin-bottom:10px">{{ t.step1Title }}</div>
-        <p style="font-size:13.5px;line-height:1.8;color:rgba(36,31,26,.68);margin:0">{{ t.step1DescA }} <strong style="font-weight:600">{{ t.step1DescBold }}</strong>{{ t.step1DescB }}</p>
+    <div style="max-width:760px;margin:0 auto;display:flex;flex-direction:column;gap:36px">
+      <div style="display:flex;gap:22px;align-items:baseline">
+        <span style="font-size:12px;letter-spacing:1px;color:#b5622f;font-weight:600;flex:none;width:22px">01</span>
+        <p style="margin:0;font-size:14.5px;line-height:1.8;color:rgba(36,31,26,.75)"><span style="font-family:'Playfair Display',serif;font-size:16px;letter-spacing:1.5px;color:#241f1a">{{ t.step1Title }}</span> — {{ t.step1DescA }} <strong style="font-weight:600">{{ t.step1DescBold }}</strong>{{ t.step1DescB }}</p>
       </div>
-      <div style="background:#fffdf8;padding:34px 26px;border-top:3px solid #7c8560">
-        <div style="font-size:11px;letter-spacing:1px;color:#7c8560;font-weight:600;margin-bottom:14px">02</div>
-        <div style="font-family:'Playfair Display',serif;font-size:14px;letter-spacing:2px;color:#7c8560;margin-bottom:10px">{{ t.step2Title }}</div>
-        <p style="font-size:13.5px;line-height:1.8;color:rgba(36,31,26,.68);margin:0">{{ t.step2Desc }}</p>
+      <div style="display:flex;gap:22px;align-items:baseline">
+        <span style="font-size:12px;letter-spacing:1px;color:#7c8560;font-weight:600;flex:none;width:22px">02</span>
+        <p style="margin:0;font-size:14.5px;line-height:1.8;color:rgba(36,31,26,.75)"><span style="font-family:'Playfair Display',serif;font-size:16px;letter-spacing:1.5px;color:#241f1a">{{ t.step2Title }}</span> — {{ t.step2Desc }}</p>
       </div>
-      <div style="background:#fffdf8;padding:34px 26px;border-top:3px solid #a67c3d">
-        <div style="font-size:11px;letter-spacing:1px;color:#a67c3d;font-weight:600;margin-bottom:14px">03</div>
-        <div style="font-family:'Playfair Display',serif;font-size:14px;letter-spacing:2px;color:#a67c3d;margin-bottom:10px">{{ t.step3Title }}</div>
-        <p style="font-size:13.5px;line-height:1.8;color:rgba(36,31,26,.68);margin:0">{{ t.step3Desc }}</p>
+      <div style="display:flex;gap:22px;align-items:baseline">
+        <span style="font-size:12px;letter-spacing:1px;color:#a67c3d;font-weight:600;flex:none;width:22px">03</span>
+        <p style="margin:0;font-size:14.5px;line-height:1.8;color:rgba(36,31,26,.75)"><span style="font-family:'Playfair Display',serif;font-size:16px;letter-spacing:1.5px;color:#241f1a">{{ t.step3Title }}</span> — {{ t.step3Desc }}</p>
       </div>
-      <div style="background:#fffdf8;padding:34px 26px;border-top:3px solid #b5622f">
-        <div style="font-size:11px;letter-spacing:1px;color:#b5622f;font-weight:600;margin-bottom:14px">04</div>
-        <div style="font-family:'Playfair Display',serif;font-size:14px;letter-spacing:2px;color:#b5622f;margin-bottom:10px">{{ t.step4Title }}</div>
-        <p style="font-size:13.5px;line-height:1.8;color:rgba(36,31,26,.68);margin:0">{{ t.step4Desc }}</p>
+      <div style="display:flex;gap:22px;align-items:baseline">
+        <span style="font-size:12px;letter-spacing:1px;color:#b5622f;font-weight:600;flex:none;width:22px">04</span>
+        <p style="margin:0;font-size:14.5px;line-height:1.8;color:rgba(36,31,26,.75)"><span style="font-family:'Playfair Display',serif;font-size:16px;letter-spacing:1.5px;color:#241f1a">{{ t.step4Title }}</span> — {{ t.step4Desc }}</p>
       </div>
-      <div style="background:#fffdf8;padding:34px 26px;border-top:3px solid #7c8560">
-        <div style="font-size:11px;letter-spacing:1px;color:#7c8560;font-weight:600;margin-bottom:14px">05</div>
-        <div style="font-family:'Playfair Display',serif;font-size:14px;letter-spacing:2px;color:#7c8560;margin-bottom:10px">{{ t.step5Title }}</div>
-        <p style="font-size:13.5px;line-height:1.8;color:rgba(36,31,26,.68);margin:0">{{ t.step5Desc }}</p>
+      <div style="display:flex;gap:22px;align-items:baseline">
+        <span style="font-size:12px;letter-spacing:1px;color:#7c8560;font-weight:600;flex:none;width:22px">05</span>
+        <p style="margin:0;font-size:14.5px;line-height:1.8;color:rgba(36,31,26,.75)"><span style="font-family:'Playfair Display',serif;font-size:16px;letter-spacing:1.5px;color:#241f1a">{{ t.step5Title }}</span> — {{ t.step5Desc }}</p>
       </div>
-      <div style="background:#fffdf8;padding:34px 26px;border-top:3px solid #a67c3d">
-        <div style="font-size:11px;letter-spacing:1px;color:#a67c3d;font-weight:600;margin-bottom:14px">06</div>
-        <div style="font-family:'Playfair Display',serif;font-size:14px;letter-spacing:2px;color:#a67c3d;margin-bottom:10px">{{ t.step6Title }}</div>
-        <p style="font-size:13.5px;line-height:1.8;color:rgba(36,31,26,.68);margin:0">{{ t.step6Desc }}</p>
+      <div style="display:flex;gap:22px;align-items:baseline">
+        <span style="font-size:12px;letter-spacing:1px;color:#a67c3d;font-weight:600;flex:none;width:22px">06</span>
+        <p style="margin:0;font-size:14.5px;line-height:1.8;color:rgba(36,31,26,.75)"><span style="font-family:'Playfair Display',serif;font-size:16px;letter-spacing:1.5px;color:#241f1a">{{ t.step6Title }}</span> — {{ t.step6Desc }}</p>
       </div>
     </div>
   </div>
@@ -185,13 +179,12 @@ a:hover{color:#8a4a24}
   </div>
 </section>
 
-<section style="background:#7c8560;padding:90px 40px;text-align:center">
-  <div style="max-width:720px;margin:0 auto">
-    <h2 style="font-family:'Playfair Display',serif;font-weight:500;font-size:clamp(26px,5vw,34px);margin:0 0 20px;color:#fffdf8;line-height:1.3">{{ t.gatherTitle }}</h2>
-    <p style="font-size:15px;line-height:1.85;color:rgba(255,253,248,.85);margin:0 0 18px">{{ t.gatherP1a }} <strong style="font-weight:600">{{ t.gatherP1bold }}</strong>.</p>
-    <div style="font-size:12.5px;letter-spacing:.5px;line-height:1.9;color:rgba(255,253,248,.75);margin:0 0 24px">{{ t.gatherOccasions }}</div>
-    <p style="font-size:15px;line-height:1.85;color:rgba(255,253,248,.85);margin:0 0 18px">{{ t.gatherP2 }}</p>
-    <p style="font-family:'Playfair Display',serif;font-weight:500;font-size:16px;color:#d9c4a3;margin:0">{{ t.gatherQuote }}</p>
+<section style="background:#7c8560;padding:140px 40px;text-align:center">
+  <div style="max-width:820px;margin:0 auto">
+    <h2 style="font-family:'Playfair Display',serif;font-weight:500;font-size:clamp(30px,6vw,42px);margin:0 0 26px;color:#fffdf8;line-height:1.3">{{ t.gatherTitle }}</h2>
+    <p style="font-size:17px;line-height:1.9;color:rgba(255,253,248,.85);margin:0 0 22px">{{ t.gatherP1a }} <strong style="font-weight:600">{{ t.gatherP1bold }}</strong>.</p>
+    <div style="font-size:13.5px;letter-spacing:.5px;line-height:2;color:rgba(255,253,248,.75);margin:0 0 28px">{{ t.gatherOccasions }}</div>
+    <p style="font-size:17px;line-height:1.9;color:rgba(255,253,248,.85);margin:0">{{ t.gatherP2a }} <strong style="font-weight:600">{{ t.gatherP2bold1 }}</strong> {{ t.gatherP2mid }} <strong style="font-weight:600">{{ t.gatherP2bold2 }}</strong>{{ t.gatherP2b }} <strong style="font-weight:600">{{ t.gatherP2bold3 }}</strong>.</p>
   </div>
 </section>
 
@@ -207,13 +200,20 @@ a:hover{color:#8a4a24}
     </div>
   </div>
   <div style="max-width:1200px;margin:0 auto">
-    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:1px;background:rgba(36,31,26,.15);border:1px solid rgba(36,31,26,.15);margin-bottom:24px">
-      <div style="background:#fffdf8;padding:20px;font-size:13px;color:rgba(36,31,26,.72);border-top:3px solid #b5622f">{{ t.colorNightItem1 }}</div>
-      <div style="background:#fffdf8;padding:20px;font-size:13px;color:rgba(36,31,26,.72);border-top:3px solid #7c8560">{{ t.colorNightItem2 }}</div>
-      <div style="background:#fffdf8;padding:20px;font-size:13px;color:rgba(36,31,26,.72);border-top:3px solid #a67c3d">{{ t.colorNightItem3 }}</div>
-      <div style="background:#fffdf8;padding:20px;font-size:13px;color:rgba(36,31,26,.72);border-top:3px solid #b5622f">{{ t.colorNightItem4 }}</div>
+    <div style="display:flex;gap:24px;justify-content:center;flex-wrap:wrap;margin-bottom:24px">
+      <div style="width:172px;height:172px;border-radius:50%;background:#b5622f;box-shadow:0 14px 30px rgba(181,98,47,.35);display:flex;align-items:center;justify-content:center;text-align:center;padding:22px;transition:transform .35s cubic-bezier(.34,1.56,.64,1),box-shadow .35s ease" style-hover="transform:translateY(-8px) rotate(-2deg) scale(1.05);box-shadow:0 20px 36px rgba(181,98,47,.45)">
+        <span style="font-size:15px;font-weight:600;letter-spacing:.2px;color:#fffdf8;line-height:1.45">{{ t.colorNightItem1 }}</span>
+      </div>
+      <div style="width:172px;height:172px;border-radius:50%;background:#7c8560;box-shadow:0 14px 30px rgba(124,133,96,.35);display:flex;align-items:center;justify-content:center;text-align:center;padding:22px;transition:transform .35s cubic-bezier(.34,1.56,.64,1),box-shadow .35s ease" style-hover="transform:translateY(-8px) rotate(2deg) scale(1.05);box-shadow:0 20px 36px rgba(124,133,96,.45)">
+        <span style="font-size:15px;font-weight:600;letter-spacing:.2px;color:#fffdf8;line-height:1.45">{{ t.colorNightItem2 }}</span>
+      </div>
+      <div style="width:172px;height:172px;border-radius:50%;background:#8a4a24;box-shadow:0 14px 30px rgba(138,74,36,.35);display:flex;align-items:center;justify-content:center;text-align:center;padding:22px;transition:transform .35s cubic-bezier(.34,1.56,.64,1),box-shadow .35s ease" style-hover="transform:translateY(-8px) rotate(-2deg) scale(1.05);box-shadow:0 20px 36px rgba(138,74,36,.45)">
+        <span style="font-size:15px;font-weight:600;letter-spacing:.2px;color:#fffdf8;line-height:1.45">{{ t.colorNightItem3 }}</span>
+      </div>
+      <div style="width:172px;height:172px;border-radius:50%;background:#a67c3d;box-shadow:0 14px 30px rgba(166,124,61,.35);display:flex;align-items:center;justify-content:center;text-align:center;padding:22px;transition:transform .35s cubic-bezier(.34,1.56,.64,1),box-shadow .35s ease" style-hover="transform:translateY(-8px) rotate(2deg) scale(1.05);box-shadow:0 20px 36px rgba(166,124,61,.45)">
+        <span style="font-size:15px;font-weight:600;letter-spacing:.2px;color:#fffdf8;line-height:1.45">{{ t.colorNightItem4 }}</span>
+      </div>
     </div>
-    <p style="font-size:14px;color:rgba(36,31,26,.6);margin:0"><strong style="font-weight:600">{{ t.colorNightBottomBold }}</strong> {{ t.colorNightBottomRest }}</p>
   </div>
 </section>
 
@@ -222,7 +222,7 @@ a:hover{color:#8a4a24}
     <h2 style="font-family:'Playfair Display',serif;font-weight:500;font-size:clamp(24px,5vw,30px);margin:0 0 14px;color:#fffdf8">{{ t.finalCtaTitle }}</h2>
     <p style="font-family:'Playfair Display',serif;font-weight:500;font-size:15px;color:#d9c4a3;margin:0 0 16px">{{ t.finalCtaSubtitle }}</p>
     <p style="font-size:14.5px;line-height:1.8;color:rgba(255,253,248,.7);margin:0 0 28px">{{ t.finalCtaDescA }} <strong style="font-weight:600">{{ t.finalCtaDescBold }}</strong>.</p>
-    <button onClick="{{ openBooking }}" style="display:inline-block;background:#d9c4a3;color:#241f1a;border:none;padding:17px 34px;font-size:12.5px;letter-spacing:1.5px;cursor:pointer;transition:transform .2s,opacity .2s ease" style-hover="transform:scale(1.03);opacity:.85">{{ t.bookPrivateBtn }}</button>
+    <button onClick="{{ openPrivateBooking }}" style="display:inline-block;background:#d9c4a3;color:#241f1a;border:none;padding:17px 34px;font-size:12.5px;letter-spacing:1.5px;cursor:pointer;transition:transform .2s,opacity .2s ease" style-hover="transform:scale(1.03);opacity:.85">{{ t.bookPrivateBtn }}</button>
   </div>
 </section>
 
@@ -239,12 +239,17 @@ a:hover{color:#8a4a24}
 <button onClick="{{ scrollToTop }}" aria-label="Back to top" style="position:fixed;bottom:24px;right:24px;width:46px;height:46px;border-radius:50%;background:#241f1a;color:#fffdf8;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 14px rgba(36,31,26,.25);z-index:40;transition:transform .2s ease,background .2s ease,opacity .2s ease" style-hover="transform:scale(1.08);background:#7c8560;opacity:.85">
   <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="19" x2="12" y2="5"></line><polyline points="5 12 12 5 19 12"></polyline></svg>
 </button>
-<button onClick="{{ openBooking }}" style="display:{{ floatingCtaDisplay }};position:fixed;bottom:24px;left:24px;background:#b5622f;color:#fffdf8;border:none;padding:15px 28px;font-size:12px;letter-spacing:1.5px;cursor:pointer;box-shadow:0 4px 14px rgba(36,31,26,.25);z-index:40;transition:transform .2s ease,background .2s ease" style-hover="transform:scale(1.05);background:#8a4a24">{{ t.bookPrivateBtn }}</button>
+<button onClick="{{ openPrivateBooking }}" style="display:{{ floatingCtaDisplay }};position:fixed;bottom:24px;left:24px;background:#b5622f;color:#fffdf8;border:none;padding:15px 28px;font-size:12px;letter-spacing:1.5px;cursor:pointer;box-shadow:0 4px 14px rgba(36,31,26,.25);z-index:40;transition:transform .2s ease,background .2s ease" style-hover="transform:scale(1.05);background:#8a4a24">{{ t.bookPrivateBtn }}</button>
 
 <sc-if value="{{ isBookingOpen }}" hint-placeholder-val="{{ false }}">
   <div style="position:fixed;inset:0;background:rgba(36,31,26,.6);display:flex;align-items:center;justify-content:center;z-index:100;padding:20px" onClick="{{ closeBooking }}">
-    <div style="background:#fffdf8;max-width:440px;width:100%;padding:40px;position:relative" onClick="{{ stopClick }}">
-      <button onClick="{{ closeBooking }}" style="position:absolute;top:14px;right:16px;background:none;border:none;font-size:20px;cursor:pointer;color:#241f1a;transition:color .3s ease,opacity .3s ease,transform .2s ease" style-hover="color:#b5622f;opacity:.7;transform:scale(1.05)">×</button>
+    <div style="background:#fffdf8;max-width:440px;width:100%;box-sizing:border-box;position:relative;max-height:92vh;overflow:auto;border-radius:16px;overflow:hidden;box-shadow:0 30px 60px rgba(36,31,26,.35)" onClick="{{ stopClick }}">
+      <div style="background:#7c8560;padding:26px 30px 22px">
+        <button onClick="{{ closeBooking }}" style="position:absolute;top:14px;right:16px;background:none;border:none;font-size:20px;cursor:pointer;color:#fffdf8;transition:opacity .3s ease,transform .2s ease" style-hover="opacity:.7;transform:scale(1.05)">×</button>
+        <div style="font-size:11px;letter-spacing:3px;color:rgba(255,253,248,.75);margin-bottom:10px">{{ t.heroLabel }}</div>
+        <div style="font-family:'Playfair Display',serif;font-size:22px;color:#fffdf8">{{ t.bookTitle }}</div>
+      </div>
+      <div style="padding:28px 24px">
       <sc-if value="{{ bookingSent }}" hint-placeholder-val="{{ false }}">
         <div style="text-align:center;padding:30px 0">
           <div style="font-family:'Playfair Display',serif;font-size:22px;margin-bottom:10px">{{ t.thanksTitle }}</div>
@@ -252,11 +257,10 @@ a:hover{color:#8a4a24}
         </div>
       </sc-if>
       <sc-if value="{{ notBookingSent }}" hint-placeholder-val="{{ true }}">
-        <div style="font-family:'Playfair Display',serif;font-size:22px;margin-bottom:6px">{{ t.bookTitle }}</div>
         <p style="font-size:13px;color:rgba(36,31,26,.6);margin:0 0 22px">{{ t.bookDesc }}</p>
-        <form onSubmit="{{ submitBooking }}" style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
-          <input required="" type="text" placeholder="{{ t.formName }}" style="grid-column:span 1;border:1px solid rgba(36,31,26,.2);padding:12px;font-size:13px;font-family:'Jost',sans-serif">
-          <input required="" type="email" placeholder="{{ t.formEmail }}" style="grid-column:span 1;border:1px solid rgba(36,31,26,.2);padding:12px;font-size:13px;font-family:'Jost',sans-serif">
+        <form onSubmit="{{ submitBooking }}" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:12px">
+          <input name="name" required="" type="text" placeholder="{{ t.formName }}" style="grid-column:span 1;border:1px solid rgba(36,31,26,.2);padding:12px;font-size:13px;font-family:'Jost',sans-serif">
+          <input name="email" required="" type="email" placeholder="{{ t.formEmail }}" style="grid-column:span 1;border:1px solid rgba(36,31,26,.2);padding:12px;font-size:13px;font-family:'Jost',sans-serif">
           <div style="grid-column:span 1;display:flex;gap:6px">
             <select style="flex:none;width:84px;border:1px solid rgba(36,31,26,.2);padding:12px 4px;font-size:12px;font-family:'Jost',sans-serif;color:#241f1a;background:#fffdf8">
               <option value="+1">🇺🇸 +1</option>
@@ -274,9 +278,9 @@ a:hover{color:#8a4a24}
               <option value="+52">🇲🇽 +52</option>
               <option value="+55">🇧🇷 +55</option>
             </select>
-            <input type="tel" placeholder="{{ t.formPhone }}" style="flex:1;min-width:0;border:1px solid rgba(36,31,26,.2);padding:12px;font-size:13px;font-family:'Jost',sans-serif">
+            <input name="phone" type="tel" placeholder="{{ t.formPhone }}" style="flex:1;min-width:0;border:1px solid rgba(36,31,26,.2);padding:12px;font-size:13px;font-family:'Jost',sans-serif">
           </div>
-          <select style="grid-column:span 1;border:1px solid rgba(36,31,26,.2);padding:12px;font-size:13px;font-family:'Jost',sans-serif;color:#241f1a;background:#fffdf8">
+          <select name="painting" style="grid-column:span 1;border:1px solid rgba(36,31,26,.2);padding:12px;font-size:13px;font-family:'Jost',sans-serif;color:#241f1a;background:#fffdf8">
             <option value="">{{ t.formPaintingPlaceholder }}</option>
             <option>Peace by Piece</option>
             <option>Aurora</option>
@@ -287,7 +291,7 @@ a:hover{color:#8a4a24}
             <option>Oh Gold</option>
             <option>Elemental</option>
           </select>
-          <select style="grid-column:1 / -1;border:1px solid rgba(36,31,26,.2);padding:12px;font-size:13px;font-family:'Jost',sans-serif;color:#241f1a;background:#fffdf8">
+          <select name="size" style="grid-column:1 / -1;border:1px solid rgba(36,31,26,.2);padding:12px;font-size:13px;font-family:'Jost',sans-serif;color:#241f1a;background:#fffdf8">
             <option value="">{{ t.formSizePlaceholder }}</option>
             <option>16 × 20 in</option>
             <option>24 × 30 in</option>
@@ -295,10 +299,76 @@ a:hover{color:#8a4a24}
             <option>40 × 60 in</option>
             <option>48 × 72 in</option>
           </select>
-          <textarea placeholder="{{ t.formMsg }}" rows="3" style="grid-column:1 / -1;border:1px solid rgba(36,31,26,.2);padding:12px;font-size:13px;font-family:'Jost',sans-serif;resize:vertical"></textarea>
+          <textarea name="message" placeholder="{{ t.formMsg }}" rows="3" style="grid-column:1 / -1;border:1px solid rgba(36,31,26,.2);padding:12px;font-size:13px;font-family:'Jost',sans-serif;resize:vertical"></textarea>
           <button type="submit" style="grid-column:1 / -1;background:#7c8560;color:#241f1a;border:none;padding:14px;font-size:13px;letter-spacing:1.5px;cursor:pointer;margin-top:6px;transition:background .3s ease,opacity .3s ease,transform .2s ease" style-hover="background:#b9c19a;opacity:.88;transform:scale(1.05)">{{ t.formSend }}</button>
         </form>
       </sc-if>
+      </div>
+    </div>
+  </div>
+</sc-if>
+
+<sc-if value="{{ isPrivateBookingOpen }}" hint-placeholder-val="{{ false }}">
+  <div style="position:fixed;inset:0;background:rgba(36,31,26,.6);display:flex;align-items:center;justify-content:center;z-index:100;padding:20px" onClick="{{ closePrivateBooking }}">
+    <div style="background:#fffdf8;max-width:760px;width:100%;box-sizing:border-box;position:relative;max-height:92vh;overflow:auto;border-radius:18px;display:grid;grid-template-columns:minmax(0,0.85fr) minmax(0,1.15fr);box-shadow:0 30px 60px rgba(36,31,26,.35)" onClick="{{ stopClick }}">
+      <div style="background:#b5622f;padding:40px 30px;display:flex;flex-direction:column;justify-content:center;border-radius:18px 0 0 18px">
+        <div style="font-size:11px;letter-spacing:3px;color:rgba(255,253,248,.75);margin-bottom:14px">{{ t.heroLabel }}</div>
+        <div style="font-family:'Playfair Display',serif;font-size:26px;color:#fffdf8;margin-bottom:14px;line-height:1.3">{{ t.bookPrivateBtn }}</div>
+        <p style="font-size:13.5px;color:rgba(255,253,248,.85);line-height:1.7;margin:0">{{ t.privateBookDesc }}</p>
+      </div>
+      <div style="padding:36px 28px;box-sizing:border-box">
+      <button onClick="{{ closePrivateBooking }}" style="position:absolute;top:14px;right:16px;background:none;border:none;font-size:20px;cursor:pointer;color:#241f1a;transition:color .3s ease,opacity .3s ease,transform .2s ease" style-hover="color:#b5622f;opacity:.7;transform:scale(1.05)">×</button>
+      <sc-if value="{{ privateBookingSent }}" hint-placeholder-val="{{ false }}">
+        <div style="text-align:center;padding:30px 0">
+          <div style="font-family:'Playfair Display',serif;font-size:22px;margin-bottom:10px">{{ t.thanksTitle }}</div>
+          <p style="font-size:14px;color:rgba(36,31,26,.7)">{{ t.thanksDesc }}</p>
+        </div>
+      </sc-if>
+      <sc-if value="{{ notPrivateBookingSent }}" hint-placeholder-val="{{ true }}">
+        <form onSubmit="{{ submitPrivateBooking }}" style="display:grid;grid-template-columns:1fr;gap:12px">
+          <input name="name" required="" type="text" placeholder="{{ t.formName }}" style="grid-column:span 1;border:1px solid rgba(36,31,26,.2);padding:12px;font-size:13px;font-family:'Jost',sans-serif">
+          <input name="email" required="" type="email" placeholder="{{ t.formEmail }}" style="grid-column:span 1;border:1px solid rgba(36,31,26,.2);padding:12px;font-size:13px;font-family:'Jost',sans-serif">
+          <div style="grid-column:span 1;display:flex;gap:6px">
+            <select style="flex:none;width:84px;border:1px solid rgba(36,31,26,.2);padding:12px 4px;font-size:12px;font-family:'Jost',sans-serif;color:#241f1a;background:#fffdf8">
+              <option value="+1">🇺🇸 +1</option>
+              <option value="+1ca">🇨🇦 +1</option>
+              <option value="+33">🇫🇷 +33</option>
+              <option value="+34">🇪🇸 +34</option>
+              <option value="+44">🇬🇧 +44</option>
+              <option value="+49">🇩🇪 +49</option>
+              <option value="+39">🇮🇹 +39</option>
+              <option value="+212">🇲🇦 +212</option>
+              <option value="+213">🇩🇿 +213</option>
+              <option value="+216">🇹🇳 +216</option>
+              <option value="+61">🇦🇺 +61</option>
+              <option value="+81">🇯🇵 +81</option>
+              <option value="+52">🇲🇽 +52</option>
+              <option value="+55">🇧🇷 +55</option>
+            </select>
+            <input name="phone" type="tel" placeholder="{{ t.formPhone }}" style="flex:1;min-width:0;border:1px solid rgba(36,31,26,.2);padding:12px;font-size:13px;font-family:'Jost',sans-serif">
+          </div>
+          <select name="guests" style="grid-column:span 1;border:1px solid rgba(36,31,26,.2);padding:12px;font-size:13px;font-family:'Jost',sans-serif;color:#241f1a;background:#fffdf8">
+            <option value="">{{ t.formGuestsPlaceholder }}</option>
+            <option>2 – 4</option>
+            <option>5 – 8</option>
+            <option>9 – 15</option>
+            <option>16+</option>
+          </select>
+          <select name="eventType" style="grid-column:1 / -1;border:1px solid rgba(36,31,26,.2);padding:12px;font-size:13px;font-family:'Jost',sans-serif;color:#241f1a;background:#fffdf8">
+            <option value="">{{ t.formEventPlaceholder }}</option>
+            <option>{{ t.formEventDinner }}</option>
+            <option>{{ t.formEventBirthday }}</option>
+            <option>{{ t.formEventGirlsNight }}</option>
+            <option>{{ t.formEventDateNight }}</option>
+            <option>{{ t.formEventBridal }}</option>
+            <option>{{ t.formEventCorporate }}</option>
+            <option>{{ t.formEventOther }}</option>
+          </select>
+          <textarea name="message" placeholder="{{ t.formPrivateMsg }}" rows="3" style="grid-column:1 / -1;border:1px solid rgba(36,31,26,.2);padding:12px;font-size:13px;font-family:'Jost',sans-serif;resize:vertical"></textarea>
+          <button type="submit" style="grid-column:1 / -1;background:#b5622f;color:#fffdf8;border:none;padding:14px;font-size:13px;letter-spacing:1.5px;cursor:pointer;margin-top:6px;transition:background .3s ease,opacity .3s ease,transform .2s ease" style-hover="background:#8a4a24;opacity:.9;transform:scale(1.05)">{{ t.formSend }}</button>
+        </form>
+      </sc-if>
+      </div>
     </div>
   </div>
 </sc-if>
@@ -310,6 +380,10 @@ const TRANSLATIONS = {
   en: {
     navHome: 'HOME', navShop: 'SHOP', navCollections: 'COLLECTION', navCommissions: 'COMMISSIONS', navExperience: 'ART EXPERIENCE', navAbout: 'ABOUT', navBlog: 'BLOG', navFaq: 'FAQ', navContact: 'CONTACT',
     bookBtn: 'BOOK A CONSULTATION', bookPrivateBtn: 'BOOK A PRIVATE EXPERIENCE',
+    privateBookDesc: "Tell us about your event and we'll get back to you to plan every detail.",
+    formGuestsPlaceholder: 'Number of guests', formEventPlaceholder: 'Type of event',
+    formEventDinner: 'Private dinner', formEventBirthday: 'Birthday', formEventGirlsNight: "Girls' night", formEventDateNight: 'Date night', formEventBridal: 'Bridal celebration', formEventCorporate: 'Corporate gathering', formEventOther: 'Other',
+    formPrivateMsg: 'Tell us about your event',
     heroLabel: 'LILY PASTEL ART EXPERIENCES', heroTitle: 'Leave with a painting. Come for the experience.', heroTagline: 'Create. Connect. Make something beautiful.',
     introLabel: 'CREATE. CONNECT. MAKE SOMETHING BEAUTIFUL.', introQuote: 'No previous experience is required. Only the invitation to begin.',
     introP1a: 'Art is more than something to behold. It is something to', introP1bold: 'feel, enter and remember',
@@ -332,7 +406,7 @@ const TRANSLATIONS = {
     gatherTitle: "Gather your people. I'll bring the art.",
     gatherP1a: 'Created for those who want to', gatherP1bold: 'celebrate with intention',
     gatherOccasions: "Private dinners · Birthdays · Girls' nights · Date nights · Bridal celebrations · Corporate gatherings · Community events · Special occasions",
-    gatherP2: 'From intimate gatherings to larger private events, each experience is tailored to your occasion, setting and aesthetic.',
+    gatherP2a: 'From', gatherP2bold1: 'intimate gatherings', gatherP2mid: 'to', gatherP2bold2: 'larger private events', gatherP2b: ', each experience is', gatherP2bold3: 'tailored to your occasion, setting and aesthetic',
     gatherQuote: "Bring your people. Set the mood. We'll create the art around you.",
     colorNightLabel: 'THE LILY PASTEL COLOR NIGHT', colorNightTitle: 'An evening devoted to color, creativity & connection.',
     colorNightP1a: 'Our signature experience invites guests into a world of', colorNightP1bold: 'curated color and artistic discovery', colorNightP1b: ', inspired by the distinctive vision of Lily Pastel.',
@@ -347,8 +421,12 @@ const TRANSLATIONS = {
     formName: 'Full name', formEmail: 'Email', formPhone: 'Phone (optional)', formMsg: 'Commission or printing, tell us more', formSend: 'SEND REQUEST', formPaintingPlaceholder: 'Which painting? (optional)', formSizePlaceholder: 'Preferred size (optional)',
   },
   fr: {
-    navHome: 'ACCUEIL', navShop: 'BOUTIQUE', navCollections: 'COLLECTION', navCommissions: 'COMMANDES', navExperience: 'ART EXPERIENCE', navAbout: 'À PROPOS', navBlog: 'BLOG', navFaq: 'FAQ', navContact: 'CONTACT',
-    bookBtn: 'RÉSERVER UNE CONSULTATION', bookPrivateBtn: 'RÉSERVER UNE EXPÉRIENCE PRIVÉE',
+    navHome: 'ACCUEIL', navShop: 'BOUTIQUE', navCollections: 'COLLECTION', navCommissions: 'COMMANDES', navExperience: 'EXPÉRIENCE ARTISTIQUE', navAbout: 'À PROPOS', navBlog: 'BLOG', navFaq: 'FAQ', navContact: 'CONTACT',
+    bookBtn: 'RÉSERVER', bookPrivateBtn: 'RÉSERVER UNE EXPÉRIENCE PRIVÉE',
+    privateBookDesc: 'Parlez-nous de votre événement, nous vous recontacterons pour planifier chaque détail.',
+    formGuestsPlaceholder: 'Nombre de personnes', formEventPlaceholder: "Type d'événement",
+    formEventDinner: 'Dîner privé', formEventBirthday: 'Anniversaire', formEventGirlsNight: 'Soirée entre amies', formEventDateNight: 'Soirée en amoureux', formEventBridal: 'Célébration de mariage', formEventCorporate: "Événement d'entreprise", formEventOther: 'Autre',
+    formPrivateMsg: 'Parlez-nous de votre événement',
     heroLabel: 'EXPÉRIENCES ARTISTIQUES LILY PASTEL', heroTitle: 'Repartez avec une peinture. Venez pour l\u2019expérience.', heroTagline: 'Créer. Se connecter. Créer quelque chose de beau.',
     introLabel: 'CRÉER. SE CONNECTER. CRÉER QUELQUE CHOSE DE BEAU.', introQuote: "Aucune expérience préalable n'est requise. Seule l'invitation à commencer compte.",
     introP1a: "L'art est plus qu'un simple objet à contempler. C'est quelque chose à", introP1bold: 'ressentir, habiter et se rappeler',
@@ -371,7 +449,7 @@ const TRANSLATIONS = {
     gatherTitle: "Rassemblez vos proches. J'apporte l'art.",
     gatherP1a: 'Conçu pour celles et ceux qui veulent', gatherP1bold: 'célébrer avec intention',
     gatherOccasions: "Dîners privés · Anniversaires · Soirées entre amies · Soirées en amoureux · Célébrations de mariage · Événements d'entreprise · Rencontres communautaires · Occasions spéciales",
-    gatherP2: "Des rassemblements intimes aux événements privés plus grands, chaque expérience est adaptée à votre occasion, votre lieu et votre esthétique.",
+    gatherP2a: 'Des', gatherP2bold1: 'rassemblements intimes', gatherP2mid: 'aux', gatherP2bold2: 'événements privés plus grands', gatherP2b: ', chaque expérience est', gatherP2bold3: 'adaptée à votre occasion, votre lieu et votre esthétique',
     gatherQuote: "Rassemblez vos proches. Créez l'ambiance. Nous créerons l'art autour de vous.",
     colorNightLabel: 'LA SOIRÉE COULEUR LILY PASTEL', colorNightTitle: 'Une soirée dédiée à la couleur, à la créativité et au lien.',
     colorNightP1a: 'Notre expérience signature invite les invités dans un monde de', colorNightP1bold: 'couleur soignée et de découverte artistique', colorNightP1b: ", inspiré par la vision distinctive de Lily Pastel.",
@@ -387,7 +465,11 @@ const TRANSLATIONS = {
   },
   es: {
     navHome: 'INICIO', navShop: 'TIENDA', navCollections: 'COLECCIÓN', navCommissions: 'ENCARGOS', navExperience: 'ART EXPERIENCE', navAbout: 'SOBRE MÍ', navBlog: 'BLOG', navFaq: 'FAQ', navContact: 'CONTACTO',
-    bookBtn: 'RESERVAR CONSULTA', bookPrivateBtn: 'RESERVAR UNA EXPERIENCIA PRIVADA',
+    bookBtn: 'RESERVAR', bookPrivateBtn: 'RESERVAR UNA EXPERIENCIA PRIVADA',
+    privateBookDesc: 'Cuéntanos sobre tu evento y te contactaremos para planificar cada detalle.',
+    formGuestsPlaceholder: 'Número de invitados', formEventPlaceholder: 'Tipo de evento',
+    formEventDinner: 'Cena privada', formEventBirthday: 'Cumpleaños', formEventGirlsNight: 'Noche entre amigas', formEventDateNight: 'Cita', formEventBridal: 'Celebración nupcial', formEventCorporate: 'Evento corporativo', formEventOther: 'Otro',
+    formPrivateMsg: 'Cuéntanos sobre tu evento',
     heroLabel: 'EXPERIENCIAS ARTÍSTICAS LILY PASTEL', heroTitle: 'Llévate una pintura. Ven por la experiencia.', heroTagline: 'Crear. Conectar. Hacer algo hermoso.',
     introLabel: 'CREAR. CONECTAR. HACER ALGO HERMOSO.', introQuote: 'No se requiere experiencia previa. Solo la invitación a comenzar.',
     introP1a: 'El arte es más que algo para contemplar. Es algo para', introP1bold: 'sentir, habitar y recordar',
@@ -410,7 +492,7 @@ const TRANSLATIONS = {
     gatherTitle: 'Reúne a tu gente. Yo traigo el arte.',
     gatherP1a: 'Creado para quienes quieren', gatherP1bold: 'celebrar con intención',
     gatherOccasions: 'Cenas privadas · Cumpleaños · Noches entre amigas · Citas · Celebraciones nupciales · Eventos corporativos · Eventos comunitarios · Ocasiones especiales',
-    gatherP2: 'Desde reuniones íntimas hasta eventos privados más grandes, cada experiencia se adapta a tu ocasión, lugar y estética.',
+    gatherP2a: 'Desde', gatherP2bold1: 'reuniones íntimas', gatherP2mid: 'hasta', gatherP2bold2: 'eventos privados más grandes', gatherP2b: ', cada experiencia se adapta a', gatherP2bold3: 'tu ocasión, lugar y estética',
     gatherQuote: 'Reúne a tu gente. Crea el ambiente. Nosotros crearemos el arte a tu alrededor.',
     colorNightLabel: 'LA NOCHE DEL COLOR LILY PASTEL', colorNightTitle: 'Una velada dedicada al color, la creatividad y la conexión.',
     colorNightP1a: 'Nuestra experiencia insignia invita a los invitados a un mundo de', colorNightP1bold: 'color cuidado y descubrimiento artístico', colorNightP1b: ', inspirado en la visión distintiva de Lily Pastel.',
@@ -427,7 +509,7 @@ const TRANSLATIONS = {
 };
 
 class Component extends DCLogic {
-  state = { isMenuOpen: false, isBookingOpen: false, isDesktop: true, bookingSent: false, dark: false, lang: 'fr', scrolled: false };
+  state = { isMenuOpen: false, isBookingOpen: false, isPrivateBookingOpen: false, isDesktop: true, bookingSent: false, privateBookingSent: false, dark: false, lang: 'fr', scrolled: false };
   componentDidMount() {
     this.onScroll = () => this.setState(s => (window.scrollY > 200) !== s.scrolled ? { scrolled: window.scrollY > 200 } : null);
     window.addEventListener('scroll', this.onScroll);
@@ -449,11 +531,31 @@ class Component extends DCLogic {
   scrollToTop = () => window.scrollTo({ top: 0, behavior: 'smooth' });
   openBooking = () => this.setState({ isBookingOpen: true, isMenuOpen: false, bookingSent: false });
   closeBooking = () => this.setState({ isBookingOpen: false });
+  openPrivateBooking = () => this.setState({ isPrivateBookingOpen: true, isMenuOpen: false, privateBookingSent: false });
+  closePrivateBooking = () => this.setState({ isPrivateBookingOpen: false });
+  submitPrivateBooking = e => {
+    e.preventDefault();
+    const f = e.target;
+    const get = n => (f[n] && f[n].value) || '';
+    const body = `Name: ${get('name')}\nEmail: ${get('email')}\nPhone: ${get('phone') || 'N/A'}\nGuests: ${get('guests') || 'N/A'}\nEvent type: ${get('eventType') || 'N/A'}\n\n${get('message')}`;
+    window.location.href = `mailto:lilypasteldesign@gmail.com?subject=${encodeURIComponent('Private Experience Request')}&body=${encodeURIComponent(body)}`;
+    this.setState({ privateBookingSent: true });
+  };
   stopClick = e => e.stopPropagation();
-  submitBooking = e => { e.preventDefault(); this.setState({ bookingSent: true }); };
+  submitBooking = e => {
+    e.preventDefault();
+    const f = e.target;
+    const get = n => (f[n] && f[n].value) || '';
+    const body = `Name: ${get('name')}\nEmail: ${get('email')}\nPhone: ${get('phone') || 'N/A'}\nPainting: ${get('painting') || 'N/A'}\nSize: ${get('size') || 'N/A'}\n\n${get('message')}`;
+    window.location.href = `mailto:lilypasteldesign@gmail.com?subject=${encodeURIComponent('Booking Request')}&body=${encodeURIComponent(body)}`;
+    this.setState({ bookingSent: true });
+  };
   renderVals() {
+    const navGap = '16px';
+    const navFontSize = '11.5px';
     return {
       t: TRANSLATIONS[this.state.lang],
+      navGap, navFontSize,
       lang: this.state.lang,
       langLabel: this.state.lang.toUpperCase(),
       scrollToTop: this.scrollToTop,
@@ -466,6 +568,12 @@ class Component extends DCLogic {
       isBookingOpen: this.state.isBookingOpen,
       bookingSent: this.state.bookingSent,
       notBookingSent: !this.state.bookingSent,
+      isPrivateBookingOpen: this.state.isPrivateBookingOpen,
+      privateBookingSent: this.state.privateBookingSent,
+      notPrivateBookingSent: !this.state.privateBookingSent,
+      openPrivateBooking: this.openPrivateBooking,
+      closePrivateBooking: this.closePrivateBooking,
+      submitPrivateBooking: this.submitPrivateBooking,
       toggleMenu: this.toggleMenu,
       openBooking: this.openBooking,
       closeBooking: this.closeBooking,

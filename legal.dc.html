@@ -34,14 +34,14 @@ a:hover{color:#8a4a24}
         </div>
       </div>
     </a>
-    <nav style="display:{{ navDisplay }};align-items:center;gap:28px;font-size:13px;letter-spacing:1px">
+    <nav style="display:{{ navDisplay }};align-items:center;gap:{{ navGap }};font-size:{{ navFontSize }};letter-spacing:0.4px">
       <a href="index.dc.html" style="color:#241f1a;display:inline-block;transition:transform .25s ease,opacity .25s ease" style-hover="transform:scale(1.1);opacity:.6">{{ t.navHome }}</a>
       <a href="portfolio.dc.html" style="color:#241f1a;display:inline-block;transition:transform .25s ease,opacity .25s ease" style-hover="transform:scale(1.1);opacity:.6">{{ t.navCollections }}</a>
       <a href="shop.dc.html" style="color:#241f1a;display:inline-block;transition:transform .25s ease,opacity .25s ease" style-hover="transform:scale(1.1);opacity:.6">{{ t.navShop }}</a>
       <a href="commissions.dc.html" style="color:#241f1a;display:inline-block;transition:transform .25s ease,opacity .25s ease" style-hover="transform:scale(1.1);opacity:.6">{{ t.navCommissions }}</a>
       <a href="experience.dc.html" style="color:#241f1a;display:inline-block;transition:transform .25s ease,opacity .25s ease" style-hover="transform:scale(1.1);opacity:.6">{{ t.navExperience }}</a>
-      <a href="about.dc.html" style="color:#241f1a;display:inline-block;transition:transform .25s ease,opacity .25s ease" style-hover="transform:scale(1.1);opacity:.6">{{ t.navAbout }}</a>
       <a href="blog.dc.html" style="color:#241f1a;display:inline-block;transition:transform .25s ease,opacity .25s ease" style-hover="transform:scale(1.1);opacity:.6">{{ t.navBlog }}</a>
+      <a href="about.dc.html" style="color:#241f1a;display:inline-block;transition:transform .25s ease,opacity .25s ease" style-hover="transform:scale(1.1);opacity:.6">{{ t.navAbout }}</a>
       <a href="contact.dc.html" style="color:#241f1a;display:inline-block;transition:transform .25s ease,opacity .25s ease" style-hover="transform:scale(1.1);opacity:.6">{{ t.navContact }}</a>
     </nav>
     <div id="site-header-controls" style="display:flex;align-items:center;gap:8px">
@@ -53,7 +53,7 @@ a:hover{color:#8a4a24}
         </select>
         <span style="font-size:9px;letter-spacing:.3px;color:#241f1a;pointer-events:none">{{ langLabel }}</span>
       </div>
-<button onClick="{{ toggleDark }}" aria-label="Toggle dark mode" style="display:flex;background:none;border:1px solid rgba(36,31,26,.25);border-radius:50%;width:26px;height:26px;color:#241f1a;cursor:pointer;align-items:center;justify-content:center;padding:0;transition:border-color .2s ease,transform .2s ease,opacity .2s ease" style-hover="border-color:#241f1a;transform:scale(1.05);opacity:.85">
+      <button onClick="{{ toggleDark }}" aria-label="Toggle dark mode" style="display:flex;background:none;border:1px solid rgba(36,31,26,.25);border-radius:50%;width:26px;height:26px;color:#241f1a;cursor:pointer;align-items:center;justify-content:center;padding:0;transition:border-color .2s ease,transform .2s ease,opacity .2s ease" style-hover="border-color:#241f1a;transform:scale(1.05);opacity:.85">
         <sc-if value="{{ dark }}" hint-placeholder-val="{{ false }}"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"></circle><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"></path></svg></sc-if>
         <sc-if value="{{ notDark }}" hint-placeholder-val="{{ true }}"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path></svg></sc-if>
       </button>
@@ -71,8 +71,8 @@ a:hover{color:#8a4a24}
       <a href="shop.dc.html">{{ t.navShop }}</a>
       <a href="commissions.dc.html">{{ t.navCommissions }}</a>
       <a href="experience.dc.html">{{ t.navExperience }}</a>
-      <a href="about.dc.html">{{ t.navAbout }}</a>
       <a href="blog.dc.html">{{ t.navBlog }}</a>
+      <a href="about.dc.html">{{ t.navAbout }}</a>
       <a href="faq.dc.html">{{ t.navFaq }}</a>
       <a href="contact.dc.html">{{ t.navContact }}</a>
     </div>
@@ -143,7 +143,7 @@ const TRANSLATIONS = {
     privacyP2: 'You may request that we delete your information at any time by emailing lilypasteldesign@gmail.com.',
     footerRights: '© 2020 Lily Pastel Studio Art. All rights reserved.',
   },
-  fr: { navHome: 'ACCUEIL', navShop: 'BOUTIQUE', navCollections: 'COLLECTION', navCommissions: 'COMMANDES', navExperience: 'ART EXPERIENCE', navAbout: 'À PROPOS', navBlog: 'BLOG', navFaq: 'FAQ', navContact: 'CONTACT',
+  fr: { navHome: 'ACCUEIL', navShop: 'BOUTIQUE', navCollections: 'COLLECTION', navCommissions: 'COMMANDES', navExperience: 'EXPÉRIENCE', navAbout: 'À PROPOS', navBlog: 'BLOG', navFaq: 'FAQ', navContact: 'CONTACT',
     legalLabel: 'MENTIONS LÉGALES', legalTitle: 'Informations légales',
     noticeTitle: 'Mentions légales',
     noticeP1: 'Lily Pastel Design Studio Art est une entreprise individuelle basée à Venice, Los Angeles, Californie. Pour toute question juridique, contactez lilypasteldesign@gmail.com.',
@@ -194,8 +194,11 @@ class Component extends DCLogic {
   onLangChange = e => { const v = e.target.value; localStorage.setItem('lp-lang', v); this.setState({ lang: v }); };
   scrollToTop = () => window.scrollTo({ top: 0, behavior: 'smooth' });
   renderVals() {
+    const navGap = '16px';
+    const navFontSize = '11.5px';
     return {
       t: TRANSLATIONS[this.state.lang],
+      navGap, navFontSize,
       lang: this.state.lang,
       langLabel: this.state.lang.toUpperCase(),
       scrollToTop: this.scrollToTop,

@@ -34,14 +34,14 @@ a:hover{color:#8a4a24}
         </div>
       </div>
     </a>
-    <nav style="display:{{ navDisplay }};align-items:center;gap:28px;font-size:13px;letter-spacing:1px">
+    <nav style="display:{{ navDisplay }};align-items:center;gap:{{ navGap }};font-size:{{ navFontSize }};letter-spacing:0.4px">
       <a href="index.dc.html" style="color:#241f1a;display:inline-block;transition:transform .25s ease,opacity .25s ease" style-hover="transform:scale(1.1);opacity:.6">{{ t.navHome }}</a>
       <a href="portfolio.dc.html" style="color:#241f1a;display:inline-block;transition:transform .25s ease,opacity .25s ease" style-hover="transform:scale(1.1);opacity:.6">{{ t.navCollections }}</a>
       <a href="shop.dc.html" style="color:#b5622f;display:inline-block;transition:transform .25s ease,opacity .25s ease" style-hover="transform:scale(1.1);opacity:.6">{{ t.navShop }}</a>
       <a href="commissions.dc.html" style="color:#241f1a;display:inline-block;transition:transform .25s ease,opacity .25s ease" style-hover="transform:scale(1.1);opacity:.6">{{ t.navCommissions }}</a>
       <a href="experience.dc.html" style="color:#241f1a;display:inline-block;transition:transform .25s ease,opacity .25s ease" style-hover="transform:scale(1.1);opacity:.6">{{ t.navExperience }}</a>
-      <a href="about.dc.html" style="color:#241f1a;display:inline-block;transition:transform .25s ease,opacity .25s ease" style-hover="transform:scale(1.1);opacity:.6">{{ t.navAbout }}</a>
       <a href="blog.dc.html" style="color:#241f1a;display:inline-block;transition:transform .25s ease,opacity .25s ease" style-hover="transform:scale(1.1);opacity:.6">{{ t.navBlog }}</a>
+      <a href="about.dc.html" style="color:#241f1a;display:inline-block;transition:transform .25s ease,opacity .25s ease" style-hover="transform:scale(1.1);opacity:.6">{{ t.navAbout }}</a>
       <a href="contact.dc.html" style="color:#241f1a;display:inline-block;transition:transform .25s ease,opacity .25s ease" style-hover="transform:scale(1.1);opacity:.6">{{ t.navContact }}</a>
     </nav>
     <div id="site-header-controls" style="display:flex;align-items:center;gap:14px">
@@ -73,8 +73,8 @@ a:hover{color:#8a4a24}
       <a href="shop.dc.html">{{ t.navShop }}</a>
       <a href="commissions.dc.html">{{ t.navCommissions }}</a>
       <a href="experience.dc.html">{{ t.navExperience }}</a>
-      <a href="about.dc.html">{{ t.navAbout }}</a>
       <a href="blog.dc.html">{{ t.navBlog }}</a>
+      <a href="about.dc.html">{{ t.navAbout }}</a>
       <a href="faq.dc.html">{{ t.navFaq }}</a>
       <a href="contact.dc.html">{{ t.navContact }}</a>
       <button onClick="{{ openBooking }}" style="background:#fffdf8;color:#241f1a;border:none;padding:16px 32px;font-size:12.5px;letter-spacing:1.5px;cursor:pointer;transition:transform .2s,background .3s ease,color .3s ease,opacity .2s ease" style-hover="transform:scale(1.03);background:#7c8560;color:#fffdf8;opacity:.85">{{ t.bookBtn }}</button>
@@ -182,9 +182,26 @@ a:hover{color:#8a4a24}
 
   </div>
 
-  <div style="margin-top:50px;text-align:center;background:#efe6d8;padding:36px;border:1px solid rgba(36,31,26,.08)">
-    <p style="font-size:14px;color:rgba(36,31,26,.7);margin:0 0 14px">{{ t.shPrefer }}</p>
-    <a href="commissions.dc.html" style="background:#241f1a;color:#fffdf8;padding:13px 26px;font-size:12px;letter-spacing:1.5px;display:inline-block;transition:transform .3s ease,background .3s ease,opacity .2s ease" style-hover="transform:scale(1.06);background:#7c8560;opacity:.85">{{ t.shSeeOptions }}</a>
+</section>
+
+<section style="max-width:1320px;margin:0 auto;padding:90px 40px;background:rgba(246,241,234,.85);backdrop-filter:blur(8px)">
+  <div style="text-align:center;margin-bottom:44px">
+    <div style="font-size:12px;letter-spacing:3px;color:#b5622f;margin-bottom:10px">{{ t.printedLabel }}</div>
+    <h2 style="font-family:'Playfair Display',serif;font-weight:500;font-size:clamp(28px,6vw,38px);margin:0;color:#241f1a">{{ t.printedTitle }}</h2>
+  </div>
+  <div style="position:relative;max-width:920px;margin:0 auto">
+    <div style="overflow:hidden;border:1px solid rgba(36,31,26,.1);aspect-ratio:3/2;background:#ece4d5">
+      <sc-if value="{{ printSlide }}" hint-placeholder-val="{{ false }}">
+        <img src="{{ printSlide.src }}" alt="{{ printSlide.alt }}" style="width:100%;height:100%;object-fit:cover;display:block">
+      </sc-if>
+    </div>
+    <button onClick="{{ prevPrintSlide }}" aria-label="Previous" style="position:absolute;top:50%;left:-22px;transform:translateY(-50%);width:46px;height:46px;border-radius:50%;background:#fffdf8;border:1px solid rgba(36,31,26,.15);font-size:18px;cursor:pointer;transition:transform .2s,opacity .2s ease" style-hover="transform:translateY(-50%) scale(1.08);opacity:.85">←</button>
+    <button onClick="{{ nextPrintSlide }}" aria-label="Next" style="position:absolute;top:50%;right:-22px;transform:translateY(-50%);width:46px;height:46px;border-radius:50%;background:#fffdf8;border:1px solid rgba(36,31,26,.15);font-size:18px;cursor:pointer;transition:transform .2s,opacity .2s ease" style-hover="transform:translateY(-50%) scale(1.08);opacity:.85">→</button>
+    <div style="display:flex;justify-content:center;gap:8px;margin-top:20px">
+      <sc-for list="{{ printDots }}" as="dot" hint-placeholder-count="5">
+        <span style="width:7px;height:7px;border-radius:50%;background:{{ dot.color }};display:inline-block"></span>
+      </sc-for>
+    </div>
   </div>
 </section>
 
@@ -205,8 +222,12 @@ a:hover{color:#8a4a24}
 
 <sc-if value="{{ isBookingOpen }}" hint-placeholder-val="{{ false }}">
   <div style="position:fixed;inset:0;background:rgba(36,31,26,.6);display:flex;align-items:center;justify-content:center;z-index:100;padding:20px" onClick="{{ closeBooking }}">
-    <div style="background:#fffdf8;max-width:440px;width:100%;padding:40px;position:relative" onClick="{{ stopClick }}">
-      <button onClick="{{ closeBooking }}" style="position:absolute;top:14px;right:16px;background:none;border:none;font-size:20px;cursor:pointer;color:#241f1a;transition:color .3s ease,opacity .3s ease,transform .2s ease" style-hover="color:#b5622f;opacity:.7;transform:scale(1.05)">×</button>
+    <div style="background:#fffdf8;max-width:440px;width:100%;box-sizing:border-box;position:relative;max-height:92vh;overflow:auto;border-radius:16px;overflow:hidden;box-shadow:0 30px 60px rgba(36,31,26,.35)" onClick="{{ stopClick }}">
+      <div style="background:#7c8560;padding:26px 30px 22px">
+        <button onClick="{{ closeBooking }}" style="position:absolute;top:14px;right:16px;background:none;border:none;font-size:20px;cursor:pointer;color:#fffdf8;transition:opacity .3s ease,transform .2s ease" style-hover="opacity:.7;transform:scale(1.05)">×</button>
+        <div style="font-family:'Playfair Display',serif;font-size:22px;color:#fffdf8">{{ t.bookTitle }}</div>
+      </div>
+      <div style="padding:28px 24px">
       <sc-if value="{{ bookingSent }}" hint-placeholder-val="{{ false }}">
         <div style="text-align:center;padding:30px 0">
           <div style="font-family:'Playfair Display',serif;font-size:22px;margin-bottom:10px">{{ t.thanksTitle }}</div>
@@ -214,10 +235,9 @@ a:hover{color:#8a4a24}
         </div>
       </sc-if>
       <sc-if value="{{ notBookingSent }}" hint-placeholder-val="{{ true }}">
-        <div style="font-family:'Playfair Display',serif;font-size:22px;margin-bottom:6px">{{ t.bookTitle }}</div>
         <p style="font-size:13px;color:rgba(36,31,26,.6);margin:0 0 22px">{{ t.bookDesc }}</p>
-        <form onSubmit="{{ submitBooking }}" style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
-          <input required="" type="text" placeholder="{{ t.formName }}" style="grid-column:span 1;border:1px solid rgba(36,31,26,.2);padding:12px;font-size:13px;font-family:'Jost',sans-serif">
+        <form onSubmit="{{ submitBooking }}" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:12px">
+          <input name="name" required="" type="text" placeholder="{{ t.formName }}" style="grid-column:span 1;border:1px solid rgba(36,31,26,.2);padding:12px;font-size:13px;font-family:'Jost',sans-serif">
           <div style="grid-column:span 1;position:relative">
             <input id="shop-booking-email" required="" type="email" placeholder="Email" onInput="{{ onEmailInput }}" onFocus="{{ onEmailFocus }}" onBlur="{{ onEmailBlur }}" style="width:100%;box-sizing:border-box;border:1px solid rgba(36,31,26,.2);padding:12px;font-size:13px;font-family:'Jost',sans-serif">
             <sc-if value="{{ showEmailSuggestions }}" hint-placeholder-val="{{ false }}">
@@ -244,7 +264,7 @@ a:hover{color:#8a4a24}
               <option value="+52">🇲🇽 +52</option>
               <option value="+55">🇧🇷 +55</option>
             </select>
-            <input type="tel" placeholder="{{ t.formPhone }}" style="flex:1;min-width:0;border:1px solid rgba(36,31,26,.2);padding:12px;font-size:13px;font-family:'Jost',sans-serif">
+            <input name="phone" type="tel" placeholder="{{ t.formPhone }}" style="flex:1;min-width:0;border:1px solid rgba(36,31,26,.2);padding:12px;font-size:13px;font-family:'Jost',sans-serif">
           </div>
           <select value="{{ inquirePainting }}" onChange="{{ onPaintingChange }}" style="grid-column:span 1;border:1px solid rgba(36,31,26,.2);padding:12px;font-size:13px;font-family:'Jost',sans-serif;color:#241f1a;background:#fffdf8">
             <option value="">{{ t.formPaintingPlaceholder }}</option>
@@ -257,7 +277,7 @@ a:hover{color:#8a4a24}
             <option>Oh Gold</option>
             <option>Elemental</option>
           </select>
-          <select style="grid-column:1 / -1;border:1px solid rgba(36,31,26,.2);padding:12px;font-size:13px;font-family:'Jost',sans-serif;color:#241f1a;background:#fffdf8">
+          <select name="size" style="grid-column:1 / -1;border:1px solid rgba(36,31,26,.2);padding:12px;font-size:13px;font-family:'Jost',sans-serif;color:#241f1a;background:#fffdf8">
             <option value="">{{ t.formSizePlaceholder }}</option>
             <option>16 × 20 in</option>
             <option>24 × 30 in</option>
@@ -265,10 +285,11 @@ a:hover{color:#8a4a24}
             <option>40 × 60 in</option>
             <option>48 × 72 in</option>
           </select>
-          <textarea placeholder="{{ t.formMsg }}" rows="3" style="grid-column:1 / -1;border:1px solid rgba(36,31,26,.2);padding:12px;font-size:13px;font-family:'Jost',sans-serif;resize:vertical"></textarea>
+          <textarea name="message" placeholder="{{ t.formMsg }}" rows="3" style="grid-column:1 / -1;border:1px solid rgba(36,31,26,.2);padding:12px;font-size:13px;font-family:'Jost',sans-serif;resize:vertical"></textarea>
           <button type="submit" style="grid-column:1 / -1;background:#7c8560;color:#fffdf8;border:none;padding:14px;font-size:13px;letter-spacing:1.5px;cursor:pointer;margin-top:6px;transition:background .3s ease,opacity .3s ease,transform .2s ease" style-hover="background:#b9c19a;opacity:.88;transform:scale(1.05)">{{ t.formSend }}</button>
         </form>
       </sc-if>
+      </div>
     </div>
   </div>
 </sc-if>
@@ -287,35 +308,54 @@ const TRANSLATIONS = {
     shTopLabel: 'THE COLLECTION', shTitle: 'Shop the Collection', shDesc: 'Every original is one-of-one. Prefer a different size or budget? Any piece can be printed on canvas, fine-art paper or acrylic.',
     filterAll: 'ALL WORKS', filterOriginal: 'ORIGINAL PAINTINGS', filterPrinting: 'PRINTING WORKS', inquire: 'INQUIRE',
     shPrefer: 'Prefer this piece printed on canvas, fine-art paper or acrylic instead?', shSeeOptions: 'SEE PRINTING OPTIONS', shWhichPiece: 'Which piece are you interested in?',
+    printedLabel: 'SEE IT PRINTED', printedTitle: 'Printed on canvas, paper, acrylic and more...',
     footerRights: '© 2020 Lily Pastel Studio Art. All rights reserved.', footerLegal: 'Legal',
   },
   fr: {
-    navHome: 'ACCUEIL', navShop: 'BOUTIQUE', navCollections: 'COLLECTION', navCommissions: 'COMMANDES', navExperience: 'ART EXPERIENCE', navAbout: 'À PROPOS', navBlog: 'BLOG', navFaq: 'FAQ', navContact: 'CONTACT',
-    bookBtn: 'RÉSERVER UNE CONSULTATION',
+    navHome: 'ACCUEIL', navShop: 'BOUTIQUE', navCollections: 'COLLECTION', navCommissions: 'COMMANDES', navExperience: 'EXPÉRIENCE', navAbout: 'À PROPOS', navBlog: 'BLOG', navFaq: 'FAQ', navContact: 'CONTACT',
+    bookBtn: 'RÉSERVER',
     thanksTitle: 'Merci !', thanksDesc: 'Nous vous contacterons sous un jour ouvré pour confirmer votre consultation.',
     bookTitle: 'Réserver une consultation', bookDesc: 'Parlez-nous de votre espace, nous vous recontacterons pour planifier un appel.',
     formName: 'Nom complet', formEmail: 'Email', formPhone: 'Téléphone (optionnel)', formMsg: 'Parlez-nous de votre espace ou projet', formSend: 'ENVOYER LA DEMANDE', formPaintingPlaceholder: 'Quel tableau ? (optionnel)', formSizePlaceholder: 'Dimension souhaitée (optionnel)',
     shTopLabel: 'LA COLLECTION', shTitle: 'Découvrir la collection', shDesc: 'Chaque original est unique. Vous préférez une autre taille ou un autre budget ? Chaque œuvre peut être imprimée sur toile, papier d\u2019art ou acrylique.',
     filterAll: 'TOUTES LES ŒUVRES', filterOriginal: 'PEINTURES ORIGINALES', filterPrinting: 'IMPRESSIONS', inquire: 'DEMANDER',
     shPrefer: 'Vous préférez cette œuvre imprimée sur toile, papier d\u2019art ou acrylique ?', shSeeOptions: 'VOIR LES OPTIONS D\u2019IMPRESSION', shWhichPiece: 'Quelle œuvre vous intéresse ?',
+    printedLabel: 'À VOIR IMPRIMÉ', printedTitle: 'Imprimé sur toile, papier, plexiglas et plus...',
     footerRights: '© 2020 Lily Pastel Studio Art. Tous droits réservés.', footerLegal: 'Mentions légales',
   },
   es: {
     navHome: 'INICIO', navShop: 'TIENDA', navCollections: 'COLECCIÓN', navCommissions: 'ENCARGOS', navExperience: 'ART EXPERIENCE', navAbout: 'SOBRE MÍ', navBlog: 'BLOG', navFaq: 'FAQ', navContact: 'CONTACTO',
-    bookBtn: 'RESERVAR CONSULTA',
+    bookBtn: 'RESERVAR',
     thanksTitle: '¡Gracias!', thanksDesc: 'Nos pondremos en contacto en un día hábil para confirmar tu consulta.',
     bookTitle: 'Reservar una consulta', bookDesc: 'Cuéntanos sobre tu espacio, te contactaremos para agendar una llamada.',
     formName: 'Nombre completo', formEmail: 'Email', formPhone: 'Teléfono (opcional)', formMsg: 'Cuéntanos sobre tu espacio o proyecto', formSend: 'ENVIAR SOLICITUD', formPaintingPlaceholder: '¿Qué pintura? (opcional)', formSizePlaceholder: 'Tamaño preferido (opcional)',
     shTopLabel: 'LA COLECCIÓN', shTitle: 'Compra la colección', shDesc: 'Cada original es único. ¿Prefieres otro tamaño o presupuesto? Cualquier obra puede imprimirse en lienzo, papel de arte o acrílico.',
     filterAll: 'TODAS LAS OBRAS', filterOriginal: 'PINTURAS ORIGINALES', filterPrinting: 'IMPRESIONES', inquire: 'CONSULTAR',
     shPrefer: '¿Prefieres esta obra impresa en lienzo, papel de arte o acrílico?', shSeeOptions: 'VER OPCIONES DE IMPRESIÓN', shWhichPiece: '¿Qué obra te interesa?',
+    printedLabel: 'VERLO IMPRESO', printedTitle: 'Impreso en lienzo, papel, acrílico y más...',
     footerRights: '© 2020 Lily Pastel Studio Art. Todos los derechos reservados.', footerLegal: 'Legal',
   },
 };
 
 class Component extends DCLogic {
-  state = { isMenuOpen: false, isBookingOpen: false, isDesktop: true, bookingSent: false, filter: 'all', dark: false, lang: 'fr', inquirePainting: '', emailValue: '', emailFocused: false };
+  state = { isMenuOpen: false, isBookingOpen: false, isDesktop: true, bookingSent: false, filter: 'all', dark: false, lang: 'fr', inquirePainting: '', emailValue: '', emailFocused: false, printIndex: 0 };
+  printSlidesData = [
+    { src: 'assets/merch-01.jpg', alt: 'Golden Bloom printed on canvas, tote and pillow' },
+    { src: 'assets/merch-02.jpg', alt: 'Emerald Whisper printed on canvas, tote and pillow' },
+    { src: 'assets/merch-03.jpg', alt: 'Warm Horizon printed on canvas, tote and pillow' },
+    { src: 'assets/merch-04.jpg', alt: 'Floral Static printed on canvas, tote and pillow' },
+    { src: 'assets/merch-05.jpg', alt: 'Gilded Hush printed on canvas, tote and pillow' },
+  ];
+  prevPrintSlide = () => { this.setState(s => ({ printIndex: (s.printIndex - 1 + this.printSlidesData.length) % this.printSlidesData.length })); this.restartPrintAutoplay(); };
+  nextPrintSlide = () => { this.setState(s => ({ printIndex: (s.printIndex + 1) % this.printSlidesData.length })); this.restartPrintAutoplay(); };
+  restartPrintAutoplay = () => {
+    clearInterval(this.printInterval);
+    this.printInterval = setInterval(() => {
+      this.setState(s => ({ printIndex: (s.printIndex + 1) % this.printSlidesData.length }));
+    }, 4000);
+  };
   componentDidMount() {
+    this.restartPrintAutoplay();
     this.mq = window.matchMedia('(min-width:1200px)');
     this.setState({ isDesktop: this.mq.matches });
     if (localStorage.getItem('lp-theme') === 'dark') this.setState({ dark: true });
@@ -326,6 +366,7 @@ class Component extends DCLogic {
   }
   componentWillUnmount() {
     if (this.mq) this.mq.removeEventListener('change', this.onMq);
+    clearInterval(this.printInterval);
   }
   toggleMenu = () => this.setState(s => ({ isMenuOpen: !s.isMenuOpen }));
   toggleDark = () => this.setState(s => { const v = !s.dark; localStorage.setItem('lp-theme', v ? 'dark' : 'light'); return { dark: v }; });
@@ -349,13 +390,23 @@ class Component extends DCLogic {
   onEmailBlur = () => setTimeout(() => this.setState({ emailFocused: false }), 150);
   closeBooking = () => this.setState({ isBookingOpen: false });
   stopClick = e => e.stopPropagation();
-  submitBooking = e => { e.preventDefault(); this.setState({ bookingSent: true }); };
+  submitBooking = e => {
+    e.preventDefault();
+    const f = e.target;
+    const get = n => (f[n] && f[n].value) || '';
+    const body = `Name: ${get('name')}\nEmail: ${get('email')}\nPhone: ${get('phone') || 'N/A'}\nPainting: ${get('painting') || 'N/A'}\nSize: ${get('size') || 'N/A'}\n\n${get('message')}`;
+    window.location.href = `mailto:lilypasteldesign@gmail.com?subject=${encodeURIComponent('Booking Request')}&body=${encodeURIComponent(body)}`;
+    this.setState({ bookingSent: true });
+  };
   setFilterAll = () => this.setState({ filter: 'all' });
   setFilterOriginal = () => this.setState({ filter: 'original' });
   setFilterPrinting = () => this.setState({ filter: 'printing' });
   renderVals() {
     const f = this.state.filter;
+    const navGap = '16px';
+    const navFontSize = '11.5px';
     return {
+      navGap, navFontSize,
       t: TRANSLATIONS[this.state.lang],
       lang: this.state.lang,
       langLabel: this.state.lang.toUpperCase(),
@@ -376,6 +427,10 @@ class Component extends DCLogic {
       submitBooking: this.submitBooking,
       navDisplay: this.state.isDesktop ? 'flex' : 'none',
       burgerDisplay: this.state.isDesktop ? 'none' : 'flex',
+      printSlide: this.printSlidesData[this.state.printIndex],
+      prevPrintSlide: this.prevPrintSlide,
+      nextPrintSlide: this.nextPrintSlide,
+      printDots: this.printSlidesData.map((s, i) => ({ color: i === this.state.printIndex ? '#241f1a' : 'rgba(36,31,26,.25)' })),
       setFilterAll: this.setFilterAll,
       setFilterOriginal: this.setFilterOriginal,
       setFilterPrinting: this.setFilterPrinting,
