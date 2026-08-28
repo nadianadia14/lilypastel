@@ -89,7 +89,7 @@ a:hover{color:#8a4a24}
 </section>
 
 <section style="max-width:1160px;margin:0 auto;padding:40px 40px 90px;display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:30px">
-  <sc-for list="{{ articleCards }}" as="card" hint-placeholder-count="6">
+  <sc-for list="{{ articleCards }}" as="card" hint-placeholder-count="0">
     <a href="javascript:void(0)" data-i="{{ card.i }}" onClick="{{ openArticle }}" style="display:block;color:#241f1a;cursor:pointer">
       <img src="{{ card.img }}" alt="{{ card.alt }}" style="width:100%;aspect-ratio:4/3;object-fit:cover;object-position:{{ card.pos }};margin-bottom:16px">
       <div style="font-size:11px;letter-spacing:1.5px;color:#b5622f;margin-bottom:8px">{{ card.tag }}</div>
@@ -109,9 +109,10 @@ a:hover{color:#8a4a24}
     </div>
   </div>
 </footer>
+</div>
 
 <sc-if value="{{ isArticleOpen }}" hint-placeholder-val="{{ false }}">
-  <div style="position:fixed;inset:0;background:rgba(36,31,26,.6);display:flex;align-items:center;justify-content:center;z-index:100;padding:20px;overflow-y:auto" onClick="{{ closeArticle }}">
+  <div data-lp-theme="{{ themeAttr }}" style="position:fixed;inset:0;background:rgba(36,31,26,.6);display:flex;align-items:center;justify-content:center;z-index:100;padding:20px;overflow-y:auto" onClick="{{ closeArticle }}">
     <div style="background:#fffdf8;max-width:640px;width:100%;max-height:88vh;overflow-y:auto;position:relative" onClick="{{ stopClick }}">
       <button onClick="{{ closeArticle }}" style="position:absolute;top:14px;right:16px;background:#fffdf8;border-radius:50%;width:32px;height:32px;border:none;font-size:20px;cursor:pointer;color:#241f1a;z-index:2;transition:color .3s ease,opacity .3s ease,transform .2s ease" style-hover="color:#b5622f;opacity:.7;transform:scale(1.05)">×</button>
       <img src="{{ currentArticle.img }}" alt="{{ currentArticle.alt }}" style="width:100%;aspect-ratio:16/9;object-fit:cover;object-position:{{ currentArticle.pos }}">
@@ -128,7 +129,7 @@ a:hover{color:#8a4a24}
 </sc-if>
 
 <sc-if value="{{ isBookingOpen }}" hint-placeholder-val="{{ false }}">
-  <div style="position:fixed;inset:0;background:rgba(36,31,26,.6);display:flex;align-items:center;justify-content:center;z-index:100;padding:20px" onClick="{{ closeBooking }}">
+  <div data-lp-theme="{{ themeAttr }}" style="position:fixed;inset:0;background:rgba(36,31,26,.6);display:flex;align-items:center;justify-content:center;z-index:100;padding:20px" onClick="{{ closeBooking }}">
     <div style="background:#fffdf8;max-width:440px;width:100%;box-sizing:border-box;position:relative;max-height:92vh;overflow:auto;border-radius:16px;overflow:hidden;box-shadow:0 30px 60px rgba(36,31,26,.35)" onClick="{{ stopClick }}">
       <div style="background:#7c8560;padding:26px 30px 22px">
         <button onClick="{{ closeBooking }}" style="position:absolute;top:14px;right:16px;background:none;border:none;font-size:20px;cursor:pointer;color:#fffdf8;transition:opacity .3s ease,transform .2s ease" style-hover="opacity:.7;transform:scale(1.05)">×</button>
@@ -192,8 +193,6 @@ a:hover{color:#8a4a24}
     </div>
   </div>
 </sc-if>
-
-</div>
 
 </x-dc>
 <script type="text/x-dc" data-dc-script>
@@ -270,7 +269,7 @@ class Component extends DCLogic {
       "It's not a passing trend we're chasing lightly, we've started building it into our standard palette because the requests keep coming, and because, honestly, it's some of the most satisfying work we've made all year."
     ] },
   ];
-  openArticle = e => this.setState({ isArticleOpen: true, articleIndex: parseInt(e.currentTarget.dataset.i, 10) });
+  openArticle = e => { window.scrollTo(0, 0); this.setState({ isArticleOpen: true, articleIndex: parseInt(e.currentTarget.dataset.i, 10) }); };
   closeArticle = () => this.setState({ isArticleOpen: false });
   componentDidMount() {
     this.mq = window.matchMedia('(min-width:1200px)');
@@ -288,7 +287,7 @@ class Component extends DCLogic {
   toggleDark = () => this.setState(s => { const v = !s.dark; localStorage.setItem('lp-theme', v ? 'dark' : 'light'); return { dark: v }; });
   onLangChange = e => { const v = e.target.value; localStorage.setItem('lp-lang', v); this.setState({ lang: v }); };
   scrollToTop = () => window.scrollTo({ top: 0, behavior: 'smooth' });
-  openBooking = () => this.setState({ isBookingOpen: true, isMenuOpen: false, bookingSent: false });
+  openBooking = () => { window.scrollTo(0, 0); this.setState({ isBookingOpen: true, isMenuOpen: false, bookingSent: false }); };
   closeBooking = () => this.setState({ isBookingOpen: false });
   stopClick = e => e.stopPropagation();
   submitBooking = e => {

@@ -14,7 +14,7 @@
 body{margin:0;background:#f6f1ea;font-family:'Jost',sans-serif;color:#241f1a;overflow-x:hidden}
 a{color:#b5622f;text-decoration:none}
 a:hover{color:#8a4a24}
-@media (max-width:860px){#contact-section{grid-template-columns:1fr !important;grid-template-areas:"heading" "form" "info" !important;justify-items:center;text-align:center}#contact-section iframe{max-width:420px}#contact-section form{width:100%}}
+@media (max-width:860px){#contact-section{grid-template-columns:1fr !important;grid-template-areas:"heading" "form" "info" !important;justify-items:center;text-align:center}#contact-section iframe{max-width:420px}#contact-section form{width:100%}#contact-info-list{align-items:center}#contact-info-list>div>div[style*="display:flex"]{justify-content:center}}
 [data-lp-theme="dark"]{filter:invert(1) hue-rotate(180deg)}
 [data-lp-theme="dark"] img,[data-lp-theme="dark"] video,[data-lp-theme="dark"] iframe{filter:invert(1) hue-rotate(180deg)}
 @media (max-width:640px){#site-header-inner{padding:12px 16px}#site-logo-img{height:40px !important;width:40px !important}#site-logo-text span{font-size:14px !important}#site-logo-sub{font-size:6.5px !important;letter-spacing:2px !important}#site-header-controls{gap:6px !important}}
@@ -89,8 +89,8 @@ a:hover{color:#8a4a24}
     <p style="font-size:14.5px;line-height:1.8;color:rgba(36,31,26,.68);margin:0">{{ t.ctDesc }}</p>
   </div>
 
-  <div style="grid-area:info;min-width:0">
-    <div style="display:flex;flex-direction:column;gap:14px;margin-bottom:36px">
+  <div id="contact-info-col" style="grid-area:info;min-width:0">
+    <div id="contact-info-list" style="display:flex;flex-direction:column;gap:14px;margin-bottom:36px">
       <div>
         <div style="font-size:11px;letter-spacing:1.5px;color:rgba(36,31,26,.5);margin-bottom:4px">INSTAGRAM</div>
         <a href="https://www.instagram.com/lilypasteldesign/" style="font-size:14.5px">@lilypasteldesign</a>
@@ -203,7 +203,7 @@ a:hover{color:#8a4a24}
 </footer>
 
 <sc-if value="{{ isBookingOpen }}" hint-placeholder-val="{{ false }}">
-  <div style="position:fixed;inset:0;background:rgba(36,31,26,.6);display:flex;align-items:center;justify-content:center;z-index:100;padding:20px" onClick="{{ closeBooking }}">
+  <div data-lp-theme="{{ themeAttr }}" style="position:fixed;inset:0;background:rgba(36,31,26,.6);display:flex;align-items:center;justify-content:center;z-index:100;padding:20px" onClick="{{ closeBooking }}">
     <div style="background:#fffdf8;max-width:440px;width:100%;box-sizing:border-box;position:relative;max-height:92vh;overflow:auto;border-radius:16px;overflow:hidden;box-shadow:0 30px 60px rgba(36,31,26,.35)" onClick="{{ stopClick }}">
       <div style="background:#7c8560;padding:26px 30px 22px">
         <button onClick="{{ closeBooking }}" style="position:absolute;top:14px;right:16px;background:none;border:none;font-size:20px;cursor:pointer;color:#fffdf8;transition:opacity .3s ease,transform .2s ease" style-hover="opacity:.7;transform:scale(1.05)">×</button>
@@ -334,7 +334,7 @@ class Component extends DCLogic {
   toggleDark = () => this.setState(s => { const v = !s.dark; localStorage.setItem('lp-theme', v ? 'dark' : 'light'); return { dark: v }; });
   onLangChange = e => { const v = e.target.value; localStorage.setItem('lp-lang', v); this.setState({ lang: v }); };
   scrollToTop = () => window.scrollTo({ top: 0, behavior: 'smooth' });
-  openBooking = e => { if (e && e.preventDefault) e.preventDefault(); this.setState({ isBookingOpen: true, isMenuOpen: false }); };
+  openBooking = e => { if (e && e.preventDefault) e.preventDefault(); window.scrollTo(0, 0); this.setState({ isBookingOpen: true, isMenuOpen: false }); };
   closeBooking = () => this.setState({ isBookingOpen: false });
   stopClick = e => e.stopPropagation();
   submitBooking = e => {
